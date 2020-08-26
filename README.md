@@ -34,8 +34,8 @@ In EcoHero, you can fix yourself eco-friendly goals and share your achievements 
 
 <br>
 
-#Client/Frontend
-##React Router Routes (React App)
+# Client/Frontend
+## React Router Routes (React App)
 
 | Path                      | Component                      | Permissions | Behavior                                                     |
 | ------------------------- | --------------------           | ----------- | ------------------------------------------------------------ |
@@ -54,7 +54,7 @@ In EcoHero, you can fix yourself eco-friendly goals and share your achievements 
 | `/challenges/create` | NavBar, CreateChallengeForm, DashBoard |user only with 25.000pts + | Form where the authorized users can create a new challenge for the DB|
 | `/challenges/:id/edit` | NavBar, EditChallengeForm, Dashboard | user only |Form where the user can edit the image, completed and finishing date of an ongoing challenge to achieve it|
 
-##Components
+## Components
 - LoginPage
 - SignupPage
 - NavBar
@@ -98,9 +98,9 @@ In EcoHero, you can fix yourself eco-friendly goals and share your achievements 
 
 #Server / Backend
 
-##Models
+## Models
 
-User Model
+### User Model
 ```javascript
 {
 	username: {
@@ -137,9 +137,10 @@ achievements: [{
 ```
 
 
-This model will be seeded first and then the user will be able to add more challenges but it will never be edited.
 
-Challenge model
+
+### Challenge model
+This model will be seeded first and then the user will be able to add more challenges but it will never be edited.
 ```javascript
 {
 	name: {
@@ -154,10 +155,8 @@ Challenge model
 	}
 ```
 
-
+### Achievement model
 In this model, the challenge will be linked to a user, and there will be the possibility to change its status (and make a challenge become an achievement in the profile of the user) and add an image to show the achievement.
-
-Achievement model
 ```javascript
 {
 	challenge: {
@@ -181,7 +180,7 @@ finishing-date: Date
 }
 ```
 
-##API Endpoint (backend routes)
+## API Endpoint (backend routes)
 
 | HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
 | ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
@@ -205,16 +204,16 @@ finishing-date: Date
 
 ### Trello/Kanban
 
-[Link to your trello board](https://trello.com/) 
+[Link to your trello board](https://trello.com/b/S1Cd15QC/ecohero) 
 or picture of your physical board
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/)
+[Client repository Link](https://github.com/elisedjn/ecohero-client-side)
 
-[Server repository Link](https://github.com/)
+[Server repository Link](https://github.com/elisedjn/ecohero-server-side)
 
 [Deployed App Link](https://)
 
