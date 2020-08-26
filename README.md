@@ -50,11 +50,7 @@ In EcoHero, you can fix yourself eco-friendly goals and share your achievements 
 | `/profile/edit`           | NavBar, EditProfileForm DashBoard | user only |Form which allows the user to change his username, email, password and profile picture|
 | `/challenges`  | NavBar, ChallengesList, SearchBar (if user: Dashboard), CreateChallengeBtn | public | Displays the list with all the challenges available in the database, with a search bar to filter it|
 |`/my-challenges` | NavBar, ChallengesList, AchievementsList,  RankingBar, Dashboard | user only | Shows the ranking progression, the list of challenges and achievements of the user. He can complete or delete the challenges and share the achievement on social media |
-| `/challenges/:id` | Nav, ChallengeDetails (if user: DashBoard, depending on the scenario : SharingLogos, EditBtn and DeleteBtn or AddToMyChallenges) | public |Shows the detail of a Challenge or an Achievement. 
-If it’s his challenge, there is a delete and edit button
-If it’s his achievement, the user can share it on social media. 
-If it’s somebody else achievement or a challenge from the database, the user can add the challenge to his own ones
-If the user is not login, he can only see the details|
+| `/challenges/:id` | Nav, ChallengeDetails (if user: DashBoard, depending on the scenario : SharingLogos, EditBtn and DeleteBtn or AddToMyChallenges) | public |Shows the detail of a Challenge or an Achievement. If it’s his challenge, there is a delete and edit button .If it’s his achievement, the user can share it on social media. If it’s somebody else achievement or a challenge from the database, the user can add the challenge to his own ones. If the user is not login, he can only see the details|
 | `/challenges/create` | NavBar, CreateChallengeForm, DashBoard |user only with 25.000pts + | Form where the authorized users can create a new challenge for the DB|
 | `/challenges/:id/edit` | NavBar, EditChallengeForm, Dashboard | user only |Form where the user can edit the image, completed and finishing date of an ongoing challenge to achieve it|
 
@@ -105,6 +101,7 @@ If the user is not login, he can only see the details|
 ##Models
 
 User Model
+```javascript
 {
 	username: {
 		type: String,
@@ -137,11 +134,13 @@ achievements: [{
 	ref: “Achievement”
 }]
 }
+```
 
 
 This model will be seeded first and then the user will be able to add more challenges but it will never be edited.
 
 Challenge model
+```javascript
 {
 	name: {
 		type: String,
@@ -153,12 +152,13 @@ Challenge model
 		type: Number,
 		required: true
 	}
-
+```
 
 
 In this model, the challenge will be linked to a user, and there will be the possibility to change its status (and make a challenge become an achievement in the profile of the user) and add an image to show the achievement.
 
 Achievement model
+```javascript
 {
 	challenge: {
 		type: mongoose.Schema.Types.ObjectId,
@@ -179,130 +179,26 @@ starting-date:{
 },
 finishing-date: Date
 }
-
+```
 
 ##API Endpoint (backend routes)
 
-HTTP Method
-URL
-Request Body
-Success Status
-Error Status
-Description
-GET
-/auth/profile
-Saved session
-200
-404
-Check if user is logged in and return profile page
-POST
-/auth/signup
-{username, email, password}
-201
-404
-Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session
-POST
-/auth/login
-{email, password}
-200
-401
-Checks if fields not empty (422) and user exists (404), and if password matches (404), then stores user in session
-GET
-achievements/latest
-
-
-
-
-
-
-Shows the completed latest achievements of all users
-GET
-/users/leaderboard
-
-
-
-
-
-
-Shows the users with the highest amount of points
-GET
-/users/:id
-
-
-
-
-
-
-Shows the details of a specific user
-PATCH
-/users/:id/edit
-{name, image, email, password}
-
-
-
-
-Edits the infos of a specific user
-GET
-/users/:id/achievements
-
-
-
-
-
-
-Shows all the achievements (completed or not) of a specific user
-PATCH
-/achievements/:achievID
-{completed, image, finishing-date}
-
-
-
-
-Edits a specific achievement
-DELETE
-/achievements/:achievID
-
-
-
-
-
-
-Deletes a specific achievement
-GET
-/achievements/:achievID
-
-
-
-
-
-
-Shows a specific achievement
-GET
-/challenges
-
-
-
-
-
-
-Shows all the challenges
-GET
-/challenges/challengeID
-
-
-
-
-
-
-Shows the details of a specific challenge
-POST
-/challenges/create
-{name, description, points}
-
-
-
-
-Creates a new challenge
+| HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
+| ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
+| GET   | /auth/profile | Saved session |200 |404  | Check if user is logged in and return profile page|
+| POST  | /auth/signup  | {username, email, password}| 201| 404 | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST  | /auth/login   | {email, password}| 200| 401 | Checks if fields not empty (422) and user exists (404), and if password matches (404), then stores user in session |
+| GET   | achievements/latest | | | |Shows the completed latest achievements of all users |
+| GET   | /users/leaderboard | | | | Shows the users with the highest amount of points |
+| GET   | /users/:id | | | | Shows the details of a specific user |
+| PATCH | /users/:id/edit | {name, image, email, password} | | | Edits the infos of a specific user |
+| GET   | /users/:id/achievements | | | | Shows all the achievements (completed or not) of a specific user |
+| PATCH | /achievements/:achievID | {completed, image, finishing-date} | | |Edits a specific achievement |
+| DELETE | /achievements/:achievID | | | | Deletes a specific achievement |
+| GET   | /achievements/:achievID | | | | Shows a specific achievement|
+| GET   | /challenges | | | | Shows all the challenges |
+| GET   | /challenges/challengeID | | | | Shows the details of a specific challenge |
+| POST  | /challenges/create | {name, description, points} | | | Creates a new challenge |
 
 
 ## Links
