@@ -55,26 +55,26 @@ In EcoHero, you can fix yourself eco-friendly goals and share your achievements 
 | `/challenges/:id/edit` | NavBar, EditChallengeForm, Dashboard | user only |Form where the user can edit the image, completed and finishing date of an ongoing challenge to achieve it|
 
 ##Components
--LoginPage
--SignupPage
--NavBar
--DashBoard
--HomePage
--Carousel
--RankingList
--Ranking
--Profile
--ChallengesList
--SearchBar
--AchievementsList
--RankingBar
--ChallengeDetails
--SharingLogo
--EditBtn
--DeleteBtn
--AddToMyChallenges
--CreateChallengeForm
--EditChallengeForm
+- LoginPage
+- SignupPage
+- NavBar
+- DashBoard
+- HomePage
+- Carousel
+- RankingList
+- Ranking
+- Profile
+- ChallengesList
+- SearchBar
+- AchievementsList
+- RankingBar
+- ChallengeDetails
+- SharingLogo
+- EditBtn
+- DeleteBtn
+- AddToMyChallenges
+- CreateChallengeForm
+- EditChallengeForm
 
 
 ## Services
