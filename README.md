@@ -47,46 +47,16 @@ In EcoHero, you can fix yourself eco-friendly goals and share your achievements 
 | `/ranks`                  | NavBar, Ranking, (if user: DashBoard) | public               | Show the different ranks, limit points and bonus available                                |
 | `/user-home`              | NavBar, Profile, ChallengesList, Carousel, DashBoard | user only | Show the user picture, username, ranking and points, as well as the 2 ongoing challenges he has and the carousel of other users latest achievements                                   |
 | `/profile`                | NavBar, Profile, AchievementsList, RankingBar, DashBoard | user only  | Show the username, picture, ranking, points, ranking progression and achievements from one user. If it’s the loggedInUser, then there is an Edit button |
-| `/search/films`           | SearchForm, SearchResults      | user only `<PrivateRoute>`  | Search a film to be added                                     |
-| `/search/games`           | SearchForm, SearchResults      | user only `<PrivateRoute>`  | Search a game to be added                                     |
-| `/add/:id`                | ElementInfo                    | user only `<PrivateRoute>`  | Add an element to the backlog                                 |
-| `/profile`                | Profile, Stats                 | user only  `<PrivateRoute>` | Check profile with stat information                           |
-| `/done/series`            | Done list for Series           | user only  `<PrivateRoute>` | Shows all tv series finished                                  |
-| `/done/films`             | Done list for films            | user only `<PrivateRoute>`  | Shows all films finished                                      |
-| `/done/games`             | Done list for games            | user only `<PrivateRoute>`  | Shows all videogames finished                                 |
-          
-
-
-
-/profile/edit
-NavBar, EditProfileForm DashBoard
-user only
-Form which allows the user to change his username, email, password and profile picture
-/challenges
-NavBar, ChallengesList, SearchBar (if user: Dashboard), CreateChallengeBtn
-public
-Displays the list with all the challenges available in the database, with a search bar to filter it
-/my-challenges
-NavBar, ChallengesList, AchievementsList,  RankingBar, Dashboard
-user only
-Shows the ranking progression, the list of challenges and achievements of the user. He can complete or delete the challenges and share the achievement on social media
-/challenges/:id
-Nav, ChallengeDetails (if user: DashBoard, depending on the scenario : SharingLogos, EditBtn and DeleteBtn or AddToMyChallenges)
-public
-Shows the detail of a Challenge or an Achievement. 
+| `/profile/edit`           | NavBar, EditProfileForm DashBoard | user only |Form which allows the user to change his username, email, password and profile picture|
+| `/challenges`  | NavBar, ChallengesList, SearchBar (if user: Dashboard), CreateChallengeBtn | public | Displays the list with all the challenges available in the database, with a search bar to filter it|
+|`/my-challenges` | NavBar, ChallengesList, AchievementsList,  RankingBar, Dashboard | user only | Shows the ranking progression, the list of challenges and achievements of the user. He can complete or delete the challenges and share the achievement on social media |
+| `/challenges/:id` | Nav, ChallengeDetails (if user: DashBoard, depending on the scenario : SharingLogos, EditBtn and DeleteBtn or AddToMyChallenges) | public |Shows the detail of a Challenge or an Achievement. 
 If it’s his challenge, there is a delete and edit button
 If it’s his achievement, the user can share it on social media. 
 If it’s somebody else achievement or a challenge from the database, the user can add the challenge to his own ones
-If the user is not login, he can only see the details
-
-/challenges/create
-NavBar, CreateChallengeForm, DashBoard
-user only with 25.000pts +
-Form where the authorized users can create a new challenge for the DB
-/challenges/:id/edit
-NavBar, EditChallengeForm, Dashboard
-user only
-Form where the user can edit the image, completed and finishing date of an ongoing challenge to achieve it
+If the user is not login, he can only see the details|
+| `/challenges/create` | NavBar, CreateChallengeForm, DashBoard |user only with 25.000pts + | Form where the authorized users can create a new challenge for the DB|
+| `/challenges/:id/edit` | NavBar, EditChallengeForm, Dashboard | user only |Form where the user can edit the image, completed and finishing date of an ongoing challenge to achieve it|
 
 ##Components
 -LoginPage
