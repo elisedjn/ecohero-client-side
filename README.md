@@ -152,7 +152,11 @@ This model will be seeded first and then the user will be able to add more chall
 	points: {
 		type: Number,
 		required: true
-	}
+  },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+	  ref: “User” 
+  }
 ```
 
 ### Achievement model
