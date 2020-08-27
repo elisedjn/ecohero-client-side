@@ -11,11 +11,22 @@ import Leaderboard from "./components/Leaderboard"
 import Home from "./components/Home"
 import {API_URL} from './config'
 import axios from 'axios'
-
+import Profile from './components/Profile'
 
 class App extends React.Component {
   state = {
     loggedInUser: null
+  }
+
+  componentDidMount(){
+    if(!this.state.loggedInUser){
+      axios.get(`${API_URL}/auth/user`, {withCredentials: true})
+      .then((res) => {
+        this.setState({
+          loggedInUser: res.data
+        })
+      })
+    }
   }
 
   handleSignUp = (e) => {
@@ -58,7 +69,7 @@ class App extends React.Component {
         this.setState({
           loggedInUser: null
         }, () => {
-          console.log("Logout")
+          this.props.history.push('/')
         })
       })
   }
@@ -68,16 +79,18 @@ class App extends React.Component {
       <div>
         <MyNavBar onLogOut = {this.handleLogOut} loggedInUser = {this.state.loggedInUser}/>
         <Switch>
-          <Route path="/" component={Home}/>
+          <Route exact path="/" component={Home}/>
           <Route path="/signup" render={(routeProps) => {
             return <SignUp onSignUp={this.handleSignUp} {...routeProps} />
           }}/>
           <Route path="/login" render={(routeProps) => {
             return <LogIn onLogIn={this.handleLogIn} {...routeProps}  />
           }}/>
-          <Route path="/ranks" render={() => {
-            return <Ranks/> }}/>
+          <Route path="/ranks" component={Ranks}/>
           <Route path="/leaderboard" component={Leaderboard}/>
+          <Route path="/profile" render={() => {
+            return <Profile loggedInUser={this.state.loggedInUser} />
+          }} />
            
         </Switch>
       </div>

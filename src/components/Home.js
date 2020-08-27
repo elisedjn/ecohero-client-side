@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import About from "./About"
+import MyCarousel from './MyCarousel'
 
 
 
@@ -21,7 +22,7 @@ class Home extends Component {
 
               <div>
                   <h4>Get Inspired</h4>
-                  <p>carousel</p>
+                  <MyCarousel /> 
               </div>
 
               <About/>  
