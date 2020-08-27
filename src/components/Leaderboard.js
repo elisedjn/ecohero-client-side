@@ -33,7 +33,7 @@ class Leaderboard extends Component {
                 {
                     this.state.users.map((user) => {
                         const {username, points, _id} = user
-                        return <Link to={`/users/${_id}`}><p>{username}</p><p>{points}</p></Link>
+                        return <Link to={`/users/${_id}`}><p>{username} {points} points</p></Link>
                     })
                 }
             </div>
