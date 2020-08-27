@@ -1,29 +1,41 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import {API_URL} from '../config'
 
 
 
 class Leaderboard extends Component {
 
     state={
-        user:[]
+        users:[]
+    }
+
+
+    componentDidMount() {
+        axios.get(`${API_URL}/users/leaderboard`)
+        .then((res) => {
+            this.setState({
+                users: res.data
+            })
+        })
     }
 
 
     render() {
 
-        if (!this.state.user){
+        if (!this.state.users) {
             return <p>Loading...</p>
         }
 
-        const {username, points} = this.state.user
-
+        
         return (
             <div>
                 <h3>Hall of Heroes</h3>
                 {
-                    this.props.map((user) => {
-                        return <Link to={`/users/${user._id}`}><p>{username}</p><p>{points}</p></Link>
+                    this.state.users.map((user) => {
+                        const {username, _id, points} = user
+                        return <Link to={`/users/${_id}`}><p>{username}</p><p>{points}</p></Link>
                     })
                 }
             </div>
