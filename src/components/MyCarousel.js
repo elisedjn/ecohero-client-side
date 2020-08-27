@@ -11,7 +11,6 @@ export default class MyCarousel extends Component {
   componentDidMount() {
     axios.get(`${API_URL}/achievements/allcompleted`)
     .then((res) => {
-      console.log(res.data)
       this.setState({
         achievements: res.data,
       });
@@ -27,7 +26,6 @@ export default class MyCarousel extends Component {
       <div>
         <Carousel>
           {this.state.achievements.map((achievement) => {
-            console.log(achievement._id)
             return (
               <Carousel.Item>
                 <img

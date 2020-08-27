@@ -32,7 +32,7 @@ class Profile extends Component {
           {/* <img src={} alt="default pic"/> */}
           <p>{this.props.loggedInUser.username}</p>
           <p>{this.props.loggedInUser.rank} - {this.props.loggedInUser.points} points</p>
-          <Link to={`/users/${this.props.loggedInUser._id}/edit`}>Edit</Link>
+          <Link to="/profile/edit">Edit</Link>
         </div>
 
         <ExperienceBar />

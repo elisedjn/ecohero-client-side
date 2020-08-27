@@ -14,6 +14,7 @@ import HeroHome from "./components/HeroHome"
 import {API_URL} from './config'
 import axios from 'axios'
 import Dashboard from './components/Dashboard';
+import EditProfileForm from './components/EditProfileForm';
 
 class App extends React.Component {
   state = {
@@ -76,14 +77,27 @@ class App extends React.Component {
       })
   }
 
-  handleEdit = (e) => {
-    axios.post(`${API_URL}/auth/logout`, {}, {withCredentials: true})
-      .then(() => {
+  handleEdit = (updatedUser) => {
+    let cloneUser = {
+      username: updatedUser.username,
+      email: updatedUser.email, 
+      image: updatedUser.image,
+      password: updatedUser.password
+    }
+    axios.patch(`${API_URL}/users/${this.state.loggedInUser._id}/edit`, cloneUser, {withCredentials: true})
+    .then((res) => {
+        delete cloneUser.password
+        cloneUser._id = res.data._id
+        cloneUser.points = res.data.points
+        cloneUser.rank = res.data.rank
+        cloneUser.passwordHash = res.data.passwordHash
         this.setState({
-          loggedInUser: null
+          loggedInUser: cloneUser
         }, () => {
+          console.log(this.state.loggedInUser)
+          this.props.history.push('/')
         })
-      })
+    })
   }
 
   render(){
@@ -100,9 +114,12 @@ class App extends React.Component {
           }}/>
           <Route path="/ranks" component={Ranks}/>
           <Route path="/leaderboard" component={Leaderboard}/>
-          <Route path="/profile" render={(routeProps) => {
+          <Route exact path="/profile" render={(routeProps) => {
             return <Profile loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
+          <Route path='/profile/edit' render={(routeProps) => {
+            return <EditProfileForm loggedInUser = {this.state.loggedInUser} onEdit={this.handleEdit} {...routeProps}  />
+          }} />
           <Route path="/hero-home" render={(routeProps) => {
             return <HeroHome loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>

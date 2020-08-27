@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 
 function LogIn(props) {
   return (
@@ -14,6 +15,10 @@ function LogIn(props) {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" name="password" />
       </Form.Group>
+
+      <Form.Text className="text-muted">
+        Not a member yet? <Link to="/signup">Sign Up</Link>
+      </Form.Text>
 
       <Button variant="primary" type="submit">
         Login
