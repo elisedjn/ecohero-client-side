@@ -1,6 +1,7 @@
 import React from "react"; 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import {Link} from 'react-router-dom'
 
 export default function MyNavBar(props) {
   return (
@@ -10,14 +11,15 @@ export default function MyNavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/ranks">Ranks</Nav.Link>
-            <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
+            <Link to="/profile">My profile</Link>
+            <Link to="/ranks">Ranks</Link>
+            <Link to="/leaderboard">Leaderboard</Link>
             {props.loggedInUser ? (
               <button onClick={props.onLogOut}>Logout</button>
             ) : (
               <>
-              <Nav.Link href="/signup">Sing Up</Nav.Link>
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Link to="/signup">Sing Up</Link>
+              <Link to="/login">Login</Link>
               </>
             )
             }
