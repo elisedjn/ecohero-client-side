@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
-import {Switch, Route, Link, withRouter} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
+//Components
+import MyNavBar from './components/MyNavBar'
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Ranks from "./components/Ranks"
 import Leaderboard from "./components/Leaderboard"
+
 import {API_URL} from './config'
 import axios from 'axios'
 
@@ -64,15 +67,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Link to="/signup">Sing Up</Link>
-        <br/>
-        <Link to="/login">Login</Link>
-        <br/>
-        <Link to="/ranks">Ranks</Link>
-        <br/>
-        <Link to="/leaderboard">Leaderboard</Link>
-        <br/>
-        <button onClick={this.handleLogOut}>Logout</button>
+        <MyNavBar onLogOut = {this.handleLogOut} loggedInUser = {this.state.loggedInUser}/>
         <Switch>
           <Route path="/signup" render={(routeProps) => {
             return <SignUp onSignUp={this.handleSignUp} {...routeProps} />
@@ -82,7 +77,7 @@ class App extends React.Component {
           }}/>
           <Route path="/ranks" render={() => {
             return <Ranks/> }}/>
-          <Route path="/users/leaderboard" render={(routeProps) => {
+          <Route path="/leaderboard" render={(routeProps) => {
             return <Leaderboard user={this.state.user} {...routeProps} /> }}/>
         </Switch>
       </div>
