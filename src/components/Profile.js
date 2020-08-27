@@ -35,7 +35,7 @@ class Profile extends Component {
           <Link to={`/users/${this.props.loggedInUser._id}/edit`}>Edit</Link>
         </div>
 
-        <ExperienceBar />
+        <ExperienceBar loggedInUser = {this.props.loggedInUser}/>
 
         <div>
           <h5>Achievements</h5>
