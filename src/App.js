@@ -4,12 +4,16 @@ import 'bootstrap/dist/css/bootstrap.css'
 import {Switch, Route, Link, withRouter} from 'react-router-dom';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
+import Ranks from "./components/Ranks"
+import Leaderboard from "./components/Leaderboard"
 import {API_URL} from './config'
 import axios from 'axios'
 
+
 class App extends React.Component {
   state = {
-    loggedInUser: null,
+    user: [],
+    loggedInUser: null
   }
 
   handleSignUp = (e) => {
@@ -64,6 +68,10 @@ class App extends React.Component {
         <br/>
         <Link to="/login">Login</Link>
         <br/>
+        <Link to="/ranks">Ranks</Link>
+        <br/>
+        <Link to="/leaderboard">Leaderboard</Link>
+        <br/>
         <button onClick={this.handleLogOut}>Logout</button>
         <Switch>
           <Route path="/signup" render={(routeProps) => {
@@ -72,6 +80,10 @@ class App extends React.Component {
           <Route path="/login" render={(routeProps) => {
             return <LogIn onLogIn={this.handleLogIn} {...routeProps}  />
           }}/>
+          <Route path="/ranks" render={() => {
+            return <Ranks/> }}/>
+          <Route path="/users/leaderboard" render={(routeProps) => {
+            return <Leaderboard user={this.state.user} {...routeProps} /> }}/>
         </Switch>
       </div>
     );
