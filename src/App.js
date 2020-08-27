@@ -15,6 +15,7 @@ import {API_URL} from './config'
 import axios from 'axios'
 import Dashboard from './components/Dashboard';
 import EditProfileForm from './components/EditProfileForm';
+import ExperienceBar from './components/ExperienceBar';
 
 class App extends React.Component {
   state = {
@@ -100,9 +101,24 @@ class App extends React.Component {
     })
   }
 
+  // handleRank = () => {
+  //   if (this.state.loggedInUser.points > 10000) {
+  //   this.state.loggedInUser.rank = "Chill Hero"
+  //   } else if (this.state.loggedInUser.points > 25000) {
+  //   this.state.loggedInUser.rank = "Smart Hero"
+  //   }else if (this.state.loggedInUser.points > 50000) {
+  //   this.state.loggedInUser.rank = "Big Hero"
+  //   }else if (this.state.loggedInUser.points > 100000) {
+  //   this.state.loggedInUser.rank = "Super Hero"
+  //   } else {
+  //   {this.state.loggedInUser.rank} = "New Hero"
+  //   }
+  // }
+
   render(){
     return (
       <div>
+        
         <MyNavBar onLogOut = {this.handleLogOut} loggedInUser = {this.state.loggedInUser}/>
         <Switch>
           <Route exact path="/" component={Home}/>
