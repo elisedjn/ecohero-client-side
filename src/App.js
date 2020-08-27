@@ -12,6 +12,7 @@ import Home from "./components/Home"
 import Profile from "./components/Profile"
 import {API_URL} from './config'
 import axios from 'axios'
+import Dashboard from './components/Dashboard';
 
 class App extends React.Component {
   state = {
@@ -102,6 +103,10 @@ class App extends React.Component {
             return <Profile loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
         </Switch>
+        {
+          this.state.loggedInUser? <Dashboard /> : ''
+        }
+        
       </div>
     );
   }
