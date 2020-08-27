@@ -11,7 +11,6 @@ import Leaderboard from "./components/Leaderboard"
 import Home from "./components/Home"
 import {API_URL} from './config'
 import axios from 'axios'
-import Profile from './components/Profile'
 
 class App extends React.Component {
   state = {
@@ -88,10 +87,6 @@ class App extends React.Component {
           }}/>
           <Route path="/ranks" component={Ranks}/>
           <Route path="/leaderboard" component={Leaderboard}/>
-          <Route path="/profile" render={() => {
-            return <Profile loggedInUser={this.state.loggedInUser} />
-          }} />
-           
         </Switch>
       </div>
     );
