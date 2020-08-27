@@ -143,10 +143,10 @@ achievements: [{
 This model will be seeded first and then the user will be able to add more challenges but it will never be edited.
 ```javascript
 {
-	name: {
+	title: {
 		type: String,
 		required: true,
-		unique: true ???
+		unique: true 
 	},
 	description: String,
 	points: {
