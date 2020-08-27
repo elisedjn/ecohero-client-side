@@ -10,6 +10,7 @@ import Ranks from "./components/Ranks"
 import Leaderboard from "./components/Leaderboard"
 import Home from "./components/Home"
 import Profile from "./components/Profile"
+import HeroHome from "./components/HeroHome"
 import {API_URL} from './config'
 import axios from 'axios'
 
@@ -100,6 +101,9 @@ class App extends React.Component {
           <Route path="/leaderboard" component={Leaderboard}/>
           <Route path="/profile" render={(routeProps) => {
             return <Profile loggedInUser = {this.state.loggedInUser} {...routeProps}  />
+          }}/>
+          <Route path="/hero-home" render={(routeProps) => {
+            return <HeroHome loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
         </Switch>
       </div>

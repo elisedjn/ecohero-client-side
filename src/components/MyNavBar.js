@@ -13,6 +13,7 @@ export default function MyNavBar(props) {
           <Nav className="mr-auto">
             <Link to="/profile">My profile</Link>
             <Link to="/ranks">Ranks</Link>
+            <Link to="/hero-home">Hero Home</Link>
             <Link to="/leaderboard">Leaderboard</Link>
             {props.loggedInUser ? (
               <button onClick={props.onLogOut}>Logout</button>

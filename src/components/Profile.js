@@ -32,8 +32,7 @@ class Profile extends Component {
                     <div>
                         {/* <img src={} alt="default pic"/> */}
                         <p>{this.props.loggedInUser.username}</p>
-                        <p>{this.props.loggedInUser.rank}</p>
-                        <p>{this.props.loggedInUser.points}</p>
+                        <p>{this.props.loggedInUser.rank} - {this.props.loggedInUser.points} points</p>
                         <Link to={`/users/${this.props.loggedInUser._id}/edit`}>Edit</Link>
                     </div>
 
@@ -43,8 +42,8 @@ class Profile extends Component {
                         <h5>Achievements</h5>
                         {
                             this.state.userAchievements.map((achievement) => {
-                                console.log(achievement)
-                                return <p>{achievement.challenge.title}</p>
+                                if (achievement.completed) {
+                                    return <p>{achievement.challenge.title}</p>}
                             })
                         }
                     </div>   
