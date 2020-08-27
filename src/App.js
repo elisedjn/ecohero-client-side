@@ -8,14 +8,13 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Ranks from "./components/Ranks"
 import Leaderboard from "./components/Leaderboard"
-
+import Home from "./components/Home"
 import {API_URL} from './config'
 import axios from 'axios'
 
 
 class App extends React.Component {
   state = {
-    user: [],
     loggedInUser: null
   }
 
@@ -69,6 +68,7 @@ class App extends React.Component {
       <div>
         <MyNavBar onLogOut = {this.handleLogOut} loggedInUser = {this.state.loggedInUser}/>
         <Switch>
+          <Route path="/" component={Home}/>
           <Route path="/signup" render={(routeProps) => {
             return <SignUp onSignUp={this.handleSignUp} {...routeProps} />
           }}/>
@@ -77,8 +77,8 @@ class App extends React.Component {
           }}/>
           <Route path="/ranks" render={() => {
             return <Ranks/> }}/>
-          <Route path="/leaderboard" render={(routeProps) => {
-            return <Leaderboard user={this.state.user} {...routeProps} /> }}/>
+          <Route path="/leaderboard" component={Leaderboard}/>
+           
         </Switch>
       </div>
     );
