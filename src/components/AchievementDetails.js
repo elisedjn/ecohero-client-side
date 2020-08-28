@@ -36,9 +36,10 @@ class AchievementDetails extends Component {
         return (
             <div>
                 <h4>{this.state.achievement.challenge.title}</h4>
-                <p>{this.state.achievement.challenge.points}</p>
+                <p>{this.state.achievement.challenge.points} points</p>
                 <h5>Description</h5>
                 <p>{this.state.achievement.challenge.description}</p>
+                <p>{this.state.achievement.challenge.fact}</p>
                 <img
                     className="d-block w-50"
                     src= {this.state.achievement.image}

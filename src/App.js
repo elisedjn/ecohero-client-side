@@ -22,6 +22,7 @@ import CreateChallForm from './components/CreateChallForm';
 import AchievementDetails from "./components/AchievementDetails"
 import ChallengeDetails from "./components/ChallengeDetails"
 import OtherProfile from './components/OtherProfile';
+import GoalsEdit from "./components/GoalsEdit"
 
 
 
@@ -179,6 +180,9 @@ class App extends React.Component {
           <Route path="/user/:userID" render={(routeProps) => {
             return <OtherProfile {...routeProps} />
           }} />
+          <Route path="/goals-edit/:achievementID" render={(routeProps) => {
+            return <GoalsEdit {...routeProps} />
+          }}/>
         </Switch>
         {
           this.state.loggedInUser? <Dashboard /> : ''

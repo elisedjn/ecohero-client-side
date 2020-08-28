@@ -40,6 +40,7 @@ class ChallengeDetails extends Component {
                 <p>{this.state.challenge.points} points</p>
                 <h5>Description</h5>
                 <p>{this.state.challenge.description}</p>
+                <p>{this.state.achievement.challenge.fact}</p>
         
                 <div>
                     <AddToMyGoals challenge={this.state.challenge._id} />
