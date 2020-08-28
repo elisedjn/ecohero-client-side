@@ -5,6 +5,7 @@ import axios from "axios";
 import { API_URL } from "../config";
 
 class Profile extends Component {
+  
   state = {
     userAchievements: [],
   };

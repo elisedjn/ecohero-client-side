@@ -17,9 +17,7 @@ import HeroHome from "./components/HeroHome"
 import Dashboard from './components/Dashboard';
 import EditProfileForm from './components/EditProfileForm';
 import ChallengesList from './components/ChallengesList';
-
-
-
+import GoalsAndSuccess from "./components/GoalsAndSuccess"
 
 
 
@@ -149,6 +147,9 @@ class App extends React.Component {
             return <HeroHome loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
           <Route path="/challenges" component={ChallengesList} />
+          <Route path="/goals-success" render={(routeProps) => {
+            return <GoalsAndSuccess loggedInUser = {this.state.loggedInUser} {...routeProps}  />
+          }}/>
         </Switch>
         {
           this.state.loggedInUser? <Dashboard /> : ''
