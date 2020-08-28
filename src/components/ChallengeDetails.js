@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import { API_URL } from "../config";
+import AddToMyGoals from './AddToMyGoals';
 
 
 
@@ -36,12 +37,12 @@ class ChallengeDetails extends Component {
         return (
             <div>
                 <h4>{this.state.challenge.title}</h4>
-                <p>{this.state.challenge.points}</p>
+                <p>{this.state.challenge.points} points</p>
                 <h5>Description</h5>
                 <p>{this.state.challenge.description}</p>
         
                 <div>
-                    <button>Add</button>
+                    <AddToMyGoals challenge={this.state.challenge._id} />
                 </div> 
             </div>
         )

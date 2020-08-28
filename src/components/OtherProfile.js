@@ -4,50 +4,49 @@ import ExperienceBar from "./ExperienceBar";
 import axios from "axios";
 import { API_URL } from "../config";
 
-class Profile extends Component {
-  
+export default class OtherProfile extends Component {
   state = {
+    user: null,
     userAchievements: [],
   };
 
   componentDidMount() {
-    if (this.props.loggedInUser) {
-      axios
-        .get(`${API_URL}/achievements/user/${this.props.loggedInUser._id}`, {
-          withCredentials: true,
-        })
+    let id = this.props.match.params.userID
+    axios.get(`${API_URL}/users/${id}`,{ withCredentials: true})
+      .then((user) => {
+        console.log(user.data)
+        axios.get(`${API_URL}/achievements/user/${user.data._id}`, {withCredentials: true})
         .then((res) => {
           this.setState({
+            user: user.data,
             userAchievements: res.data,
           });
         });
-    }
+      })  
   }
 
   render() {
 
-    if (!this.state.userAchievements || !this.props.loggedInUser) {
-      return <p>Loading... If you're not login yet, please <Link to='/login'>click on this link</Link></p>;
+    if (!this.state.userAchievements || !this.state.user) {
+      return <p>Loading...</p>;
     }
 
     return (
       <div>
-        <h3>Your Profile</h3>
         <div>
           <img
-            src={this.props.loggedInUser.image}
+            src={this.state.user.image}
             alt="Avatar"
             style={{ width: "100px" }}
           />
-          <p>{this.props.loggedInUser.username}</p>
+          <h3>{this.state.user.username}</h3>
           <p>
-            {this.props.loggedInUser.rank} - {this.props.loggedInUser.points}{" "}
+            {this.state.user.rank} - {this.state.user.points}{" "}
             points
           </p>
-          <Link to="/profile/edit">Edit</Link>
         </div>
 
-        <ExperienceBar loggedInUser={this.props.loggedInUser} />
+        <ExperienceBar loggedInUser={this.state.user} />
 
         <div>
           <h5>Achievements</h5>
@@ -61,5 +60,3 @@ class Profile extends Component {
     );
   }
 }
-
-export default Profile;
