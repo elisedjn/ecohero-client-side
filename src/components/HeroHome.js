@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MyCarousel from "./MyCarousel";
-import { Link, Redirect } from "react-router-dom";
+import { Link} from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 
@@ -47,7 +47,7 @@ class HeroHome extends Component {
           <div>
             {this.state.userAchievements.map((achievement, i) => {
               if (!achievement.completed) {
-                return <p key={"goals" + i}>{achievement.challenge.title}</p>;
+                return <Link to={`/achievement/${achievement._id}`}><p key={"goals" + i}>{achievement.challenge.title}</p></Link>;
               }
             })}
           </div>

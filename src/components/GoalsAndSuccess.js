@@ -49,7 +49,7 @@ class GoalsAndSuccess extends Component {
                     <h5>Challenges</h5>
                     {this.state.userAchievements.map((achievement) => {
                       if (!achievement.completed) {
-                        return <p>{achievement.challenge.title}</p>;
+                        return <Link to={`/achievement/${achievement._id}`}><p>{achievement.challenge.title}</p></Link>;
                     }
                   })}
                 </div>
@@ -58,7 +58,7 @@ class GoalsAndSuccess extends Component {
                     <h5>Achievements</h5>
                     {this.state.userAchievements.map((achievement) => {
                     if (achievement.completed) {
-                        return <p>{achievement.challenge.title}</p>;
+                        return <Link to={`/achievement/${achievement._id}`}><p>{achievement.challenge.title}</p></Link>;
                     }
                     })}
                 </div>

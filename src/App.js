@@ -18,6 +18,8 @@ import Dashboard from './components/Dashboard';
 import EditProfileForm from './components/EditProfileForm';
 import ChallengesList from './components/ChallengesList';
 import GoalsAndSuccess from "./components/GoalsAndSuccess"
+import AchievementDetails from "./components/AchievementDetails"
+import ChallengeDetails from "./components/ChallengeDetails"
 
 
 
@@ -149,6 +151,12 @@ class App extends React.Component {
           <Route path="/challenges" component={ChallengesList} />
           <Route path="/goals-success" render={(routeProps) => {
             return <GoalsAndSuccess loggedInUser = {this.state.loggedInUser} {...routeProps}  />
+          }}/>
+          <Route path="/achievement/:achievementID" render={(routeProps) => {
+            return <AchievementDetails {...routeProps}  />
+          }}/>
+          <Route path="/challenge/:challengeID" render={(routeProps) => {
+            return <ChallengeDetails {...routeProps}  />
           }}/>
         </Switch>
         {
