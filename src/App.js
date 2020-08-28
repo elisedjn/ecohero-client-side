@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import {Switch, Route, withRouter} from 'react-router-dom';
+import {API_URL} from './config'
+import axios from 'axios'
+
 //Components
 import MyNavBar from './components/MyNavBar'
 import SignUp from './components/SignUp';
@@ -11,11 +14,14 @@ import Leaderboard from "./components/Leaderboard"
 import Home from "./components/Home"
 import Profile from "./components/Profile"
 import HeroHome from "./components/HeroHome"
-import {API_URL} from './config'
-import axios from 'axios'
 import Dashboard from './components/Dashboard';
 import EditProfileForm from './components/EditProfileForm';
-import ExperienceBar from './components/ExperienceBar';
+import ChallengesList from './components/ChallengesList';
+
+
+
+
+
 
 class App extends React.Component {
   state = {
@@ -23,6 +29,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    console.log(this.state.loggedInUser)
     if(!this.state.loggedInUser){
       axios.get(`${API_URL}/auth/user`, {withCredentials: true})
       .then((res) => {
@@ -32,6 +39,7 @@ class App extends React.Component {
       })
     }
   }
+
 
   handleSignUp = (e) => {
     e.preventDefault();
@@ -67,7 +75,7 @@ class App extends React.Component {
       })
   }
 
-  handleLogOut = (e) => {
+  handleLogOut = () => {
     axios.post(`${API_URL}/auth/logout`, {}, {withCredentials: true})
       .then(() => {
         this.setState({
@@ -87,6 +95,7 @@ class App extends React.Component {
     }
     axios.patch(`${API_URL}/users/${this.state.loggedInUser._id}/edit`, cloneUser, {withCredentials: true})
     .then((res) => {
+        console.log(updatedUser)
         delete cloneUser.password
         cloneUser._id = res.data._id
         cloneUser.points = res.data.points
@@ -139,6 +148,7 @@ class App extends React.Component {
           <Route path="/hero-home" render={(routeProps) => {
             return <HeroHome loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
+          <Route path="/challenges" component={ChallengesList} />
         </Switch>
         {
           this.state.loggedInUser? <Dashboard /> : ''

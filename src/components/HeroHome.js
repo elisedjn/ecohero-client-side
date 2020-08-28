@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MyCarousel from "./MyCarousel";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 
@@ -10,23 +10,33 @@ class HeroHome extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get(`${API_URL}/achievements/user/${this.props.loggedInUser._id}`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        this.setState({
-          userAchievements: res.data,
+    if (this.props.loggedInUser) {
+      axios
+        .get(`${API_URL}/achievements/user/${this.props.loggedInUser._id}`, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          this.setState({
+            userAchievements: res.data,
+          });
         });
-      });
+    }
   }
 
   render() {
+
+    if (!this.state.userAchievements || !this.props.loggedInUser) {
+      return <p>Loading... If you're not login yet, please <Link to='/login'>click on this link</Link></p>;
+    }
     return (
       <div>
         <h3>Hero Home</h3>
         <div>
-          {/* <img src={} alt="default pic"/> */}
+          <img
+            src={this.props.loggedInUser.image}
+            alt="Avatar"
+            style={{ width: "100px" }}
+          />
           <p>{this.props.loggedInUser.username}</p>
           <p>
             {this.props.loggedInUser.rank} - {this.props.loggedInUser.points}{" "}
@@ -35,9 +45,9 @@ class HeroHome extends Component {
           <Link to="/profile/edit">Edit</Link>
           <h5>Your EcoHero tasks</h5>
           <div>
-            {this.state.userAchievements.map((achievement) => {
+            {this.state.userAchievements.map((achievement, i) => {
               if (!achievement.completed) {
-                return <p>{achievement.challenge.title}</p>;
+                return <p key={"goals" + i}>{achievement.challenge.title}</p>;
               }
             })}
           </div>

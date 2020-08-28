@@ -4,9 +4,6 @@ import About from "./About"
 import MyCarousel from './MyCarousel'
 
 
-
-
-
 class Home extends Component {
 
     render() {

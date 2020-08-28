@@ -11,6 +11,7 @@ export default function MyNavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
+            <Link to="/challenges">Challenges</Link>
             <Link to="/ranks">Ranks</Link>
             <Link to="/leaderboard">Leaderboard</Link>
             {props.loggedInUser ? (
