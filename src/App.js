@@ -12,7 +12,7 @@ import LogIn from './components/LogIn';
 import Ranks from "./components/Ranks"
 import Leaderboard from "./components/Leaderboard"
 import Home from "./components/Home"
-import Profile from "./components/Profile"
+import MyProfile from "./components/MyProfile"
 import HeroHome from "./components/HeroHome"
 import Dashboard from './components/Dashboard';
 import EditProfileForm from './components/EditProfileForm';
@@ -21,6 +21,7 @@ import GoalsAndSuccess from "./components/GoalsAndSuccess"
 import CreateChallForm from './components/CreateChallForm';
 import AchievementDetails from "./components/AchievementDetails"
 import ChallengeDetails from "./components/ChallengeDetails"
+import GoalsEdit from "./components/GoalsEdit"
 
 
 
@@ -54,7 +55,7 @@ class App extends React.Component {
         this.setState({
           loggedInUser: res.data
         }, () => {
-          this.props.history.push('/')
+          this.props.history.push('/hero-home')
         })
       })
 
@@ -70,7 +71,7 @@ class App extends React.Component {
         this.setState({
           loggedInUser: res.data
         }, () => {
-          this.props.history.push('/')
+          this.props.history.push('/hero-home')
         })
       })
   }
@@ -153,7 +154,7 @@ class App extends React.Component {
           <Route path="/ranks" component={Ranks}/>
           <Route path="/leaderboard" component={Leaderboard}/>
           <Route exact path="/profile" render={(routeProps) => {
-            return <Profile loggedInUser = {this.state.loggedInUser} {...routeProps}  />
+            return <MyProfile loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
           <Route path='/profile/edit' render={(routeProps) => {
             return <EditProfileForm loggedInUser = {this.state.loggedInUser} onEdit={this.handleEdit} {...routeProps}  />
@@ -174,6 +175,9 @@ class App extends React.Component {
           }}/>
           <Route path="/challenge/:challengeID" render={(routeProps) => {
             return <ChallengeDetails {...routeProps}  />
+          }}/>
+          <Route path="/goals-edit/:achievementID" render={(routeProps) => {
+            return <GoalsEdit {...routeProps} />
           }}/>
         </Switch>
         {

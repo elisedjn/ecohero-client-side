@@ -4,7 +4,7 @@ import ExperienceBar from "./ExperienceBar";
 import axios from "axios";
 import { API_URL } from "../config";
 
-class Profile extends Component {
+class MyProfile extends Component {
   
   state = {
     userAchievements: [],
@@ -62,4 +62,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default MyProfile;

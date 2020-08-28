@@ -36,9 +36,10 @@ class ChallengeDetails extends Component {
         return (
             <div>
                 <h4>{this.state.challenge.title}</h4>
-                <p>{this.state.challenge.points}</p>
+                <p>{this.state.challenge.points} points</p>
                 <h5>Description</h5>
                 <p>{this.state.challenge.description}</p>
+                <p>{this.state.achievement.challenge.fact}</p>
         
                 <div>
                     <button>Add</button>
