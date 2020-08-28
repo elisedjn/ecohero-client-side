@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ExperienceBar from "./ExperienceBar";
 import axios from "axios";
 import { API_URL } from "../config";
-import { Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 
