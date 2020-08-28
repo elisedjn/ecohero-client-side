@@ -3,11 +3,14 @@ import axios from "axios";
 import { API_URL } from "../config";
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
 class ChallengesList extends Component {
   state = {
     challenges: [],
-    filteredChallenges: []
+    filteredChallenges: [],
+    showPopUp: false
   };
 
   componentDidMount() {
@@ -27,8 +30,24 @@ class ChallengesList extends Component {
     this.setState({
       filteredChallenges: cloneChallenges
     })
-  
   }
+
+  handleCreateClick = () => {
+    if (!this.props.loggedInUser || this.props.loggedInUser.points < 25000) {
+      this.setState({
+        showPopUp: true
+      })
+    } else (
+      this.props.history.push('/challenges/create')
+    )
+  }
+
+ handleClose = () => {
+   this.setState({
+     showPopUp:false
+   })
+ }
+
   render() {
     if (!this.state.challenges) {
       return <div>Loading...</div>;
@@ -50,11 +69,27 @@ class ChallengesList extends Component {
           return (
             <div key={"challenge" + i}>
               <h3>{challenge.title}</h3>
-              <p>{challenge.description}</p>
               <p>{challenge.points} points</p>
             </div>
           );
         })}
+        {
+          this.props.loggedInUser ? (
+            <Button onClick={this.handleCreateClick}>Create a Challenge</Button>
+          ) : ''
+        }
+        <Modal show={this.state.showPopUp} onHide={this.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Not yet!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Achieve Smart Hero rank in order to do that	&#x1F609; </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={this.handleClose}>
+            Ok, got it
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       </div>
     );
   }

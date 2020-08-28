@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MyCarousel from "./MyCarousel";
-import { Link, Redirect } from "react-router-dom";
+import { Link} from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 

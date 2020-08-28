@@ -31,7 +31,7 @@ export default class MyCarousel extends Component {
                 <img
                   className="d-block w-100"
                   src= 'https://media.istockphoto.com/photos/defocused-green-background-picture-id925561778?k=6&m=925561778&s=612x612&w=0&h=0ng60JNYKIBUr2zrLbVXsfO4t35nrxoQ2mMRNtx9A_g='
-                />
+                 alt="background"/>
                 <Carousel.Caption>
                   <h3>{achievement.challenge.title}</h3>
                   <img

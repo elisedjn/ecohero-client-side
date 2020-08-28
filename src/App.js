@@ -18,6 +18,7 @@ import Dashboard from './components/Dashboard';
 import EditProfileForm from './components/EditProfileForm';
 import ChallengesList from './components/ChallengesList';
 import GoalsAndSuccess from "./components/GoalsAndSuccess"
+import CreateChallForm from './components/CreateChallForm';
 
 
 
@@ -27,7 +28,6 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.state.loggedInUser)
     if(!this.state.loggedInUser){
       axios.get(`${API_URL}/auth/user`, {withCredentials: true})
       .then((res) => {
@@ -102,10 +102,23 @@ class App extends React.Component {
         this.setState({
           loggedInUser: cloneUser
         }, () => {
-          console.log(this.state.loggedInUser)
           this.props.history.push('/')
         })
     })
+  }
+
+  handleCreateChall = (e) => {
+    console.log("in the handle fonction")
+    e.preventDefault();
+    const {title, description, points} = e.currentTarget;
+    axios.post(`${API_URL}/challenges/create`, {
+      title: title.value,
+      description: description.value,
+      points: points.value
+    }, {withCredentials: true})
+      .then((res) => {
+        this.props.history.push('/challenges')
+      })
   }
 
   // handleRank = () => {
@@ -146,10 +159,14 @@ class App extends React.Component {
           <Route path="/hero-home" render={(routeProps) => {
             return <HeroHome loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
-          <Route path="/challenges" component={ChallengesList} />
           <Route path="/goals-success" render={(routeProps) => {
             return <GoalsAndSuccess loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
+          <Route exact path="/challenges" render={(routeProps) => {
+            return <ChallengesList loggedInUser = {this.state.loggedInUser} {...routeProps} /> }} />
+          <Route path="/challenges/create" render={(routeProps) => {
+            return <CreateChallForm loggedInUser = {this.state.loggedInUser} onSubmit = {this.handleCreateChall} {...routeProps} />
+          }} />
         </Switch>
         {
           this.state.loggedInUser? <Dashboard /> : ''

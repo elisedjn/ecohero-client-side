@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ExperienceBar from "./ExperienceBar";
 import axios from "axios";
 import { API_URL } from "../config";
