@@ -19,6 +19,8 @@ import EditProfileForm from './components/EditProfileForm';
 import ChallengesList from './components/ChallengesList';
 import GoalsAndSuccess from "./components/GoalsAndSuccess"
 import CreateChallForm from './components/CreateChallForm';
+import AchievementDetails from "./components/AchievementDetails"
+import ChallengeDetails from "./components/ChallengeDetails"
 
 
 
@@ -167,6 +169,12 @@ class App extends React.Component {
           <Route path="/challenges/create" render={(routeProps) => {
             return <CreateChallForm loggedInUser = {this.state.loggedInUser} onSubmit = {this.handleCreateChall} {...routeProps} />
           }} />
+          <Route path="/achievement/:achievementID" render={(routeProps) => {
+            return <AchievementDetails {...routeProps}  />
+          }}/>
+          <Route path="/challenge/:challengeID" render={(routeProps) => {
+            return <ChallengeDetails {...routeProps}  />
+          }}/>
         </Switch>
         {
           this.state.loggedInUser? <Dashboard /> : ''

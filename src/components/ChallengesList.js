@@ -5,6 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import {Link} from "react-router-dom";
 
 class ChallengesList extends Component {
   state = {
@@ -68,8 +69,7 @@ class ChallengesList extends Component {
         {this.state.filteredChallenges.map((challenge, i) => {
           return (
             <div key={"challenge" + i}>
-              <h3>{challenge.title}</h3>
-              <p>{challenge.points} points</p>
+              <Link to={`/challenge/${challenge._id}`}><p>{challenge.title} - {challenge.points} points</p></Link>
             </div>
           );
         })}

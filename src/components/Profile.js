@@ -53,7 +53,7 @@ class Profile extends Component {
           <h5>Achievements</h5>
           {this.state.userAchievements.map((achievement, i) => {
             if (achievement.completed) {
-              return <p key={"success" + i}>{achievement.challenge.title}</p>;
+              return <Link to={`/achievement/${achievement._id}`}><p key={"success" + i}>{achievement.challenge.title}</p></Link>;
             }
           })}
         </div>
