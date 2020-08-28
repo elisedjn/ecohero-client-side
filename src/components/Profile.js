@@ -5,6 +5,7 @@ import axios from "axios";
 import { API_URL } from "../config";
 
 class Profile extends Component {
+  
   state = {
     userAchievements: [],
   };
@@ -21,6 +22,7 @@ class Profile extends Component {
   }
 
   render() {
+
     if (!this.state.userAchievements) {
       return <p>Loading...</p>;
     }

@@ -11,11 +11,12 @@ import Leaderboard from "./components/Leaderboard"
 import Home from "./components/Home"
 import Profile from "./components/Profile"
 import HeroHome from "./components/HeroHome"
-import {API_URL} from './config'
-import axios from 'axios'
 import Dashboard from './components/Dashboard';
 import EditProfileForm from './components/EditProfileForm';
-import ExperienceBar from './components/ExperienceBar';
+import GoalsAndSuccess from "./components/GoalsAndSuccess"
+import {API_URL} from './config'
+import axios from 'axios'
+
 
 class App extends React.Component {
   state = {
@@ -138,6 +139,9 @@ class App extends React.Component {
           }} />
           <Route path="/hero-home" render={(routeProps) => {
             return <HeroHome loggedInUser = {this.state.loggedInUser} {...routeProps}  />
+          }}/>
+          <Route path="/goals-success" render={(routeProps) => {
+            return <GoalsAndSuccess loggedInUser = {this.state.loggedInUser} {...routeProps}  />
           }}/>
         </Switch>
         {
