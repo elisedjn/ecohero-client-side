@@ -25,7 +25,9 @@ function LogIn(props) {
 
         <div className="loginBtn">
           <Button className="loginBtnClick" variant="primary" type="submit">
-            Login
+          <img className="leaf1" src="/plant02.png"/>
+           Log In
+          <img className="leaf2" src="/plant.png"/>
           </Button>
         </div>
       </Form>
