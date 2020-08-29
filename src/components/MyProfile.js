@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import ExperienceBar from "./ExperienceBar";
 import axios from "axios";
 import { API_URL } from "../config";
-import "./styles/MyProfile.css"
+import "./styles/MyProfile.css";
 
 class MyProfile extends Component {
-  
   state = {
     userAchievements: [],
   };
@@ -26,9 +25,13 @@ class MyProfile extends Component {
   }
 
   render() {
-
     if (!this.state.userAchievements || !this.props.loggedInUser) {
-      return <p>Loading... If you're not login yet, please <Link to='/login'>click on this link</Link></p>;
+      return (
+        <p>
+          Loading... If you're not login yet, please{" "}
+          <Link to="/login">click on this link</Link>
+        </p>
+      );
     }
 
     return (
@@ -36,25 +39,44 @@ class MyProfile extends Component {
         <h3 className="title">Your Profile</h3>
         <div className="white-card">
           <div className="header">
+            <img src={this.props.loggedInUser.image} alt="Avatar" />
             <div>
-              <img
-                src={this.props.loggedInUser.image}
-                alt="Avatar"
-                style={{ width: "100px" }}
-              />
-              <p>{this.props.loggedInUser.username}</p>
-              <p>{this.props.loggedInUser.rank} - {this.props.loggedInUser.points} points</p>
+              <div className="usersInfo">
+                <h5>{this.props.loggedInUser.username}</h5>
+                <Link to="/profile/edit">
+                  <img src="/edit.png" alt="Edit" />
+                </Link>
+              </div>
+              <div className="pointsInfo">
+                <p className="totalRank">{this.props.loggedInUser.rank}</p>
+                <p className="totalPoints">
+                  - {this.props.loggedInUser.points} points
+                </p>
+              </div>
             </div>
-            <Link to="/profile/edit">Edit</Link>
           </div>
 
           <ExperienceBar loggedInUser={this.props.loggedInUser} />
 
-          <div>
-            <h5>Achievements</h5>
+          <div className="yourSuccess">
+            <h4>
+              <img src="/plant02.png" />
+              Your Success
+            </h4>
             {this.state.userAchievements.map((achievement, i) => {
               if (achievement.completed) {
-                return <Link to={`/achievement/${achievement._id}`}><p key={"success" + i}>{achievement.challenge.title}</p></Link>;
+                let finishDate = new Date(achievement.finishing_date)
+                let date = finishDate.getDate()
+                let month = finishDate.getMonth() + 1
+                let finish = date + "/" + month
+                return (
+                  <div className="oneSuccess" key={"success" + i}>
+                    <Link to={`/achievement/${achievement._id}`}>
+                        <p>{finish}</p>
+                        <h6>{achievement.challenge.title}</h6>
+                    </Link>
+                  </div>
+                );
               }
             })}
           </div>

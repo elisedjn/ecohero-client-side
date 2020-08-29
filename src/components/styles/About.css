@@ -6,5 +6,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white
+    color: black
+}
+
+.about h5{
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding: 15px;
+    font-family: "Cinzel Decorative", cursive;
+    text-shadow: -1px -1px 5px white, 1px -1px 5px white, -1px 1px 5px white,
+    1px 1px 5px white;
+}
+
+.aboutText{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
 }

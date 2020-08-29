@@ -3,6 +3,7 @@ import MyCarousel from "./MyCarousel";
 import { Link} from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
+import "./styles/HeroHome.css";
 
 class HeroHome extends Component {
   state = {
@@ -29,9 +30,10 @@ class HeroHome extends Component {
       return <p>Loading... If you're not login yet, please <Link to='/login'>click on this link</Link></p>;
     }
     return (
-      <div>
-        <h3>Hero Home</h3>
-        <div>
+      <div id="heroHome">
+        <h3 className="title" >Hero Home</h3>
+        <div className="white-card">
+        <div className="header">
           <img
             src={this.props.loggedInUser.image}
             alt="Avatar"
@@ -43,6 +45,7 @@ class HeroHome extends Component {
             points
           </p>
           <Link to="/profile/edit">Edit</Link>
+          </div>
           <h5>Your EcoHero tasks</h5>
           <div>
             {this.state.userAchievements.map((achievement, i) => {

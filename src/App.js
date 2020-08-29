@@ -160,6 +160,9 @@ class App extends React.Component {
       <div id="app">
         
         <MyNavBar onLogOut = {this.handleLogOut} loggedInUser = {this.state.loggedInUser}/>
+        {
+          this.state.loggedInUser? <Dashboard /> : ''
+        }
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/signup" render={(routeProps) => {
@@ -200,10 +203,6 @@ class App extends React.Component {
             return <GoalsEdit onUpdate={this.handleUpdateGoal} {...routeProps} />
           }}/>
         </Switch>
-        {
-          this.state.loggedInUser? <Dashboard /> : ''
-        }
-        
       </div>
     );
   }

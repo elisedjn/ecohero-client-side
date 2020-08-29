@@ -1,0 +1,35 @@
+#heroHome {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url(/bg01.jpg);
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 70px 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.title {
+  font-family: "Cinzel Decorative", cursive;
+  color: black;
+  text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
+  1px 1px 10px white;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#heroHome .white-card {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 90%;
+  margin: auto;
+  border-radius: 3px;
+  box-shadow: 0px 5px 15px rgb(44, 92, 83);
+}
+
+.header{
+  display: flex;
+  justify-content: flex-start;
+}

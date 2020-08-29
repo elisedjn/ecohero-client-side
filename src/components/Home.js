@@ -18,14 +18,14 @@ class Home extends Component {
             and <strong>become a Super EcoHero</strong>!
           </p>
           <Link to="/signup">
-            <button className="bouncy">GET STARTED</button>
+            <button className="bouncy"><img src="/plant02.png"/> Get Started ! <img src="/plant.png"/></button>
           </Link>
         </div>
 
         <div className="carouselContainer">
           <div className="carouselTitle">
             <h4>Get Inspired</h4>
-            <h5> - our EcoHeroes success</h5>
+            <h5>... Our EcoHeroes success</h5>
           </div>
 
           <MyCarousel />

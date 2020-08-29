@@ -10,16 +10,14 @@
   text-align: center;
   font-family: 'Raleway', sans-serif;
   padding-top: 70px;
+  padding-bottom: 70px;
   
-}
-
-.homeImg img{
-  width: 100%;
 }
 
 #hometitle {
   text-align: center;
-  text-shadow: 1px 1px 10px white;
+  text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
+    1px 1px 10px white;
 }
 
 #hometitle h4 {
@@ -29,24 +27,10 @@
 
 #hometitle h3 {
   font-family: "Cinzel Decorative", cursive;
-  /* font-family: 'Vibes', cursive; */
-  /* font-family: 'Fredericka the Great', cursive; */
   font-size: 3rem;
   margin-top: 0;
   margin-bottom: 20px;
-}
-
-.bouncy {
-  animation: bouncy 5s infinite linear;
-  position: relative;
-  background: linear-gradient(to bottom, rgb(186, 229, 115), rgb(56, 91, 83)) !important;
-  color: black;
-  border: none;
-  border-radius: 10px;
-  padding: 13px 20px 10px 20px;
-  font-size:1.3rem;
-  margin: 10px 0;
-  font-family: "Neucha", cursive;
+  font-weight: 600;
 }
 
 .punchline{
@@ -56,22 +40,43 @@
   background-color: rgba(255, 255, 255, 0.7);
 }
 
+.bouncy {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  box-shadow: 0px 5px 15px rgb(44, 92, 83);
+  border: none;
+  padding: 10px 20px;
+  font-size:1.3rem;
+  margin: 10px 0;
+}
+.bouncy img {
+  width: 30px;
+}
 .carouselContainer{
-  background-color: white;
+  background-color: rgba(240, 240, 240 ,0.95);
   text-align: left;
   margin-top: 30px;
 }
 
-.carouselContainer h4{
-  padding-left: 10px;
-}
-
 .carouselTitle{
+  padding-top: 10px;
   display: flex;
+  justify-content: space-between;
   align-items: baseline;
 }
 
+.carouselTitle h5{
+  margin: 0;
+  font-style: italic;
+  font-size: 1rem;
+  text-align: right;
+  padding: 0 20px 0 0;
+  font-family: "Neucha", cursive;
+}
+
 .carouselTitle h4{
-  font-weight: bold;
-  margin-right: 10px;
+  font-family: "Neucha", cursive;
+  padding: 10px 0px 0px 20px;
+  margin: 0;
+  font-size: 2rem;
 }
