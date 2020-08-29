@@ -32,17 +32,17 @@ class GoalsEdit extends Component {
     
         axios.post(`${API_URL}/upload`, uploadData, { withCredentials: true })
           .then((response) => {
-            let updatedUser = JSON.parse(JSON.stringify(this.state.user));
-            updatedUser.image = response.data.image;
+            let updatedAchievement = JSON.parse(JSON.stringify(this.state.achievement));
+            updatedAchievement.image = response.data.image;
             this.setState({
-              user: updatedUser,
+              achievement: updatedAchievement,
             });
           });
       };
 
 
     render() {
-        if (!this.state.userAchievements || !this.props.loggedInUser) {
+        if (!this.state.achievement) {
             return <p>Loading... If you're not login yet, please <Link to='/login'>click on this link</Link></p>;
           }
 
@@ -54,10 +54,11 @@ class GoalsEdit extends Component {
                     <p>{this.state.achievement.challenge.points} points</p>
                     <h5>Description</h5>
                     <p>{this.state.achievement.challenge.description}</p>
+                    <h5>Fact</h5>
                     <p>{this.state.achievement.challenge.fact}</p>
 
                 <img src={image} alt="Avatar" />
-                <label htmlFor="image">Change your profile picture:</label>
+                <label htmlFor="image">Download a picture:</label>
                 <input
                     type="file"
                     id="image"
@@ -65,10 +66,11 @@ class GoalsEdit extends Component {
                     accept="image/png, image/jpeg"
                     onChange={this.handleImageChange}
                 ></input>
-                <p>{this.state.achievement.challenge.finishing_date}</p>
+                <label htmlFor="finishing_date">Change your profile picture:</label>
+                <input name="finishing_date" type="date"/>
         
 
-                <button onClick={() => this.props.onEdit(this.state.user)} type="submit">Completed!</button>
+                <button onClick={() => this.props.onUpdate(this.state.achievement)} type="submit">Completed!</button>
             </div>
         )
     }

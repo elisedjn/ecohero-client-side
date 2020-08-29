@@ -1,0 +1,77 @@
+#home {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url(/bg05.jpg);
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  padding-top: 70px;
+  
+}
+
+.homeImg img{
+  width: 100%;
+}
+
+#hometitle {
+  text-align: center;
+  text-shadow: 1px 1px 10px white;
+}
+
+#hometitle h4 {
+  margin-bottom: 0;
+  font-family: "Neucha", cursive;
+}
+
+#hometitle h3 {
+  font-family: "Cinzel Decorative", cursive;
+  /* font-family: 'Vibes', cursive; */
+  /* font-family: 'Fredericka the Great', cursive; */
+  font-size: 3rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.bouncy {
+  animation: bouncy 5s infinite linear;
+  position: relative;
+  background: linear-gradient(to bottom, rgb(186, 229, 115), rgb(56, 91, 83)) !important;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 20px 10px 20px;
+  font-size:1.3rem;
+  margin: 10px 0;
+  font-family: "Neucha", cursive;
+}
+
+.punchline{
+  font-size: 1.2rem;
+  margin: 0 10px 20px 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.carouselContainer{
+  background-color: white;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.carouselContainer h4{
+  padding-left: 10px;
+}
+
+.carouselTitle{
+  display: flex;
+  align-items: baseline;
+}
+
+.carouselTitle h4{
+  font-weight: bold;
+  margin-right: 10px;
+}

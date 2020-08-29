@@ -1,32 +1,40 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
-import About from "./About"
-import MyCarousel from './MyCarousel'
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import About from "./About";
+import MyCarousel from "./MyCarousel";
+import "./styles/Home.css";
 
 class Home extends Component {
+  render() {
+    return (
+      <div id="home">
+        <div id="hometitle">
+          <h4>Welcome to</h4>
+          <h3>EcoHero</h3>
+        </div>
+        <div>
+          <p className="punchline">
+            Join the community, set your eco-friendly goals, share your success
+            and <strong>become a Super EcoHero</strong>!
+          </p>
+          <Link to="/signup">
+            <button className="bouncy">GET STARTED</button>
+          </Link>
+        </div>
 
-    render() {
-        return (
-            <div>
-              <h4>Welcome to</h4>
-              <h3>EcoHero</h3>
+        <div className="carouselContainer">
+          <div className="carouselTitle">
+            <h4>Get Inspired</h4>
+            <h5> - our EcoHeroes success</h5>
+          </div>
 
-              <div>
-                  <p>Join the community, set your eco-friendly goals, share your achievements and become a Super EcoHero!</p>
-                  <Link to="/signup"><button>Get Started</button></Link>
-              </div>
+          <MyCarousel />
+        </div>
 
-              <div>
-                  <h4>Get Inspired</h4>
-                  <MyCarousel /> 
-              </div>
-
-              <About/>  
-            </div>
-        )
-    }
+        <About />
+      </div>
+    );
+  }
 }
 
-
-export default Home
+export default Home;

@@ -125,6 +125,20 @@ class App extends React.Component {
       })
   }
 
+  handleUpdateGoal = (updatedAchievement) => {
+    const {image, _id, finishing_date} = updatedAchievement;
+    let updatedSuccess = {
+      completed: true,
+      image: image,
+      finishing_date: finishing_date
+    }
+    console.log("id", _id)
+    console.log("updatedSuccess", updatedSuccess)
+    axios.patch(`${API_URL}/achievements/${_id}`, updatedSuccess, {withCredentials: true})
+      .then((res) => {
+        console.log(res.data)
+      })
+  }
   // handleRank = () => {
   //   if (this.state.loggedInUser.points > 10000) {
   //   this.state.loggedInUser.rank = "Chill Hero"
@@ -141,7 +155,7 @@ class App extends React.Component {
 
   render(){
     return (
-      <div>
+      <div id="app">
         
         <MyNavBar onLogOut = {this.handleLogOut} loggedInUser = {this.state.loggedInUser}/>
         <Switch>
@@ -181,7 +195,7 @@ class App extends React.Component {
             return <OtherProfile {...routeProps} />
           }} />
           <Route path="/goals-edit/:achievementID" render={(routeProps) => {
-            return <GoalsEdit {...routeProps} />
+            return <GoalsEdit onUpdate={this.handleUpdateGoal} {...routeProps} />
           }}/>
         </Switch>
         {

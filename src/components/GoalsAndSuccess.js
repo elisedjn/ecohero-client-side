@@ -49,7 +49,12 @@ class GoalsAndSuccess extends Component {
                     <h5>Challenges</h5>
                     {this.state.userAchievements.map((achievement) => {
                       if (!achievement.completed) {
-                        return <Link to={`/achievement/${achievement._id}`}><p>{achievement.challenge.title}</p></Link>;
+                        return (
+                          <div>
+                          <Link to={`/achievement/${achievement._id}`}><p>{achievement.challenge.title}</p></Link>
+                          <Link to={`/goals-edit/${achievement._id}`}>Edit</Link>
+                          </div>
+                          );
                     }
                   })}
                 </div>

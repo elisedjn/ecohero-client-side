@@ -1,13 +1,16 @@
 import React from "react"; 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+
+import './styles/MyNavBar.css';
 
 export default function MyNavBar(props) {
   return (
     <div>
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Navbar.Brand href="/">EcoHero</Navbar.Brand>
+      <Navbar id="myNavBar" fixed="top" variant="light" expand="lg">
+        <div id='fakeitem'></div>
+        <Navbar.Brand href="/"><img src="./ecohero_logo.png" alt="EcoHero" /> EcoHero</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

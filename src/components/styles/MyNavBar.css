@@ -1,0 +1,47 @@
+#myNavBar{
+  /* background-image: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url(/bg05.jpg); */
+  background-color: rgba(255, 255, 255, 0.6);
+}
+#myNavBar img {
+  height: 35px;
+  width: 35px;
+}
+.navbar {
+  justify-content: space-between;
+  align-items: center;
+}
+
+#fakeitem{
+  display: block;
+  width: 70px;
+}
+
+.navbar-light .navbar-toggler{
+  border:none;
+  outline: none;
+}
+
+.navbar-light .navbar-brand{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  font-family: 'Cinzel Decorative', cursive;
+  /* font-family: 'Vibes', cursive; */
+  /* font-weight: 900; */
+  /* font-family: 'Fredericka the Great', cursive; */
+  /* font-family: 'Combo', cursive; */
+  color: rgb(38, 63, 57);
+}
+
+.navbar-nav{
+  text-align: center;
+}
+
+.navbar-nav a{
+  color: black;
+}
