@@ -1,0 +1,36 @@
+.signup {
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.4)
+    ),
+     url(/images/front-page1.jpg);
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+      
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+}
+
+.formUp {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
+    padding: 30px 20px;
+    margin-top: 130px;
+    font-weight: 600;
+}
+
+.signupBtn {
+    margin-top: 20px;
+    text-align: center; 
+}
+
+.signUpBtnClick {
+    background-color: rgb(2, 66, 2);
+    border: none
+}
+

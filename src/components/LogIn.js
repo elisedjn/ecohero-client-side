@@ -8,7 +8,7 @@ import "./styles/LogIn.css";
 function LogIn(props) {
   return (
     <div className="login">
-      <Form className="form" onSubmit={props.onLogIn}>
+      <Form className="formIn" onSubmit={props.onLogIn}>
         <Form.Group>
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" name="email" />
