@@ -1,9 +1,10 @@
 import React from 'react'
+import "./styles/About.css"
 
 function About() {
     return (
-        <div>
-            <h4>About us</h4>
+        <div className="about">
+            <h5>About us</h5>
             <p>
                 Hello world!
                 We are Elise Dujardin and Joel Roca Martinez and we are super excited to have you here!
