@@ -1,4 +1,5 @@
 import React from 'react'
+import "./styles/ExperienceBar.css"
 
 
 
@@ -32,37 +33,37 @@ function ExperienceBar(props) {
     if (props.loggedInUser.points >= 10000 && props.loggedInUser.points < 25000) {
         return (
             <div>
-              <p>{chillHero.title}------------{smartHero.title}</p>
-              <p>{props.loggedInUser.points}/{smartHero.points} points</p>    
+              <p className="ranks">{chillHero.title}----------------------{smartHero.title}</p>
+              <p className="points">{props.loggedInUser.points}/{smartHero.points} points</p>    
             </div>
         ) 
     } else if (props.loggedInUser.points >= 25000 && props.loggedInUser.points < 50000) {
         return (
             <div>
-              <p>{smartHero.title}------------{bigHero.title}</p>
-              <p>{props.loggedInUser.points}/{bigHero.points} points</p>    
+              <p className="ranks">{smartHero.title}----------------------{bigHero.title}</p>
+              <p className="points">{props.loggedInUser.points}/{bigHero.points} points</p>    
             </div>
         ) 
     } else if (props.loggedInUser.points >= 50000 && props.loggedInUser.points < 100000) {
         return (
             <div>
-              <p>{bigHero.title}------------{superHero.title}</p>
-              <p>{props.loggedInUser.points}/{superHero.points} points</p>    
+              <p className="ranks">{bigHero.title}----------------------{superHero.title}</p>
+              <p className="points">{props.loggedInUser.points}/{superHero.points} points</p>    
             </div>
         ) 
     } else if (props.loggedInUser.points >= 100000) {
         return (
             <div>
-              <p>{superHero.title}</p>
-              <p>{props.loggedInUser.points} points</p>    
+              <p className="ranks">{superHero.title}</p>
+              <p className="points">{props.loggedInUser.points} points</p>    
             </div>
         ) 
         
     } else {
         return (
             <div>
-              <p>{newHero.title}------------{chillHero.title}</p>
-              <p>{props.loggedInUser.points}/{chillHero.points} points</p>    
+              <p className="ranks">{newHero.title}----------------------{chillHero.title}</p>
+              <p className="points">{props.loggedInUser.points}/{chillHero.points} points</p>    
             </div>
         )
     }

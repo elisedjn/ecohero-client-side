@@ -30,17 +30,19 @@ class ChallengeDetails extends Component {
 
 
     render() {
+      console.log(this.state.challenge)
        
         if (!this.state.challenge) {
-            return <p>Loading...</p>;
-          }
-        return (
+             return <p>Loading...</p>;
+           }
+        return ( 
             <div>
                 <h4>{this.state.challenge.title}</h4>
                 <p>{this.state.challenge.points} points</p>
                 <h5>Description</h5>
                 <p>{this.state.challenge.description}</p>
-                <p>{this.state.achievement.challenge.fact}</p>
+                <h5>Fact</h5>
+                <p>{this.state.challenge.fact}</p>
         
                 <div>
                     <AddToMyGoals challenge={this.state.challenge._id} />

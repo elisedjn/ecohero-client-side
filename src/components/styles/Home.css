@@ -1,0 +1,42 @@
+.bgImg {
+    background-image: url(/images/front-page1.jpg);
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+    padding-bottom: 10%;
+    color: white;
+
+}
+
+.text {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white
+}
+
+.startBtn {
+    font-weight: 600;
+    border-radius: 7.5px;
+    height: 35px;
+    width: 125px;
+    background-color: rgb(98, 221, 125);
+}
+
