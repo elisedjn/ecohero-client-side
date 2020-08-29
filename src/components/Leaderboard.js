@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {API_URL} from '../config'
+import "./styles/Leaderboard.css"
 
 
 
@@ -28,12 +29,16 @@ class Leaderboard extends Component {
         }
 
         return (
-            <div>
-                <h3>Hall of Heroes</h3>
+            <div className="leaderboard">
+                <h3 className="HallTitle">Hall of Heroes</h3>
                 {
                     this.state.users.map((user) => {
                         const {username, points, _id} = user
-                        return <Link to={`/user/${_id}`}><p>{username} {points} points</p></Link>
+                        return <Link to={`/user/${_id}`}><div className="container">
+                                                            <ol className="list">
+                                                            <li className="listItems">{username} {points} points</li>
+                                                            </ol>
+                                                         </div></Link>
                     })
                 }
             </div>

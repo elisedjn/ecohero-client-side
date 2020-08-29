@@ -1,0 +1,39 @@
+.leaderboard {
+    display: "flex";
+    justify-content: "center";
+    text-align: center;
+}
+
+.list {
+    background-color: #e9eb80;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    min-height: 50px;
+    counter-reset: "section";
+    width: 300px;  
+}
+
+
+
+.listItems {
+    align-self: center;
+    counter-increment: "section";
+    content: "counter(section)";
+}
+
+.HallTitle {
+    margin-top: 90px;
+    margin-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+}
