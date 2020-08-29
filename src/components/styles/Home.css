@@ -33,14 +33,17 @@
   font-weight: 600;
 }
 
-.punchline{
+#home .punchline{
   font-size: 1.2rem;
-  margin: 0 10px 20px 10px;
+  margin: auto;
+  width: 95%;
+  max-width: 500px;
+  margin-bottom: 20px;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.bouncy {
+#home .bouncy {
   background-color: rgba(255, 255, 255, 0.8);
   color: black;
   box-shadow: 0px 5px 15px rgb(44, 92, 83);
@@ -49,23 +52,23 @@
   font-size:1.3rem;
   margin: 10px 0;
 }
-.bouncy img {
+#home .bouncy img {
   width: 30px;
 }
-.carouselContainer{
+#home .carousel-container{
   background-color: rgba(240, 240, 240 ,0.95);
   text-align: left;
   margin-top: 30px;
 }
 
-.carouselTitle{
+#home .carousel-title{
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
-.carouselTitle h5{
+#home .carousel-title h5{
   margin: 0;
   font-style: italic;
   font-size: 1rem;
@@ -74,7 +77,7 @@
   font-family: "Neucha", cursive;
 }
 
-.carouselTitle h4{
+#home .carousel-title h4{
   font-family: "Neucha", cursive;
   padding: 10px 0px 0px 20px;
   margin: 0;

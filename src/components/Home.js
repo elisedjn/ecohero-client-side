@@ -22,8 +22,8 @@ class Home extends Component {
           </Link>
         </div>
 
-        <div className="carouselContainer">
-          <div className="carouselTitle">
+        <div className="carousel-container">
+          <div className="carousel-title">
             <h4>Get Inspired</h4>
             <h5>... Our EcoHeroes success</h5>
           </div>

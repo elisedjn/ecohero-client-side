@@ -35,21 +35,21 @@ class MyProfile extends Component {
     }
 
     return (
-      <div className="bgImg">
+      <div id="myProfile">
         <h3 className="title">Your Profile</h3>
         <div className="white-card">
           <div className="header">
             <img src={this.props.loggedInUser.image} alt="Avatar" />
             <div>
-              <div className="usersInfo">
+              <div className="users-info">
                 <h5>{this.props.loggedInUser.username}</h5>
                 <Link to="/profile/edit">
                   <img src="/edit.png" alt="Edit" />
                 </Link>
               </div>
-              <div className="pointsInfo">
-                <p className="totalRank">{this.props.loggedInUser.rank}</p>
-                <p className="totalPoints">
+              <div className="points-info">
+                <p className="total-rank">{this.props.loggedInUser.rank}</p>
+                <p className="total-points">
                   - {this.props.loggedInUser.points} points
                 </p>
               </div>
@@ -58,7 +58,7 @@ class MyProfile extends Component {
 
           <ExperienceBar loggedInUser={this.props.loggedInUser} />
 
-          <div className="yourSuccess">
+          <div className="your-success">
             <h4>
               <img src="/plant02.png" />
               Your Success
@@ -70,7 +70,7 @@ class MyProfile extends Component {
                 let month = finishDate.getMonth() + 1
                 let finish = date + "/" + month
                 return (
-                  <div className="oneSuccess" key={"success" + i}>
+                  <div className="one-success" key={"success" + i}>
                     <Link to={`/achievement/${achievement._id}`}>
                         <p>{finish}</p>
                         <h6>{achievement.challenge.title}</h6>

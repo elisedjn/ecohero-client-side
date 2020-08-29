@@ -1,4 +1,4 @@
-.bgImg {
+#myProfile {
     background-image: linear-gradient(
         rgba(255, 255, 255, 0.4),
         rgba(255, 255, 255, 0.4)
@@ -12,7 +12,7 @@
     font-family: 'Raleway', sans-serif;
 }
 
-.title {
+#myProfile .title {
     font-family: "Cinzel Decorative", cursive;
     color: black;
     text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
@@ -21,7 +21,7 @@
     padding-bottom: 10px;
 }
 
-.white-card {
+#myProfile .white-card {
     background-color: rgba(255, 255, 255, 0.7);
     width: 90%;
     margin: auto;
@@ -29,57 +29,57 @@
     box-shadow: 0px 5px 15px rgb(44, 92, 83);
 }
 
-.header{
+#myProfile .header{
     display: flex;
     justify-content: flex-start;
 }
-.header h5{
+#myProfile .header h5{
     font-family: "Cinzel Decorative", cursive;
     font-size: 2rem;
     padding-top: 10px;
     margin-right: 20px;
 }
-.header img{
+#myProfile .header img{
     display: block;
     width: auto;
     height: 100px;
     margin-right: 20px;
 }
 
-.header .usersInfo{
+#myProfile .header .users-info{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.usersInfo img{
+#myProfile .users-info img{
     width: 20px;
     height: auto;
 }
 
-.header .pointsInfo{
+#myProfile .header .points-info{
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
 }
 
-.header .totalPoints{
+#myProfile .header .total-points{
     font-size: 0.7rem;
     margin: 0 5px;
 }
 
-.yourSuccess{
+#myProfile .your-success{
     padding: 20px;
 }
-.yourSuccess h4{
+#myProfile .your-success h4{
     font-family: "Neucha", cursive;
 }
 
-.yourSuccess h4 img{
+#myProfile .your-success h4 img{
     height: 30px;
 }
 
-.oneSuccess{
+#myProfile .one-success{
     background-color: rgba(255, 255, 255, 0.6);
     box-shadow: 0px 2px 10px rgba(75, 87, 84, 0.5);
     padding: 10px;
@@ -87,19 +87,19 @@
     border-bottom: 6px solid rgb(118, 169, 49);
 }
 
-.oneSuccess a{
+#myProfile .one-success a{
     color: black;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.oneSuccess p{
+#myProfile .one-success p{
     font-size: 0.8rem;
     margin-right: 10px;
     width: 10%;
 }
 
-.oneSuccess h6{
+#myProfile .one-success h6{
     text-align: center;
     font-weight: bold;
     margin: 0;
