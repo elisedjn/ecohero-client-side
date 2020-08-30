@@ -3,9 +3,6 @@ import axios from "axios";
 import { API_URL } from "../config";
 
 
-
-
-
 class AchievementDetails extends Component {
 
     state = {
@@ -14,13 +11,8 @@ class AchievementDetails extends Component {
 
       componentDidMount() {
         let id = this.props.match.params.achievementID
-        console.log(id)
-
-          axios.get(`${API_URL}/achievements/${id}`, {
-              withCredentials: true,
-            })
+          axios.get(`${API_URL}/achievements/${id}`)
             .then((res) => {
-                console.log(res.data)
               this.setState({
                 achievement: res.data,
               });

@@ -1,0 +1,44 @@
+#goalsSuccess{
+  background-image: linear-gradient(
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.4)
+      ),
+      url(/bg01.jpg);
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 50px 0px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#goalsSuccess .exp-bar{
+  padding-top: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+#goalsSuccess .title {
+  font-family: "Cinzel Decorative", cursive;
+  color: black;
+  text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
+  1px 1px 10px white;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#goalsSuccess .white-card {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 90%;
+  margin: auto;
+  border-radius: 3px;
+  box-shadow: 0px 5px 15px rgb(44, 92, 83);
+}
+
+
+#goalsSuccess .subtitle {
+  font-family: "Neucha", cursive;
+}
+
+#goalsSuccess .subtitle img{
+  height: 30px;
+}

@@ -1,0 +1,106 @@
+#otherProfile {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url(/bg02.jpg);
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 70px 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+#otherProfile .title {
+  font-family: "Cinzel Decorative", cursive;
+  color: black;
+  text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
+  1px 1px 10px white;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#otherProfile .white-card {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 90%;
+  margin: auto;
+  border-radius: 3px;
+  box-shadow: 0px 5px 15px rgb(44, 92, 83);
+}
+
+#otherProfile .header{
+  display: flex;
+  justify-content: flex-start;
+}
+#otherProfile .header h5{
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 2rem;
+  padding-top: 10px;
+  margin-right: 20px;
+}
+#otherProfile .header img{
+  display: block;
+  width: auto;
+  height: 100px;
+  margin-right: 20px;
+}
+
+#otherProfile .header .users-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#otherProfile .users-info img{
+  width: 20px;
+  height: auto;
+}
+
+#otherProfile .header .points-info{
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+#otherProfile .header .total-points{
+  font-size: 0.7rem;
+  margin: 0 5px;
+}
+
+#otherProfile .user-success{
+  padding: 20px;
+}
+#otherProfile .user-success h4{
+  font-family: "Neucha", cursive;
+}
+
+#otherProfile .user-success h4 img{
+  height: 30px;
+}
+
+#otherProfile .one-success{
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 2px 10px rgba(75, 87, 84, 0.5);
+  padding: 10px;
+  margin-bottom: 8px;
+  border-bottom: 6px solid rgb(118, 169, 49);
+}
+
+#otherProfile .one-success a{
+  color: black;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#otherProfile .one-success p{
+  font-size: 0.8rem;
+  margin-right: 10px;
+  width: 10%;
+}
+
+#otherProfile .one-success h6{
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}

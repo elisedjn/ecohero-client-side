@@ -33,7 +33,7 @@ function ExperienceBar(props) {
     
 
     if (props.loggedInUser.points >= 10000 && props.loggedInUser.points < 25000) {
-        let percentage = (props.loggedInUser.points - chillHero.points)/(smartHero.points - chillHero.points) *100
+        let percentage = Math.ceil((props.loggedInUser.points - chillHero.points)/(smartHero.points - chillHero.points) *100)
         return (
             <div>
                 <div className="ranksContainer">
@@ -57,7 +57,7 @@ function ExperienceBar(props) {
             </div>
         ) 
     } else if (props.loggedInUser.points >= 50000 && props.loggedInUser.points < 100000) {
-        let percentage = props.loggedInUser.points/superHero.points * 100
+        let percentage = Math.ceil((props.loggedInUser.points - bigHero.points)/(superHero.points - bigHero.points) *100)
         return (
             <div>
               <p className="ranks">{bigHero.title} <ProgressBar striped animated variant="success" now={percentage}/> {superHero.title}</p>
@@ -73,7 +73,7 @@ function ExperienceBar(props) {
         ) 
         
     } else {
-        let percentage = props.loggedInUser.points/chillHero.points * 100
+        let percentage = Math.ceil((props.loggedInUser.points)/(chillHero.points) *100)
         return (
             <div>
               <p className="ranks">{newHero.title} <ProgressBar striped animated variant="success" now={percentage}/> {chillHero.title}</p>

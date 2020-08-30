@@ -10,8 +10,6 @@ class ChallengeDetails extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.challengeID;
-    console.log(id);
-
     axios.get(`${API_URL}/challenges/${id}`, { withCredentials: true, })
       .then((res) => {
         this.setState({
