@@ -80,7 +80,7 @@ class ChallengesList extends Component {
         })}
         {
           this.props.loggedInUser ? (
-            <Button className="bouncy" onClick={this.handleCreateClick}><img src="/plant02.png"/>Create a Challenge<img src="/plant.png"/></Button>
+            <Button className="bouncy" onClick={this.handleCreateClick}><img className="plantL" src="/plant02.png"/>Create a Challenge<img className="plantR" src="/plant.png"/></Button>
           ) : ''
         }
         <Modal show={this.state.showPopUp} onHide={this.handleClose}>
