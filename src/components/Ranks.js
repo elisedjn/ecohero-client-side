@@ -19,7 +19,7 @@ class Ranks extends Component {
                     <h5><strong>Chill Hero</strong></h5>
                     <p>10.000-24.999 points</p>   
                   </div>  
-                <p className="perks">Perks: Create groups</p>
+                <p className="perks"><strong>Perks:</strong> Create groups</p>
                 </div>
 
                 <div className="rankContainer">
@@ -27,7 +27,7 @@ class Ranks extends Component {
                     <h5><strong>Smart Hero</strong></h5>
                     <p>25.000-49.999 points</p>   
                   </div>
-                <p className="perks">Perks: Create challenges</p>   
+                <p className="perks"><strong>Perks:</strong> Create challenges</p>   
                 </div>
 
                 <div className="rankContainer">
@@ -35,7 +35,7 @@ class Ranks extends Component {
                     <h5><strong>Big Hero</strong></h5>
                     <p>50.000-99.999 points</p>  
                   </div>
-                <p className="perks">Perks: 10.000 Bonus points</p>  
+                <p className="perks"><strong>Perks:</strong> 10.000 Bonus points</p>  
                 </div>
 
                 <div className="rankContainer">
@@ -43,7 +43,7 @@ class Ranks extends Component {
                     <h5><strong>Super Hero</strong></h5>
                     <p>100.000+ points</p>   
                   </div>
-                <p className="perks">Perks: Nice surprises</p>
+                <p className="perks"><strong>Perks:</strong> Nice surprises</p>
                 </div>    
             </div>
         )

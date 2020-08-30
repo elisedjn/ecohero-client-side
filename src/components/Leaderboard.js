@@ -31,7 +31,7 @@ class Leaderboard extends Component {
             return (
               <Link to={`/user/${_id}`}>
               <div className="listItems">
-                  <li >
+                  <li>
                     {username} {points} points
                   </li>
                   </div>

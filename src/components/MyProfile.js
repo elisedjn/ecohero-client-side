@@ -59,7 +59,6 @@ class MyProfile extends Component {
               </div>
             </div>
           </div>
-
           <ExperienceBar loggedInUser={this.props.loggedInUser} />
 
           <div className="your-success">
