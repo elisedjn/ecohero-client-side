@@ -57,7 +57,7 @@ class ChallengesList extends Component {
     }
     return (
       <div id="challenges">
-      <h3 className="challengesTitle">Challenges</h3>
+      <h3 className="challengesTitle">Goals</h3>
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text id="basic-addon1">&#128270;</InputGroup.Text>
@@ -69,6 +69,11 @@ class ChallengesList extends Component {
             aria-describedby="basic-addon1"
           />
         </InputGroup>
+        {
+          this.props.loggedInUser ? (
+            <Button className="bouncy" onClick={this.handleCreateClick}><img className="plantL" src="/images/plant02.png"/>Create a Challenge<img className="plantR" src="/images/plant.png"/></Button>
+          ) : ''
+        }
         {this.state.filteredChallenges.map((challenge, i) => {
           return (
             <div className="one-success-container">
@@ -78,11 +83,6 @@ class ChallengesList extends Component {
             </div>
           );
         })}
-        {
-          this.props.loggedInUser ? (
-            <Button className="bouncy" onClick={this.handleCreateClick}><img className="plantL" src="/images/plant02.png"/>Create a Challenge<img className="plantR" src="/images/plant.png"/></Button>
-          ) : ''
-        }
         <Modal show={this.state.showPopUp} onHide={this.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Not yet!</Modal.Title>
