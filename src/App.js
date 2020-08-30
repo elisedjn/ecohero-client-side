@@ -108,7 +108,7 @@ class App extends React.Component {
         this.setState({
           loggedInUser: cloneUser
         }, () => {
-          this.props.history.push('/')
+          this.props.history.push('/profile')
         })
     })
   }

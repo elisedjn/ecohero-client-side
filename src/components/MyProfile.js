@@ -1,22 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ExperienceBar from "./ExperienceBar";
-// import ProgressBar from "./ProgressBar"
-// import styled from "styled-components"
 import axios from "axios";
 import { API_URL } from "../config";
 import "./styles/MyProfile.css";
 
-
-
-// const AppWrapper = styled.div`
-// display: flex;
-// justify-content: center;
-// `;
-
-// const ProgressBarContainer = styled.div`
-// width: 150px;
-// `;
 
 
 
@@ -24,7 +12,6 @@ class MyProfile extends Component {
   
     state = {
       userAchievements: [],
-      // percentage: 0
     };
   
  
@@ -74,14 +61,6 @@ class MyProfile extends Component {
               </div>
             </div>
           </div>
-
-         {/* <AppWrapper>
-           <ProgressBarContainer>
-           <button onClick={() => this.setState({percentage: this.state.percentage + 10})}>+</button>
-           <button onClick={() => this.setState({percentage: this.state.percentage - 10})}>-</button>
-             <ProgressBar percentage={this.state.percentage} />
-           </ProgressBarContainer>
-         </AppWrapper> */}
             
           <ExperienceBar loggedInUser={this.props.loggedInUser} />
 
