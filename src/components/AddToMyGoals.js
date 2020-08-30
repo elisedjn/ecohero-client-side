@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../config";
 import Button from "react-bootstrap/Button";
 import {withRouter} from 'react-router-dom';
+import "./styles/AddToMyGoals.css";
 
 class AddToMyGoals extends Component {
   state = {
@@ -32,7 +33,10 @@ class AddToMyGoals extends Component {
   }
 
   render() {
-    return <Button onClick={this.handleClick}> Do this challenge!</Button>;
+    return <Button className="addThisGoalBtn" onClick={this.handleClick}>
+           <img src="/images/valid.png" alt="Valid" />
+           Add this Goal!
+           </Button>;
   }
 }
 

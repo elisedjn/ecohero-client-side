@@ -1,0 +1,11 @@
+.addThisGoalBtn img {
+    width: 25px;
+    margin-right: 5px;
+}
+
+.addThisGoalBtn {
+    background: linear-gradient(320deg, #71a034 0%, #a4d166 100%);
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgb(52, 54, 54);
+    border: none;
+}
