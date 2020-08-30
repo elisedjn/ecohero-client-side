@@ -1,5 +1,70 @@
+#myCarousel{
+  background-color: rgba(255, 255, 255, 0.7);
+}
 
-
-.carousel-caption{
+#myCarousel .carousel-caption{
   color: black;
+  right: 5%;
+  left: 5%;
+  height: 100%;
+  padding: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#myCarousel .carousel-image{
+  height: 100%;
+  width: 50%;
+}
+
+#myCarousel .img-container{
+  height: 100%;
+}
+
+#myCarousel .carousel-image img{
+  max-height:100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+#myCarousel .carousel-text{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#myCarousel .carousel-text h5{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#myCarousel .user-infos{
+  display: flex;
+}
+
+#myCarousel .user-infos p{
+  margin: 0;
+  text-align: left;
+  padding-left: 5px;
+}
+
+#myCarousel .points-info{
+  font-size: 0.6rem;
+}
+
+#myCarousel .username{
+  font-size: 0.9rem;
+  font-family: "Neucha", cursive;
+}
+
+#myCarousel .user-infos img{
+  width: auto;
+  height: 35px;
+  display: block;
 }

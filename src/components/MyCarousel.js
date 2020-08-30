@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from "react-bootstrap/Carousel";
 import "./styles/MyCarousel.css";
 
 export default class MyCarousel extends Component {
@@ -10,13 +10,14 @@ export default class MyCarousel extends Component {
   };
 
   componentDidMount() {
-    axios.get(`${API_URL}/achievements/allcompleted`)
-    .then((res) => {
-      this.setState({
-        achievements: res.data,
-      });
-    })
-    .catch((err) => console.log(err))
+    axios
+      .get(`${API_URL}/achievements/allcompleted`)
+      .then((res) => {
+        this.setState({
+          achievements: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
   }
   render() {
     if (!this.state.achievements) {
@@ -28,26 +29,41 @@ export default class MyCarousel extends Component {
         <Carousel id="myCarousel">
           {this.state.achievements.map((achievement, i) => {
             return (
-              <Carousel.Item key={'publicSuccess' + i}>
+              <Carousel.Item key={"publicSuccess" + i}>
                 <img
                   className="d-block w-100"
-                  src= '/carouselbg.png'
-                 alt="background"/>
-                <Carousel.Caption>
-                  <h4>{achievement.challenge.title}</h4>
-                  {
-                    achievement.image ? (<img
-                  className="d-block w-50"
-                  src= {achievement.image}
-                  alt= {achievement.challenge.title}
-                />) : ""
-                  }
-                  
-                  <div style={{display:'flex'}}> 
-                    <img src={achievement.user.image} alt={achievement.user.username} style={{width: "50px", height:"50px"}} />
-                    <h5>{achievement.user.username}</h5>
-                    <p>{achievement.user.points} pts</p>
-                    <p>{achievement.user.rank}</p>
+                  src="/carouselbg.png"
+                  alt="background"
+                />
+                <Carousel.Caption >
+                  <div className="carousel-image">
+                    <table className="img-container">
+                    <tr>
+                    {achievement.image ? (
+                      <td><img
+                        className="d-block"
+                        src={achievement.image}
+                        alt={achievement.challenge.title}
+                      /></td>
+                    ) : (
+                      ""
+                    )}
+                    </tr>
+                    </table>
+                  </div>
+                  <div className="carousel-text">
+                    <h5>{achievement.challenge.title}</h5>
+                    <div className="user-infos">
+                      <img
+                        src={achievement.user.image}
+                        alt={achievement.user.username}
+                      />
+                      <div>
+                      <p className="username">{achievement.user.username}</p>
+                      <p className="points-info">{achievement.user.rank} - {achievement.user.points} pts</p>
+                      
+                      </div>
+                    </div>
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>
