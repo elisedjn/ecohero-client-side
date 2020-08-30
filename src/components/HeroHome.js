@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MyCarousel from "./MyCarousel";
+import ExperienceBar from './ExperienceBar'
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
@@ -54,6 +55,7 @@ class HeroHome extends Component {
               </div>
             </div>
           </div>
+          <ExperienceBar loggedInUser={this.props.loggedInUser} />
           <div className="your-tasks">
             <h4>
               <img src="/images/plant02.png" />
