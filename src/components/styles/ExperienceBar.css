@@ -2,12 +2,24 @@
     font-size: 14px;
     display: flex;
     justify-content: center;
-   
+    margin: 0;
 }
+
+
+.ranksContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+}
+
 
 .points {
     font-size: 12px;
     display: flex;
     justify-content: center;
- 
+}
+
+
+.progress {
+    width: 50%;
 }
