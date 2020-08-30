@@ -56,7 +56,7 @@ class ChallengesList extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <div className="challenges">
+      <div id="challenges">
       <h3 className="challengesTitle">Challenges</h3>
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
@@ -80,7 +80,7 @@ class ChallengesList extends Component {
         })}
         {
           this.props.loggedInUser ? (
-            <Button className="bouncy" onClick={this.handleCreateClick}><img className="plantL" src="/plant02.png"/>Create a Challenge<img className="plantR" src="/plant.png"/></Button>
+            <Button className="bouncy" onClick={this.handleCreateClick}><img className="plantL" src="/images/plant02.png"/>Create a Challenge<img className="plantR" src="/images/plant.png"/></Button>
           ) : ''
         }
         <Modal show={this.state.showPopUp} onHide={this.handleClose}>
