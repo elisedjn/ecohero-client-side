@@ -9,7 +9,7 @@ function CreateChallForm(props) {
     return <Redirect to='/challenges'/>
   }
   return (
-    <div className="createChallenge">
+    <div id="createChallenge">
       <h1 className="createTitle">Create a Challenge</h1>
       <div className="white-card">
         <Form onSubmit={props.onSubmit}>
@@ -25,18 +25,17 @@ function CreateChallForm(props) {
 
           <Form.Group className="input-container">
             <Form.Label className="titles">Points</Form.Label>
-            {/* Remember to put a maximum to this field!! */}
-            <Form.Control className="inputs" name="points" type="number" max="10000" placeholder="Number of points. MAx 10000" /> 
+            <Form.Control className="inputs" name="points" type="number" max="10000" placeholder="Number of points. Max 10 000" /> 
           </Form.Group>
 
           <Form.Text>
-            * As we want to encourage users to achieve short to mid term goals, <strong>we are capping the points at 10000</strong>.
+            * As we want to encourage users to achieve short to mid term goals, <strong>we are capping the points at 10 000</strong>.
           </Form.Text>
 
           <Button className="createBtn" variant="primary" type="submit">
-          <img className="imageBtn1" src="/plant02.png" />
+          <img className="imageBtn1" src="/images/plant02.png" />
             Create Challenge
-          <img className="imageBtn2" src="/plant.png" />
+          <img className="imageBtn2" src="/images/plant.png" />
           </Button>
         </Form>
       </div>

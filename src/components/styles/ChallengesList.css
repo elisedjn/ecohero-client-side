@@ -1,4 +1,4 @@
-.challenges {
+#challenges {
     display: "flex";
     justify-content: "center";
     text-align: center;
@@ -6,7 +6,7 @@
       rgba(255, 255, 255, 0.4),
       rgba(255, 255, 255, 0.4)
     ),
-    url(/bg02.jpg);
+    url(/images/bg02.jpg);
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
@@ -15,7 +15,7 @@
     font-family: 'Raleway', sans-serif;
 }
 
-.challengesTitle {
+#challenges .challengesTitle {
     margin-bottom: 20px;
     font-family: "Cinzel Decorative", cursive;
     color: black;
@@ -26,14 +26,14 @@
 }
 
 
-.one-success-container {
+#challenges .one-success-container {
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
 }
 
 
-.one-success{
+#challenges .one-success{
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 2px 10px rgba(75, 87, 84, 0.5);
     padding: 10px;
@@ -42,12 +42,12 @@
 }
 
 
-.link {
+#challenges .link {
     color: black
 }
 
 
-.bouncy {
+#challenges .bouncy {
     background-color: rgba(255, 255, 255, 0.8);
     color: black;
     box-shadow: 0px 5px 15px rgb(44, 92, 83);
@@ -58,22 +58,22 @@
 }
 
 
-.bouncy img {
+#challenges .bouncy img {
     width: 30px;
 }
 
 
-.mb-3 {
+#challenges .mb-3 {
     padding-left: 20px;
     padding-right: 20px;
 }
 
 
-.plantL {
+#challenges .plantL {
     padding-right: 5px;
 }
 
 
-.plantR {
+#challenges .plantR {
     padding-left: 5px
 }
