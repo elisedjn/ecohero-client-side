@@ -32,7 +32,7 @@ export default class MyCarousel extends Component {
               <Carousel.Item key={"publicSuccess" + i}>
                 <img
                   className="d-block w-100"
-                  src="/carouselbg.png"
+                  src="/images/carouselbg.png"
                   alt="background"
                 />
                 <Carousel.Caption >

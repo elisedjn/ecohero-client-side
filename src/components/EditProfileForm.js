@@ -133,7 +133,7 @@ class EditProfileForm extends Component {
             onClick={() => this.props.onEdit(this.state.user)}
             type="submit"
           >
-            <img src="/plant02.png" /> Edit
+            <img src="/images/plant02.png" /> Edit
           </button>
         </div>
       </div>

@@ -3,12 +3,12 @@
         rgba(255, 255, 255, 0.4),
         rgba(255, 255, 255, 0.4)
       ),
-      url(/bg01.jpg);
+      url(/images/bg01.jpg);
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
     min-height: 100vh;
-    padding: 50px 0px;
+    padding: 50px 0px 70px 0px;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -23,7 +23,7 @@
   text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
   1px 1px 10px white;
   text-align: center;
-  padding-bottom: 10px;
+  padding: 10px;
 }
 
 #goalsSuccess .white-card {
@@ -31,6 +31,7 @@
   width: 90%;
   margin: auto;
   border-radius: 3px;
+  padding: 20px;
   box-shadow: 0px 5px 15px rgb(44, 92, 83);
 }
 
@@ -41,4 +42,55 @@
 
 #goalsSuccess .subtitle img{
   height: 30px;
+}
+
+
+
+#goalsSuccess .achiev-container{
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 2px 10px rgba(75, 87, 84, 0.5);
+  padding: 10px;
+  margin-bottom: 8px;
+  border-bottom: 6px solid rgb(118, 169, 49);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#goalsSuccess .achiev-container a{
+  color: black;
+  margin-right: 10px;
+}
+#goalsSuccess .achiev-container p{
+  font-size: 0.8rem;
+  margin-right: 10px;
+  width: 10%;
+}
+
+#goalsSuccess .achiev-container h6{
+  font-weight: bold;
+  margin: 0;
+}
+
+#goalsSuccess .achiev-container img{
+  width: 20px;
+}
+
+#goalsSuccess .achiev-container .edit-btn{
+  display: flex;
+  min-width: 50px;
+}
+
+#goalsSuccess .btn-add{
+  background-color: rgb(118, 169, 49);
+  color: white;
+  padding: 10px 15px;
+  font-size:1rem;
+  font-weight: bold;
+}
+
+#goalsSuccess .btn-container{
+  width: 100%;
+  text-align: center;
+  margin: 20px 0px 35px 0px;
 }

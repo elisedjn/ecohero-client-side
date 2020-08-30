@@ -61,7 +61,7 @@ export default class OtherProfile extends Component {
 
           <div className="user-success">
             <h4>
-            <img src="/plant02.png" />
+            <img src="/images/plant02.png" />
             Success</h4>
             {this.state.userAchievements.map((achievement, i) => {
               if (achievement.completed) {

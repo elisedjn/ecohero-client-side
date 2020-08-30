@@ -43,7 +43,7 @@ class HeroHome extends Component {
               <div className="users-info">
                 <h5>{this.props.loggedInUser.username}</h5>
                 <Link to="/profile/edit">
-                  <img src="/edit.png" alt="Edit" />
+                  <img src="/images/edit.png" alt="Edit" />
                 </Link>
               </div>
               <div className="points-info">
@@ -56,7 +56,7 @@ class HeroHome extends Component {
           </div>
           <div className="your-tasks">
             <h4>
-              <img src="/plant02.png" />
+              <img src="/images/plant02.png" />
               Your EcoHero Tasks
             </h4>
             <div>

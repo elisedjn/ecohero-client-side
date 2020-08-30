@@ -10,7 +10,7 @@ export default function MyNavBar(props) {
     <div>
       <Navbar id="myNavBar" fixed="top" variant="light" expand="lg">
         <div id='fakeitem'></div>
-        <Navbar.Brand href="/"><img src="./ecohero_logo.png" alt="EH" /> EcoHero</Navbar.Brand>
+        <Navbar.Brand href="/"><img src="/images/ecohero_logo.png" alt="EH" /> EcoHero</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

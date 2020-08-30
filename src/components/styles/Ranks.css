@@ -3,16 +3,13 @@
       rgba(255, 255, 255, 0.4),
       rgba(255, 255, 255, 0.4)
     ),
-    url(/bg01.jpg);
+    url(/images/bg05.jpg);
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
     min-height: 100vh;
     padding: 70px 20px;
     font-family: 'Raleway', sans-serif;
-
-   
-   
 }
 
 

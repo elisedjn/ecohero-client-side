@@ -18,7 +18,7 @@ class Home extends Component {
             and <strong>become a Super EcoHero</strong>!
           </p>
           <Link to="/signup">
-            <button className="bouncy"><img src="/plant02.png"/> Get Started ! <img src="/plant.png"/></button>
+            <button className="bouncy"><img src="/images/plant02.png"/> Get Started ! <img src="/images/plant.png"/></button>
           </Link>
         </div>
 

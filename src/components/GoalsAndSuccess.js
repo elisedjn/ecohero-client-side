@@ -41,38 +41,49 @@ class GoalsAndSuccess extends Component {
         </div>
         <h3 className="title">Your Goals & Success</h3>
         <div className="white-card">
-          <h4 className="subtitle">
-            <img src="/plant02.png" />
-            Your EcoHero Tasks
-          </h4>
-          {this.state.userAchievements.map((achievement) => {
-            if (!achievement.completed) {
-              return (
-                <div>
-                  <Link to={`/achievement/${achievement._id}`}>
-                    <p>{achievement.challenge.title}</p>
-                  </Link>
-                  <Link to={`/goals-edit/${achievement._id}`}>Edit</Link>
-                </div>
-              );
-            }
-          })}
-        </div>
+          <div className="goals">
+            <h4 className="subtitle">
+              <img src="/images/plant02.png" />
+              Your EcoHero Tasks
+            </h4>
+            {this.state.userAchievements.map((achievement, i) => {
+              if (!achievement.completed) {
+                return (
+                  <div className="achiev-container" key={"goals" + i}>
+                    <Link to={`/achievement/${achievement._id}`}>
+                      <h6>{achievement.challenge.title}</h6>
+                    </Link>
+                    <div className="edit-btn">
+                      <Link to={`/goals-edit/${achievement._id}`}><img src="/images/valid.png" alt="Valid" /></Link>
+                      <a><img src="/images/delete.png" alt="Delete" /></a>
+                    </div>
+                  </div>
+                );
+              }
+            })}
+            <div className="btn-container">
+            <Link className="btn-add" to="/challenges">Add one more !</Link>
+            </div>
+          </div>
 
-        <div>
-          <h4 className="subtitle">
-            <img src="/plant02.png" />
-            You already nailed it!
-          </h4>
-          {this.state.userAchievements.map((achievement) => {
-            if (achievement.completed) {
-              return (
-                <Link to={`/achievement/${achievement._id}`}>
-                  <p>{achievement.challenge.title}</p>
-                </Link>
-              );
-            }
-          })}
+          <div>
+            <h4 className="subtitle">
+              <img src="/images/plant02.png" />
+              You already nailed it!
+            </h4>
+            {this.state.userAchievements.map((achievement, i) => {
+              if (achievement.completed) {
+                return (
+                  <div className="achiev-container" key={"success" + i}>
+                    <Link to={`/achievement/${achievement._id}`}>
+                      <h6>{achievement.challenge.title}</h6>
+                    </Link>
+                    <div>Sharing Logos</div>
+                  </div>
+                );
+              }
+            })}
+          </div>
         </div>
       </div>
     );
