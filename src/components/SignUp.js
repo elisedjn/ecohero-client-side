@@ -6,7 +6,7 @@ import "./styles/SignUp.css";
 
 function SignUp(props) {
   return (
-    <div className="signup">
+    <div id="signup">
       <Form className="formUp" onSubmit={props.onSignUp}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
@@ -26,11 +26,11 @@ function SignUp(props) {
           <Form.Control type="password" placeholder="Password" name="password" />
         </Form.Group>
 
-        <Form.Text className="text-muted">
+        <Form.Text className="small-text">
           Already a member? <Link to="/login">Login</Link>
         </Form.Text>
 
-        <div className="loginBtn">
+        <div className="signUpBtn">
           <Button className="signUpBtnClick" variant="primary" type="submit">
           <img className="leaf1" src="/images/plant02.png"/>
             Sign Up

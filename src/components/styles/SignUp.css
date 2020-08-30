@@ -1,4 +1,4 @@
-.signup {
+#signup {
     background-image: linear-gradient(
       rgba(255, 255, 255, 0.2),
       rgba(255, 255, 255, 0.4)
@@ -15,24 +15,24 @@
 }
 
 
-.formUp {
-    background-color: rgba(255, 255, 255, 0.5);
+#signup .formUp {
+    background-color: rgba(255, 255, 255, 0.7);
     width: 80%;
     margin: auto;
     margin-top: 100px;
     padding: 30px 20px;
-    margin-top: 130px;
+    margin-top: 100px;
     font-weight: 600;
 }
 
 
-.signupBtn {
+#signup .signUpBtn {
     margin-top: 20px;
     text-align: center; 
 }
 
 
-.signUpBtnClick {
+#signup .signUpBtnClick {
     background-color: rgba(255, 255, 255, 0.8);
     color: black;
     box-shadow: 0px 5px 15px rgb(44, 92, 83);
@@ -43,19 +43,31 @@
 }
 
 
-.signUpBtnClick img {
+#signup .signUpBtnClick img {
     width: 30px;
 }
 
 
-.leaf1 {
+#signup .leaf1 {
     padding-right: 5px
 }
 
 
-.leaf2 {
+#signup .leaf2 {
     padding-left: 5px
 }
 
+#signup .small-text{
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+#signup .small-text a{
+    color: rgb(44, 92, 83);
+    font-weight: 900;
+    font-size: 1rem;
+    font-family: "Neucha", cursive;
+}
 
 

@@ -7,7 +7,7 @@ import "./styles/LogIn.css";
 
 function LogIn(props) {
   return (
-    <div className="login">
+    <div id="login">
       <Form className="formIn" onSubmit={props.onLogIn}>
         <Form.Group>
           <Form.Label>Email address</Form.Label>
@@ -19,7 +19,7 @@ function LogIn(props) {
           <Form.Control type="password" placeholder="Enter Password" name="password" />
         </Form.Group>
 
-        <Form.Text className="text-muted">
+        <Form.Text className="small-text">
           Not a member yet? <Link to="/signup">Sign Up</Link>
         </Form.Text>
 

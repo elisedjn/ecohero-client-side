@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MyCarousel from "./MyCarousel";
-import ExperienceBar from './ExperienceBar'
+import ExperienceBar from "./ExperienceBar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
@@ -70,14 +70,27 @@ class HeroHome extends Component {
                   let start = date + "/" + month;
                   return (
                     <div className="one-task" key={"goals" + i}>
+                    <div className="date-title">
                       <Link to={`/achievement/${achievement._id}`}>
                         <p>{start}</p>
                         <h6>{achievement.challenge.title}</h6>
                       </Link>
+                      </div>
+                      <div className="edit-btn">
+                        <Link to={`/goals-edit/${achievement._id}`}>
+                          <img src="/images/valid.png" alt="Valid" />
+                        </Link>
+                        <a>
+                          <img src="/images/delete.png" alt="Delete" />
+                        </a>
+                      </div>
                     </div>
                   );
                 }
               })}
+              <div className="btn-container">
+            <Link className="btn-add" to="/challenges">Add one more !</Link>
+            </div>
             </div>
           </div>
         </div>

@@ -61,11 +61,6 @@
   color: black;
   margin-right: 10px;
 }
-#goalsSuccess .achiev-container p{
-  font-size: 0.8rem;
-  margin-right: 10px;
-  width: 10%;
-}
 
 #goalsSuccess .achiev-container h6{
   font-weight: bold;
@@ -79,6 +74,7 @@
 #goalsSuccess .achiev-container .edit-btn{
   display: flex;
   min-width: 50px;
+  width: 10%;
 }
 
 #goalsSuccess .btn-add{
@@ -93,4 +89,9 @@
   width: 100%;
   text-align: center;
   margin: 20px 0px 35px 0px;
+}
+
+#goalsSuccess .achiev-container .sharing-logos{
+  min-width: 50px;
+  width: 10%;
 }

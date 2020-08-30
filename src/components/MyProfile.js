@@ -5,14 +5,10 @@ import axios from "axios";
 import { API_URL } from "../config";
 import "./styles/MyProfile.css";
 
-
 class MyProfile extends Component {
-  
-    state = {
-      userAchievements: [],
-    };
-  
- 
+  state = {
+    userAchievements: [],
+  };
 
   componentDidMount() {
     if (this.props.loggedInUser) {
@@ -68,16 +64,17 @@ class MyProfile extends Component {
             </h4>
             {this.state.userAchievements.map((achievement, i) => {
               if (achievement.completed) {
-                let finishDate = new Date(achievement.finishing_date)
-                let date = finishDate.getDate()
-                let month = finishDate.getMonth() + 1
-                let finish = date + "/" + month
+                let finishDate = new Date(achievement.finishing_date);
+                let date = finishDate.getDate();
+                let month = finishDate.getMonth() + 1;
+                let finish = date + "/" + month;
                 return (
                   <div className="one-success" key={"success" + i}>
+                    <p>{finish}</p>
                     <Link to={`/achievement/${achievement._id}`}>
-                        <p>{finish}</p>
-                        <h6>{achievement.challenge.title}</h6>
+                      <h6>{achievement.challenge.title}</h6>
                     </Link>
+                    <div className="sharing-logos">Sharing Logos</div>
                   </div>
                 );
               }

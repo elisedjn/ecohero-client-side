@@ -18,11 +18,11 @@ export default function MyNavBar(props) {
             <Link to="/ranks">Ranks</Link>
             <Link to="/leaderboard">Leaderboard</Link>
             {props.loggedInUser ? (
-              <button onClick={props.onLogOut}>Logout</button>
+              <button className="auth-link" onClick={props.onLogOut}>Logout</button>
             ) : (
               <>
-              <Link to="/signup">Sing Up</Link>
-              <Link to="/login">Login</Link>
+              <Link className="auth-link" to="/signup">Sing Up</Link>
+              <Link className="auth-link" to="/login">Login</Link>
               </>
             )
             }

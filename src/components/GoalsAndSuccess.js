@@ -78,7 +78,7 @@ class GoalsAndSuccess extends Component {
                     <Link to={`/achievement/${achievement._id}`}>
                       <h6>{achievement.challenge.title}</h6>
                     </Link>
-                    <div>Sharing Logos</div>
+                    <div className="sharing-logos">Sharing Logos</div>
                   </div>
                 );
               }
