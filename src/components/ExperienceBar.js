@@ -1,6 +1,6 @@
 import React from 'react'
+import ProgressBar from "react-bootstrap/ProgressBar"
 import "./styles/ExperienceBar.css"
-
 
 
 function ExperienceBar(props) {
@@ -30,24 +30,37 @@ function ExperienceBar(props) {
         points: 100000
     }
 
+    
+
     if (props.loggedInUser.points >= 10000 && props.loggedInUser.points < 25000) {
+        let percentage = (props.loggedInUser.points - chillHero.points)/(smartHero.points - chillHero.points) *100
         return (
             <div>
-              <p className="ranks">{chillHero.title}----------------------{smartHero.title}</p>
+                <div className="ranksContainer">
+                    <p className="ranks">{chillHero.title}</p>
+                    <ProgressBar striped animated variant="success" now={percentage}/>
+                    <p className="ranks">{smartHero.title}</p>
+                </div>
               <p className="points">{props.loggedInUser.points}/{smartHero.points} points</p>    
             </div>
         ) 
     } else if (props.loggedInUser.points >= 25000 && props.loggedInUser.points < 50000) {
+        let percentage = Math.ceil((props.loggedInUser.points - smartHero.points)/(bigHero.points - smartHero.points) *100)
         return (
             <div>
-              <p className="ranks">{smartHero.title}----------------------{bigHero.title}</p>
+                <div className="ranksContainer">
+                    <p className="ranks">{smartHero.title}</p>
+                    <ProgressBar className="progress" striped animated variant="success" now={percentage}/>
+                    <p className="ranks">{bigHero.title}</p>
+                </div>
               <p className="points">{props.loggedInUser.points}/{bigHero.points} points</p>    
             </div>
         ) 
     } else if (props.loggedInUser.points >= 50000 && props.loggedInUser.points < 100000) {
+        let percentage = props.loggedInUser.points/superHero.points * 100
         return (
             <div>
-              <p className="ranks">{bigHero.title}----------------------{superHero.title}</p>
+              <p className="ranks">{bigHero.title} <ProgressBar striped animated variant="success" now={percentage}/> {superHero.title}</p>
               <p className="points">{props.loggedInUser.points}/{superHero.points} points</p>    
             </div>
         ) 
@@ -60,9 +73,10 @@ function ExperienceBar(props) {
         ) 
         
     } else {
+        let percentage = props.loggedInUser.points/chillHero.points * 100
         return (
             <div>
-              <p className="ranks">{newHero.title}----------------------{chillHero.title}</p>
+              <p className="ranks">{newHero.title} <ProgressBar striped animated variant="success" now={percentage}/> {chillHero.title}</p>
               <p className="points">{props.loggedInUser.points}/{chillHero.points} points</p>    
             </div>
         )
@@ -73,3 +87,6 @@ function ExperienceBar(props) {
 }
 
 export default ExperienceBar
+
+
+

@@ -1,0 +1,57 @@
+.listContainer {
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url(/bg01.jpg);
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 70px 20px;
+    font-family: 'Raleway', sans-serif;
+
+   
+   
+}
+
+
+.rankTitle {
+    margin-bottom: 20px;
+    font-family: "Cinzel Decorative", cursive;
+    color: black;
+    text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
+    1px 1px 10px white;
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+
+.rankAlign {
+    margin: 0;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;   
+}
+
+.rankAlign * {
+    margin: 0;
+}
+
+
+.rankContainer {
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 70px;
+    align-content: center;
+}
+
+.perks {
+    font-size: 16px;
+}
+

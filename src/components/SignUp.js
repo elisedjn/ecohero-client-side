@@ -32,7 +32,9 @@ function SignUp(props) {
 
         <div className="loginBtn">
           <Button className="signUpBtnClick" variant="primary" type="submit">
+          <img className="leaf1" src="/plant02.png"/>
             Sign Up
+          <img className="leaf2" src="/plant.png"/>
           </Button>
         </div>
       </Form>

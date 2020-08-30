@@ -30,7 +30,26 @@
 }
 
 .signUpBtnClick {
-    background-color: rgb(2, 66, 2);
-    border: none
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    box-shadow: 0px 5px 15px rgb(44, 92, 83);
+    border: none;
+    padding: 10px 20px;
+    font-size:1.3rem;
+    margin: 10px 0;
 }
+
+.signUpBtnClick img {
+    width: 30px;
+}
+
+.leaf1 {
+    padding-right: 5px
+}
+
+.leaf2 {
+    padding-left: 5px
+}
+
+
 
