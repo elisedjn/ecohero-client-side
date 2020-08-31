@@ -1,4 +1,4 @@
-#goalsSuccess{
+#goalsSuccess {
   background-image: linear-gradient(
         rgba(255, 255, 255, 0.4),
         rgba(255, 255, 255, 0.4)
@@ -12,7 +12,7 @@
     font-family: 'Raleway', sans-serif;
 }
 
-#goalsSuccess .exp-bar{
+#goalsSuccess .exp-bar {
   padding-top: 5px;
   background-color: rgba(255, 255, 255, 0.9);
 }
@@ -46,7 +46,7 @@
 
 
 
-#goalsSuccess .achiev-container{
+#goalsSuccess .achiev-container {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0px 2px 10px rgba(75, 87, 84, 0.5);
   padding: 10px;
@@ -57,21 +57,21 @@
   align-items: center;
 }
 
-#goalsSuccess .achiev-container a{
+#goalsSuccess .achiev-container a { 
   color: black;
   margin-right: 10px;
 }
 
-#goalsSuccess .achiev-container h6{
+#goalsSuccess .achiev-container h6 {
   font-weight: bold;
   margin: 0;
 }
 
-#goalsSuccess .achiev-container img{
+#goalsSuccess .achiev-container img {
   width: 20px;
 }
 
-#goalsSuccess .achiev-container .edit-btn{
+#goalsSuccess .achiev-container .edit-btn {
   display: flex;
   min-width: 50px;
   width: 10%;
@@ -93,13 +93,20 @@
   font-weight: bold;
 }
 
-#goalsSuccess .btn-container{
+#goalsSuccess .btn-container {
   width: 100%;
   text-align: center;
   margin: 20px 0px 35px 0px;
 }
 
-#goalsSuccess .achiev-container .sharing-logos{
+#goalsSuccess .achiev-container .sharing-logos {
   min-width: 50px;
   width: 10%;
 }
+
+#goalsSuccess .searchBar {
+  margin-bottom: 10px;
+}
+
+
+

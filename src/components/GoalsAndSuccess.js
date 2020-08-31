@@ -5,13 +5,16 @@ import { API_URL } from "../config";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 import "./styles/GoalsAndSucces.css";
 
 class GoalsAndSuccess extends Component {
   state = {
     userAchievements: [],
     showDeletePopup: false,
-    targetedAchievID: null
+    targetedAchievID: null,
+    filteredAchievements: []
   };
 
   componentDidMount() {
@@ -23,6 +26,8 @@ class GoalsAndSuccess extends Component {
         .then((res) => {
           this.setState({
             userAchievements: res.data,
+            filteredAchievements: res.data
+
           });
         });
     }
@@ -69,6 +74,17 @@ class GoalsAndSuccess extends Component {
       })
   };
 
+  handleSearchAch = (e) => {
+    let searchAch = e.currentTarget.value.toLowerCase()
+    let cloneUserAchievements = this.state.userAchievements.filter((item) => {
+      return (item.completed===true && (item.challenge.title.toLowerCase().includes(searchAch) || item.challenge.description.toLowerCase().includes(searchAch)))
+    })
+    this.setState({
+      filteredAchievements: cloneUserAchievements
+    })
+    
+  }
+  
   render() {
     if (!this.state.userAchievements || !this.props.loggedInUser) {
       return (
@@ -125,18 +141,32 @@ class GoalsAndSuccess extends Component {
             </div>
           </div>
 
+         
+        
           <div>
             <h4 className="subtitle">
               <img src="/images/plant02.png" alt="o" />
               You already nailed it!
             </h4>
-            {this.state.userAchievements.filter((e) => e.completed === true)
-              .length === 0 ? (
-              <div>No Success yet... </div>
-            ) : (
-              ""
-            )}
-            {this.state.userAchievements.map((achievement, i) => {
+
+            <InputGroup className="mb-3 searchBar">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="basic-addon1">&#128270;</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            onChange={this.handleSearchAch}
+            placeholder="Search for a success"
+            aria-label="Search for a success"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+
+
+            {
+                this.state.filteredAchievements.filter(e => e.completed === true).length === 0 ? <div>No Success yet... </div> : ""
+            }
+           
+            {this.state.filteredAchievements.map((achievement, i) => {
               if (achievement.completed) {
                 return (
                   <div className="achiev-container" key={"success" + i}>

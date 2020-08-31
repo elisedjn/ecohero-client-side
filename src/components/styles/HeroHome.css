@@ -32,6 +32,7 @@
 #heroHome .header{
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 10px;
 }
 #heroHome .header h5{
   font-family: "Cinzel Decorative", cursive;
@@ -136,7 +137,7 @@
 #heroHome .see-all{
   color: black;
   text-decoration: underline;
-  padding: 10px 0px 20px 0px;
+  padding-bottom: 20px;
   font-weight: bold;
 }
 
@@ -156,6 +157,7 @@
 #heroHome .btn-container{
   width: 100%;
   text-align: center;
+  margin-top: 20px;
 }
 
 #heroHome .carousel-container{

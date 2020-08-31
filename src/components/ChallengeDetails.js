@@ -39,9 +39,15 @@ class ChallengeDetails extends Component {
           <img src="/images/plant02.png" alt="o"  />Why is it helpful?
           </h5>
           <p>{this.state.challenge.fact}</p>
-          <div className="addGoalBtn">
-            <AddToMyGoals challenge={this.state.challenge._id} />
-          </div>
+
+          {
+            this.props.loggedInUser ? (
+              <div className="addGoalBtn">
+                <AddToMyGoals challenge={this.state.challenge._id} />
+              </div>
+            ) : ""
+          }
+      
         </div>       
       </div>
     );

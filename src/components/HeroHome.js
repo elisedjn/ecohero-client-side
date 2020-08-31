@@ -34,8 +34,6 @@ class HeroHome extends Component {
   }
 
   componentDidUpdate(newProps) {
-    console.log("New Props", newProps)
-    console.log("this.props", this.props.loggedInUser)
     if (!newProps.loggedInUser) {
       this.getUserAchievements()
     }
@@ -106,8 +104,10 @@ class HeroHome extends Component {
               {
                 this.state.userAchievements.length === 0 ? <div>You don't have any goal set yet... </div> : ""
               }
-              {this.state.userAchievements.slice(0, 2).map((achievement, i) => {
+              {
+                this.state.userAchievements.slice(0, 3).map((achievement, i) => {
                 if (!achievement.completed) {
+                  console.log(achievement)
                   let startDate = new Date(achievement.starting_date);
                   let date = startDate.getDate();
                   let month = startDate.getMonth() + 1;
