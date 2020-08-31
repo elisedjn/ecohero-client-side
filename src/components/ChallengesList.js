@@ -89,7 +89,7 @@ class ChallengesList extends Component {
         </Modal.Header>
         <Modal.Body>Achieve Smart Hero rank in order to do that	&#x1F609; </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleClose}>
+          <Button variant="success" onClick={this.handleClose}>
             Ok, got it
           </Button>
         </Modal.Footer>

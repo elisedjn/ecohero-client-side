@@ -77,6 +77,14 @@
   width: 10%;
 }
 
+#goalsSuccess .edit-btn button{
+  border:none;
+  margin:0;
+  padding:0;
+  background-color: transparent;
+  outline: none;
+}
+
 #goalsSuccess .btn-add{
   background-color: rgb(118, 169, 49);
   color: white;

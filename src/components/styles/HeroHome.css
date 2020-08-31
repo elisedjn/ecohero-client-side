@@ -32,6 +32,7 @@
 #heroHome .header{
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 10px;
 }
 #heroHome .header h5{
   font-family: "Cinzel Decorative", cursive;
@@ -125,6 +126,26 @@
   margin-right: 5px;
 }
 
+#heroHome .edit-btn button{
+  border:none;
+  margin:0;
+  padding:0;
+  background-color: transparent;
+  outline: none;
+}
+
+#heroHome .see-all{
+  color: black;
+  text-decoration: underline;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+#heroHome .see-all a{
+  color: black;
+  font-weight: bold;
+}
+
 #heroHome .btn-add{
   background-color: rgb(118, 169, 49);
   color: white;
@@ -136,7 +157,7 @@
 #heroHome .btn-container{
   width: 100%;
   text-align: center;
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 #heroHome .carousel-container{
