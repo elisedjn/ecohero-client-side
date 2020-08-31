@@ -45,8 +45,8 @@
     color: black;
     box-shadow: 0px 5px 15px rgb(44, 92, 83);
     border: none;
-    padding: 10px 30px 10px 20px;
-    font-size:1.3rem;
+    padding: 10px 20px 10px 20px;
+    font-size:1rem;
     margin: 10px 0;
 }
 
@@ -61,17 +61,22 @@
 
 
 #createChallenge .imageBtn1 {
-    width: 30px;
+    width: 25px;
     padding-right: 5px;
 }
 
 
 #createChallenge .imageBtn2 {
-    width: 30px;
+    width: 25px;
     padding-left: 5px;
 }
 
 
 #createChallenge .inputs {
     border: 1px solid grey;
+}
+
+#createChallenge .rules {
+    padding-left: 20px;
+    padding-right: 20px;
 }

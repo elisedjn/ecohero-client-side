@@ -57,7 +57,7 @@ class ChallengesList extends Component {
     }
     return (
       <div id="challenges">
-      <h3 className="challengesTitle">Goals</h3>
+      <h3 className="challengesTitle">Challenges</h3>
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text id="basic-addon1">&#128270;</InputGroup.Text>

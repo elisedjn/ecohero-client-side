@@ -38,7 +38,7 @@ function ExperienceBar(props) {
             <div>
                 <div className="ranksContainer">
                     <p className="ranks">{chillHero.title}</p>
-                    <ProgressBar className="progress" striped animated variant="success" now={percentage}/>
+                    <ProgressBar className="progress" striped variant="success" now={percentage}/>
                     <p className="ranks">{smartHero.title}</p>
                 </div>
               <p className="points">{props.loggedInUser.points}/{smartHero.points} points</p>    
@@ -51,7 +51,7 @@ function ExperienceBar(props) {
             <div>
                 <div className="ranksContainer">
                     <p className="ranks">{smartHero.title}</p>
-                    <ProgressBar className="progress" striped animated variant="success" now={percentage}/>
+                    <ProgressBar className="progress" striped variant="success" now={percentage}/>
                     <p className="ranks">{bigHero.title}</p>
                 </div>
               <p className="points">{props.loggedInUser.points}/{bigHero.points} points</p>    
@@ -64,7 +64,7 @@ function ExperienceBar(props) {
             <div>
                 <div className="ranksContainer">
                     <p className="ranks">{bigHero.title}</p> 
-                    <ProgressBar className="progress" striped animated variant="success" now={percentage}/> 
+                    <ProgressBar className="progress" striped variant="success" now={percentage}/> 
                     <p className="ranks">{superHero.title}</p>
                 </div>
               <p className="points">{props.loggedInUser.points}/{superHero.points} points</p>    
@@ -85,7 +85,7 @@ function ExperienceBar(props) {
             <div>
                 <div className="ranksContainer">
                     <p className="ranks">{newHero.title}</p> 
-                    <ProgressBar className="progress" striped animated variant="success" now={percentage}/> 
+                    <ProgressBar className="progress" striped variant="success" now={percentage}/> 
                     <p className="ranks">{chillHero.title}</p> 
                 </div>
               <p className="points">{props.loggedInUser.points}/{chillHero.points} points</p>    

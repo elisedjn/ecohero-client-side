@@ -43,9 +43,6 @@ class HeroHome extends Component {
             <div>
               <div className="users-info">
                 <h5>{this.props.loggedInUser.username}</h5>
-                <Link to="/profile/edit">
-                  <img src="/images/edit.png" alt="Edit" />
-                </Link>
               </div>
               <div className="points-info">
                 <p className="total-rank">{this.props.loggedInUser.rank}</p>
@@ -62,7 +59,7 @@ class HeroHome extends Component {
               Your EcoHero Tasks
             </h4>
             <div>
-              {this.state.userAchievements.map((achievement, i) => {
+              {this.state.userAchievements.slice(0, 3).map((achievement, i) => {
                 if (!achievement.completed) {
                   let startDate = new Date(achievement.starting_date);
                   let date = startDate.getDate();

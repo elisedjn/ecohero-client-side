@@ -29,12 +29,10 @@ class Leaderboard extends Component {
           {this.state.users.map((user) => {
             const { username, points, _id } = user;
             return (
-              <Link to={`/user/${_id}`}>
-              <div className="listItems">
+              <Link  className="listItems" to={`/user/${_id}`}>
                   <li>
                     {username} {points} points
-                  </li>
-                  </div>
+                  </li> 
               </Link>
             );
           })}

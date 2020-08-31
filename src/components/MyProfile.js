@@ -38,48 +38,31 @@ class MyProfile extends Component {
       <div id="myProfile">
         <h3 className="title">Your Profile</h3>
         <div className="white-card">
-          <div className="header">
+
+          <div className="profilePic">
             <img src={this.props.loggedInUser.image} alt="Avatar" />
-            <div>
+          </div>
+             
+            <div className="infoContainer">
               <div className="users-info">
-                <h5>{this.props.loggedInUser.username}</h5>
-                <Link to="/profile/edit">
-                  <img src="/images/edit.png" alt="Edit" />
-                </Link>
+                <p><strong>Name:</strong> {this.props.loggedInUser.username}</p>  
               </div>
               <div className="points-info">
-                <p className="total-rank">{this.props.loggedInUser.rank}</p>
-                <p className="total-points">
-                  - {this.props.loggedInUser.points} points
-                </p>
+                <p className="total-rank"><strong>Rank:</strong> {this.props.loggedInUser.rank} - {this.props.loggedInUser.points} points</p> 
               </div>
             </div>
-          </div>
           <ExperienceBar loggedInUser={this.props.loggedInUser} />
+          
 
-          <div className="your-success">
-            <h4>
-              <img src="/images/plant02.png" />
-              Your Success
-            </h4>
-            {this.state.userAchievements.map((achievement, i) => {
-              if (achievement.completed) {
-                let finishDate = new Date(achievement.finishing_date);
-                let date = finishDate.getDate();
-                let month = finishDate.getMonth() + 1;
-                let finish = date + "/" + month;
-                return (
-                  <div className="one-success" key={"success" + i}>
-                    <p>{finish}</p>
-                    <Link to={`/achievement/${achievement._id}`}>
-                      <h6>{achievement.challenge.title}</h6>
-                    </Link>
-                    <div className="sharing-logos">Sharing Logos</div>
-                  </div>
-                );
-              }
-            })}
+          <div className="edit-btn">
+              <Link to="/profile/edit">
+                <img src="/images/edit.png" alt="Valid" />Edit
+              </Link>
+              <a>
+                <img src="/images/delete.png" alt="Delete" />Delete
+              </a>
           </div>
+
         </div>
       </div>
     );
