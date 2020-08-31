@@ -73,12 +73,12 @@ class GoalsEdit extends Component {
 
           <h5 className="subtitle">
               {" "}
-              <img src="/images/plant02.png" /> How to complete this goal?
+              <img src="/images/plant02.png" alt="o"  /> How to complete this goal?
             </h5>
           <p>{challenge.description}</p>
           <h5 className="subtitle">
               {" "}
-              <img src="/images/plant02.png" /> Before you valid this goal
+              <img src="/images/plant02.png" alt="o"  /> Before you valid this goal
             </h5>
           <label htmlFor="image">1. Download a picture :</label>
           {image ? <img src={image} alt="Avatar" /> : ""}

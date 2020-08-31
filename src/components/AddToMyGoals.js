@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import Button from "react-bootstrap/Button";
-import {withRouter} from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal'
+import { withRouter } from "react-router-dom";
 import "./styles/AddToMyGoals.css";
 
 class AddToMyGoals extends Component {
   state = {
     loggedInUser: null,
-    userGoals: []
+    userGoalsIds: [],
+    showPopUp: false
   };
 
   componentDidMount() {
@@ -16,39 +18,75 @@ class AddToMyGoals extends Component {
       axios
         .get(`${API_URL}/auth/user`, { withCredentials: true })
         .then((res) => {
-          axios.get(`${API_URL}/users/${res.data._id}`, { withCredentials: true })
+          axios
+            .get(`${API_URL}/users/${res.data._id}`, { withCredentials: true })
             .then((user) => {
-              axios.get(`${API_URL}/achievements/user/${user.data._id}`, { withCredentials: true })
+              axios
+                .get(`${API_URL}/achievements/user/${user.data._id}`, {
+                  withCredentials: true,
+                })
                 .then((achiev) => {
-                  let goals = achiev.data.filter(e => e.completed === false)
-                  console.log(goals)
+                  let goalsFull = achiev.data.filter((e) => {
+                    return e.completed === false;
+                  });
+                  let goals = goalsFull.map((e) => e.challenge._id);
                   this.setState({
                     loggedInUser: user.data,
-                    userGoals : goals
+                    userGoalsIds: goals,
                   });
-                })
-            })
+                });
+            });
         });
     }
   }
 
   handleClick = () => {
-
-    axios.post(
-        `${API_URL}/achievements/create/${this.props.challenge}/${this.state.loggedInUser._id}`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) => {
-        this.props.history.push('/goals-success')
+    if (this.state.userGoalsIds.includes(this.props.challenge)) {
+      console.log("You already have this challenge ongoing");
+      this.setState({
+        showPopUp: true
       });
+    } else {
+      axios
+        .post(
+          `${API_URL}/achievements/create/${this.props.challenge}/${this.state.loggedInUser._id}`,
+          {},
+          { withCredentials: true }
+        )
+        .then((res) => {
+          this.props.history.push("/goals-success");
+        });
+    }
+  };
+
+  handleClose = () => {
+    this.setState({
+      showPopUp:false
+    })
   }
 
   render() {
-    return <Button className="addThisGoalBtn" onClick={this.handleClick}>
-           <img src="/images/valid.png" alt="Valid" />
-           Add this Goal!
-           </Button>;
+    return (
+      <>
+        <Button className="addThisGoalBtn" onClick={this.handleClick}>
+          <img src="/images/valid.png" alt="Valid" />
+          Add this Goal!
+        </Button>
+        <Modal show={this.state.showPopUp} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Not yet!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            You already have this challenge in your on going Goals. Finish it before to do it again. &#x1F609;{" "}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Ok, got it
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
   }
 }
 

@@ -43,9 +43,12 @@ class GoalsAndSuccess extends Component {
         <div className="white-card">
           <div className="goals">
             <h4 className="subtitle">
-              <img src="/images/plant02.png" />
+              <img src="/images/plant02.png" alt="o"/>
               Your EcoHero Tasks
             </h4>
+            {
+                this.state.userAchievements.filter(e => e.completed === false).length === 0 ? <div>You don't have any goal set yet... </div> : ""
+              }
             {this.state.userAchievements.map((achievement, i) => {
               if (!achievement.completed) {
                 return (
@@ -55,7 +58,7 @@ class GoalsAndSuccess extends Component {
                     </Link>
                     <div className="edit-btn">
                       <Link to={`/goals-edit/${achievement._id}`}><img src="/images/valid.png" alt="Valid" /></Link>
-                      <a><img src="/images/delete.png" alt="Delete" /></a>
+                      <a href="/"><img src="/images/delete.png" alt="Delete" /></a>
                     </div>
                   </div>
                 );
@@ -68,9 +71,12 @@ class GoalsAndSuccess extends Component {
 
           <div>
             <h4 className="subtitle">
-              <img src="/images/plant02.png" />
+              <img src="/images/plant02.png" alt="o" />
               You already nailed it!
             </h4>
+            {
+                this.state.userAchievements.filter(e => e.completed === true).length === 0 ? <div>No Success yet... </div> : ""
+              }
             {this.state.userAchievements.map((achievement, i) => {
               if (achievement.completed) {
                 return (

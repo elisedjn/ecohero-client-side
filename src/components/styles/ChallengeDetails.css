@@ -3,7 +3,7 @@
         rgba(255, 255, 255, 0.4),
         rgba(255, 255, 255, 0.4)
       ),
-      url(/images/bg01.jpg);
+      url(/images/bg02.jpg);
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
@@ -18,12 +18,18 @@
     margin: auto;
     border-radius: 3px;
     box-shadow: 0px 5px 15px rgb(44, 92, 83);
-    padding: 20px;
+    padding: 5px 20px;
     padding-bottom: 10px;
   }
 
 #challengeDetails .header{
+    padding-top: 10px;
     text-align: center;
+}
+
+#challengeDetails .back-btn{
+    width: 20px;
+    margin-left: -15px;
 }
 
 #challengeDetails .header h4{

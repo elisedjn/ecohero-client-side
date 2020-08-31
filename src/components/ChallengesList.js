@@ -71,13 +71,13 @@ class ChallengesList extends Component {
         </InputGroup>
         {
           this.props.loggedInUser ? (
-            <Button className="bouncy" onClick={this.handleCreateClick}><img className="plantL" src="/images/plant02.png"/>Create a Challenge<img className="plantR" src="/images/plant.png"/></Button>
+            <Button className="bouncy" onClick={this.handleCreateClick}><img className="plantL" src="/images/plant02.png" alt="o" />Create a Challenge<img className="plantR" src="/images/plant.png" alt="o" /></Button>
           ) : ''
         }
         {this.state.filteredChallenges.map((challenge, i) => {
           return (
-            <div className="one-success-container">
-              <div className="one-success" key={"challenge" + i}>
+            <div className="one-success-container" key={"challenge" + i}>
+              <div className="one-success" >
                 <Link className="link" to={`/challenge/${challenge._id}`}><p>{challenge.title} - <strong>{challenge.points} points</strong></p></Link>
               </div>
             </div>

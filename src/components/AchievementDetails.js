@@ -42,17 +42,17 @@ class AchievementDetails extends Component {
 
           {this.state.achievement.completed ? (
             <h5 className="subtitle">
-              <img src="/images/plant02.png" /> The task you fulfilled :{" "}
+              <img src="/images/plant02.png" alt="o"  /> The task you fulfilled :{" "}
             </h5>
           ) : (
             <h5 className="subtitle">
               {" "}
-              <img src="/images/plant02.png" /> How to complete this goal?
+              <img src="/images/plant02.png" alt="o"  /> How to complete this goal?
             </h5>
           )}
           <p>{this.state.achievement.challenge.description}</p>
           <h5 className="subtitle">
-            <img src="/images/plant02.png" /> Why is it helpful?
+            <img src="/images/plant02.png" alt="o"  /> Why is it helpful?
           </h5>
           <p>{this.state.achievement.challenge.fact}</p>
           <p className="date"><strong>Started :</strong> {start}</p>
@@ -62,7 +62,7 @@ class AchievementDetails extends Component {
               <img
                 className="d-block achiev-image"
                 src={this.state.achievement.image}
-                alt="Uplaoded image"
+                alt="Uplaoded"
               />
             </>
           ) : (
@@ -70,7 +70,7 @@ class AchievementDetails extends Component {
               <Link to={`/goals-edit/${this.state.achievement._id}`}>
                 <img src="/images/valid.png" alt="Valid" /> Complete it
               </Link>
-              <a>
+              <a href="/">
                 <img src="/images/delete.png" alt="Delete" /> Delete it
               </a>
             </div>

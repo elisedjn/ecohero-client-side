@@ -59,7 +59,7 @@ class MyProfile extends Component {
 
           <div className="your-success">
             <h4>
-              <img src="/images/plant02.png" />
+              <img src="/images/plant02.png" alt="o" />
               Your Success
             </h4>
             {this.state.userAchievements.map((achievement, i) => {

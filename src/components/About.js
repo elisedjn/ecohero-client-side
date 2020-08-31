@@ -8,7 +8,7 @@ function About() {
       <div className="white-bg">
         <div className="subtitle">Hello world!</div>
         <p className="about-text">
-          We are <a href="https://www.linkedin.com/in/elise-dujardin/" target="_blank">Elise Dujardin</a> & <a href="https://www.linkedin.com/in/joel-roca-martinez-80b63629/" target="_blank">Joel Roca Martinez</a> - Web Developers & IronHackers - and we are
+          We are <a href="https://www.linkedin.com/in/elise-dujardin/" target="_blank" rel="noopener noreferrer" >Elise Dujardin</a> & <a href="https://www.linkedin.com/in/joel-roca-martinez-80b63629/" target="_blank" rel="noopener noreferrer" >Joel Roca Martinez</a> - Web Developers & IronHackers - and we are
           super excited to have you here!
         </p>
         <p className="about-text">

@@ -58,10 +58,13 @@ class HeroHome extends Component {
           <ExperienceBar loggedInUser={this.props.loggedInUser} />
           <div className="your-tasks">
             <h4>
-              <img src="/images/plant02.png" />
+              <img src="/images/plant02.png" alt="o"  />
               Your EcoHero Tasks
             </h4>
             <div>
+              {
+                this.state.userAchievements.length === 0 ? <div>You don't have any goal set yet... </div> : ""
+              }
               {this.state.userAchievements.map((achievement, i) => {
                 if (!achievement.completed) {
                   let startDate = new Date(achievement.starting_date);
@@ -80,7 +83,7 @@ class HeroHome extends Component {
                         <Link to={`/goals-edit/${achievement._id}`}>
                           <img src="/images/valid.png" alt="Valid" />
                         </Link>
-                        <a>
+                        <a href='/'>
                           <img src="/images/delete.png" alt="Delete" />
                         </a>
                       </div>

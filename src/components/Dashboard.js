@@ -8,13 +8,13 @@ function Dashboard() {
     <div>
       <Nav id="dashboard" activeKey="/home">
         <Nav.Item>
-          <Link to="/hero-home"> <img src="/images/home.png"/> Hero Home </Link>
+          <Link to="/hero-home"> <img src="/images/home.png" alt='hero-home'/> Hero Home </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/goals-success"> <img src="/images/goal.png"/>  Goals & Success </Link>
+          <Link to="/goals-success"> <img src="/images/goal.png" alt='goals & success'/>  Goals & Success </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/profile"> <img src="/images/user.png"/> Profile </Link>
+          <Link to="/profile"> <img src="/images/user.png" alt='profile'/> Profile </Link>
         </Nav.Item>
       </Nav>
     </div>

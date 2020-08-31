@@ -33,9 +33,9 @@ function CreateChallForm(props) {
           </Form.Text>
 
           <Button className="createBtn" variant="primary" type="submit">
-          <img className="imageBtn1" src="/images/plant02.png" />
+          <img className="imageBtn1" src="/images/plant02.png" alt="o"  />
             Create Challenge
-          <img className="imageBtn2" src="/images/plant.png" />
+          <img className="imageBtn2" src="/images/plant.png" alt="o"  />
           </Button>
         </Form>
       </div>

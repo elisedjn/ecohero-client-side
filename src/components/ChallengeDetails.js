@@ -26,16 +26,17 @@ class ChallengeDetails extends Component {
     return (
       <div id="challengeDetails">
         <div className="white-card">
+          <a href="/challenges"><img src="/images/back.png" alt="Back" className="back-btn"/></a>
           <div className="header">
             <h4 className="challengeDetailTitle">{this.state.challenge.title}</h4>
             <p>{this.state.challenge.points} points</p>
           </div>
           <h5 className="subtitle">
-          <img src="/images/plant02.png" />How to complete this goal?
+          <img src="/images/plant02.png" alt="o" />How to complete this goal?
           </h5>
           <p>{this.state.challenge.description}</p>
           <h5 className="subtitle">
-          <img src="/images/plant02.png" />Why is it helpful?
+          <img src="/images/plant02.png" alt="o"  />Why is it helpful?
           </h5>
           <p>{this.state.challenge.fact}</p>
           <div className="addGoalBtn">
