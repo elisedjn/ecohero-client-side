@@ -62,7 +62,7 @@ class HeroHome extends Component {
               {
                 this.state.userAchievements.length === 0 ? <div>You don't have any goal set yet... </div> : ""
               }
-              {this.state.userAchievements.slice(0, 3).map((achievement, i) => {
+              {this.state.userAchievements.slice(0, 2).map((achievement, i) => {
                 if (!achievement.completed) {
                   let startDate = new Date(achievement.starting_date);
                   let date = startDate.getDate();

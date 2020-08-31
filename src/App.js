@@ -305,7 +305,7 @@ class App extends React.Component {
           <Route
             path="/challenge/:challengeID"
             render={(routeProps) => {
-              return <ChallengeDetails {...routeProps} />;
+              return <ChallengeDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
             }}
           />
           <Route
