@@ -98,7 +98,7 @@ class GoalsAndSuccess extends Component {
               You already nailed it!
             </h4>
 
-            <InputGroup className="mb-3 searchBar">
+          <InputGroup className="mb-3 searchBar">
           <InputGroup.Prepend>
             <InputGroup.Text id="basic-addon1">&#128270;</InputGroup.Text>
           </InputGroup.Prepend>
@@ -108,7 +108,7 @@ class GoalsAndSuccess extends Component {
             aria-label="Search for a success"
             aria-describedby="basic-addon1"
           />
-        </InputGroup>
+          </InputGroup>
 
             {
                 this.state.filteredAchievements.filter(e => e.completed === true).length === 0 ? <div>No Success yet... </div> : ""
