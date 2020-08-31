@@ -90,7 +90,15 @@ class GoalsAndSuccess extends Component {
             </div>
           </div>
 
-          <InputGroup className="mb-4">
+         
+        
+          <div>
+            <h4 className="subtitle">
+              <img src="/images/plant02.png" alt="o" />
+              You already nailed it!
+            </h4>
+
+            <InputGroup className="mb-3 searchBar">
           <InputGroup.Prepend>
             <InputGroup.Text id="basic-addon1">&#128270;</InputGroup.Text>
           </InputGroup.Prepend>
@@ -101,12 +109,7 @@ class GoalsAndSuccess extends Component {
             aria-describedby="basic-addon1"
           />
         </InputGroup>
-        
-          <div>
-            <h4 className="subtitle">
-              <img src="/images/plant02.png" alt="o" />
-              You already nailed it!
-            </h4>
+
             {
                 this.state.filteredAchievements.filter(e => e.completed === true).length === 0 ? <div>No Success yet... </div> : ""
             }
