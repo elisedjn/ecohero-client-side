@@ -80,7 +80,7 @@ class AddToMyGoals extends Component {
             You already have this challenge in your on going Goals. Finish it before to do it again. &#x1F609;{" "}
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
+            <Button variant="success" onClick={this.handleClose}>
               Ok, got it
             </Button>
           </Modal.Footer>

@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Modal from 'react-bootstrap/Modal';
 import "./styles/GoalsEdit.css";
 
 class GoalsEdit extends Component {
   state = {
     achievement: null,
+    showPopUp: false
+
   };
 
   componentDidMount() {
@@ -48,6 +52,18 @@ class GoalsEdit extends Component {
       this.setState({
         achievement: updatedAchievement,
       });
+  }
+
+  handleClick = () => {
+    this.setState({
+      showPopUp: true
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      showPopUp:false
+    })
   }
 
   render() {
@@ -93,12 +109,28 @@ class GoalsEdit extends Component {
           <input name="finishing_date" type="date" onChange={this.handleDateChange} />
 
           <div className="edit-btn">
-              <button onClick={() => this.props.onUpdate(this.state.achievement)}
+              <button onClick={this.handleClick}
             type="submit">
                 <img src="/images/valid.png" alt="Valid" /> Completed !
               </button>
           </div>
         </div>
+        <Modal show={this.state.showPopUp} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Are you sure?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            If you complete this goal, it will directly go to your success and you won't be able to edit it again. Are you sure you are ready to complete this goal?
+          </Modal.Body>
+          <Modal.Footer>
+          <Button variant="danger" onClick={this.handleClose}>
+              No, not yet.
+            </Button>
+            <Button variant="success" onClick={() => this.props.onUpdate(this.state.achievement)}>
+              Yes, I'm sure!
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

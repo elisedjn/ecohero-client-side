@@ -4,16 +4,19 @@ import ExperienceBar from "./ExperienceBar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
+import Button from "react-bootstrap/Button";
+import Modal from 'react-bootstrap/Modal';
 import "./styles/HeroHome.css";
 
 class HeroHome extends Component {
   state = {
     userAchievements: [],
+    showDeletePopup: false,
+    targetedAchievID: null
   };
 
-  componentDidMount() {
-    if (this.props.loggedInUser) {
-      axios
+  getUserAchievements = () => {
+    axios
         .get(`${API_URL}/achievements/user/${this.props.loggedInUser._id}`, {
           withCredentials: true,
         })
@@ -22,8 +25,49 @@ class HeroHome extends Component {
             userAchievements: res.data,
           });
         });
+  }
+
+  componentDidMount() {
+    if (this.props.loggedInUser) {
+      this.getUserAchievements()
     }
   }
+
+  componentDidUpdate(newProps) {
+    console.log("New Props", newProps)
+    console.log("this.props", this.props.loggedInUser)
+    if (!newProps.loggedInUser) {
+      this.getUserAchievements()
+    }
+  }
+
+  handleClick = (achievID) => {
+    this.setState({
+      showDeletePopup: true,
+      targetedAchievID: achievID
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      showDeletePopup:false
+    })
+  }
+
+  handleDelete = (achievID) => {
+    axios.delete(`${API_URL}/achievements/${achievID}`, {withCredentials: true})
+      .then((res) => {
+        let clonedUserAchiev = JSON.parse(JSON.stringify(this.state.userAchievements))
+        clonedUserAchiev.forEach((e, i) => {
+          if(e._id === res.data._id)  clonedUserAchiev.splice(i, 1)
+        })
+        console.log(clonedUserAchiev)
+        this.setState({
+          userAchievements: clonedUserAchiev,
+          showDeletePopup:false
+        })
+      })
+  };
 
   render() {
     if (!this.state.userAchievements || !this.props.loggedInUser) {
@@ -62,7 +106,7 @@ class HeroHome extends Component {
               {
                 this.state.userAchievements.length === 0 ? <div>You don't have any goal set yet... </div> : ""
               }
-              {this.state.userAchievements.slice(0, 3).map((achievement, i) => {
+              {this.state.userAchievements.slice(0, 2).map((achievement, i) => {
                 if (!achievement.completed) {
                   let startDate = new Date(achievement.starting_date);
                   let date = startDate.getDate();
@@ -80,16 +124,21 @@ class HeroHome extends Component {
                         <Link to={`/goals-edit/${achievement._id}`}>
                           <img src="/images/valid.png" alt="Valid" />
                         </Link>
-                        <a href='/'>
-                          <img src="/images/delete.png" alt="Delete" />
-                        </a>
+                        <button
+                        onClick={() => this.handleClick(achievement._id)}
+                      >
+                        <img src="/images/delete.png" alt="Delete" />
+                      </button>
                       </div>
                     </div>
                   );
                 }
               })}
               <div className="btn-container">
-            <Link className="btn-add" to="/challenges">Add one more !</Link>
+              {
+                this.state.userAchievements.filter(e => e.completed === false).length > 2 ? <div className="see-all"> <Link to="/goals-success" > See all my goals</Link> </div> : ""
+              }
+              <Link className="btn-add" to="/challenges">Add one more !</Link>
             </div>
             </div>
           </div>
@@ -99,6 +148,23 @@ class HeroHome extends Component {
           <h4 className="carousel-title">Get Inspired</h4>
           <MyCarousel />
         </div>
+
+        <Modal show={this.state.showDeletePopup} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Are you sure?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Are you sure you want to delete this goal from your list ?
+          </Modal.Body>
+          <Modal.Footer>
+          <Button variant="danger" onClick={this.handleClose}>
+              No, not yet.
+            </Button>
+            <Button variant="success" onClick={() => this.handleDelete(this.state.targetedAchievID)}>
+              Yes, I'm sure!
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

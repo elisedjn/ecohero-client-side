@@ -125,6 +125,26 @@
   margin-right: 5px;
 }
 
+#heroHome .edit-btn button{
+  border:none;
+  margin:0;
+  padding:0;
+  background-color: transparent;
+  outline: none;
+}
+
+#heroHome .see-all{
+  color: black;
+  text-decoration: underline;
+  padding: 10px 0px 20px 0px;
+  font-weight: bold;
+}
+
+#heroHome .see-all a{
+  color: black;
+  font-weight: bold;
+}
+
 #heroHome .btn-add{
   background-color: rgb(118, 169, 49);
   color: white;
@@ -136,7 +156,6 @@
 #heroHome .btn-container{
   width: 100%;
   text-align: center;
-  margin-top:20px;
 }
 
 #heroHome .carousel-container{
