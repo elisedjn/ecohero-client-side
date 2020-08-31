@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ExperienceBar from "./ExperienceBar";
 import axios from "axios";
+import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
 import { API_URL } from "../config";
 import "./styles/MyProfile.css";
 
 class MyProfile extends Component {
   state = {
     userAchievements: [],
+    showDeletePopup: false,
   };
 
   componentDidMount() {
@@ -23,6 +26,26 @@ class MyProfile extends Component {
         });
     }
   }
+
+  handleClick = () => {
+    this.setState({
+      showDeletePopup: true
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      showDeletePopup:false
+    })
+  }
+
+  handleDeleteUser = () => {
+    axios.delete(`${API_URL}/users/${this.props.loggedInUser._id}`, {withCredentials: true})
+      .then((res) => {
+        this.props.history.push('/')
+      })
+  };
+
 
   render() {
     if (!this.state.userAchievements || !this.props.loggedInUser) {
@@ -58,12 +81,30 @@ class MyProfile extends Component {
               <Link to="/profile/edit">
                 <img src="/images/edit.png" alt="Valid" />Edit
               </Link>
-              <a>
+              <button className="deleteUser" onClick={this.handleClick}>
                 <img src="/images/delete.png" alt="Delete" />Delete
-              </a>
+              </button>
           </div>
-
         </div>
+        <Modal show={this.state.showDeletePopup} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Are you sure?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Are you sure you want to delete this account ?
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={this.handleClose}>
+              No, not yet.
+            </Button>
+            <Button
+              variant="success"
+              onClick={this.handleDeleteUser}
+            >
+              Yes, I'm sure!
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
