@@ -34,9 +34,12 @@ class App extends React.Component {
       axios
         .get(`${API_URL}/auth/user`, { withCredentials: true })
         .then((res) => {
-          this.setState({
-            loggedInUser: res.data,
-          });
+          axios.get(`${API_URL}/users/${res.data._id}`, { withCredentials: true })
+            .then((user) => {
+              this.setState({
+                loggedInUser: user.data,
+              });
+            })
         });
     }
   }
@@ -163,21 +166,18 @@ class App extends React.Component {
       image: image,
       finishing_date: finishing_date,
     };
-    console.log("id", _id);
-    console.log("updatedSuccess", updatedSuccess);
     axios.patch(`${API_URL}/achievements/${_id}`, updatedSuccess, {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
-        let pointsToAdd = res.data.points;
+        let pointsToAdd = res.data.challenge.points;
         let clonedUser = JSON.parse(JSON.stringify(this.state.loggedInUser));
-        let newPoints = clonedUser.points + pointsToAdd;
-        console.log(newPoints)
-        let newRank = this.handleRank(newPoints);
+        clonedUser.points += pointsToAdd;
+        let newRank = this.handleRank(clonedUser.points);
         if(clonedUser.rank !== newRank) {
           clonedUser.rank = newRank
         }
+        console.log(clonedUser)
         axios.patch(`${API_URL}/users/${this.state.loggedInUser._id}/edit`, clonedUser, { withCredentials: true })
           .then((response) => {
             this.setState({

@@ -80,8 +80,8 @@ class GoalsEdit extends Component {
               {" "}
               <img src="/images/plant02.png" /> Before you valid this goal
             </h5>
-          {image ? <img src={image} alt="Avatar" /> : ""}
           <label htmlFor="image">1. Download a picture :</label>
+          {image ? <img src={image} alt="Avatar" /> : ""}
           <input
             type="file"
             id="image"

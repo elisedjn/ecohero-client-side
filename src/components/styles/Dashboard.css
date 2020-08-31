@@ -8,6 +8,7 @@
   order: -1;
   font-family: 'Raleway', sans-serif;
   justify-content: space-around;
+  z-index: 999;
 }
 
 #dashboard img{

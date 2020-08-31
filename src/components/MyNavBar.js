@@ -8,21 +8,21 @@ import './styles/MyNavBar.css';
 export default function MyNavBar(props) {
   return (
     <div>
-      <Navbar id="myNavBar" fixed="top" variant="light" expand="lg">
+      <Navbar collapseOnSelect id="myNavBar" fixed="top" variant="light" expand="lg">
         <div id='fakeitem'></div>
         <Navbar.Brand href="/"><img src="/images/ecohero_logo.png" alt="EH" /> EcoHero</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto" data-toggle="collapse">
-            <Link to="/challenges" data-toggle="collapse" >Challenges</Link>
-            <Link to="/ranks" data-toggle="collapse">Ranks</Link>
-            <Link to="/leaderboard" data-toggle="collapse">Hall of Heroes</Link>
+          <Nav className="mr-auto">
+            <Navbar.Toggle><Link to="/challenges" data-toggle="collapse" >Challenges</Link></Navbar.Toggle>
+            <Navbar.Toggle><Link to="/ranks" data-toggle="collapse">Ranks</Link></Navbar.Toggle>
+            <Navbar.Toggle><Link to="/leaderboard" data-toggle="collapse">Hall of Heroes</Link></Navbar.Toggle>
             {props.loggedInUser ? (
-              <button className="auth-link" onClick={props.onLogOut} data-toggle="collapse">Logout</button>
+              <Navbar.Toggle className="auth-link"><button onClick={props.onLogOut} data-toggle="collapse">Logout</button></Navbar.Toggle>
             ) : (
               <>
-              <Link className="auth-link" to="/signup" data-toggle="collapse">Sing Up</Link>
-              <Link className="auth-link" to="/login" data-toggle="collapse">Login</Link>
+              <Navbar.Toggle className="auth-link"><Link to="/signup" data-toggle="collapse">Sing Up</Link></Navbar.Toggle>
+              <Navbar.Toggle className="auth-link"><Link to="/login" data-toggle="collapse">Login</Link></Navbar.Toggle>
               </>
             )
             }
