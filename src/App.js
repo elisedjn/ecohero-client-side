@@ -214,133 +214,49 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <MyNavBar
-          onLogOut={this.handleLogOut}
-          loggedInUser={this.state.loggedInUser}
-        />
+        <MyNavBar onLogOut={this.handleLogOut} loggedInUser={this.state.loggedInUser} />
         {this.state.loggedInUser ? <Dashboard /> : ""}
+
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route
-            path="/signup"
-            render={(routeProps) => {
+          <Route path="/signup" render={(routeProps) => {
               return <SignUp onSignUp={this.handleSignUp} {...routeProps} />;
-            }}
-          />
-          <Route
-            path="/login"
-            render={(routeProps) => {
+            }}/>
+          <Route path="/login" render={(routeProps) => {
               return <LogIn onLogIn={this.handleLogIn} {...routeProps} />;
-            }}
-          />
+            }}/>
           <Route path="/ranks" component={Ranks} />
           <Route path="/leaderboard" component={Leaderboard} />
-          <Route
-            exact
-            path="/profile"
-            render={(routeProps) => {
-              return (
-                <MyProfile
-                  loggedInUser={this.state.loggedInUser}
-                  {...routeProps}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/profile/edit"
-            render={(routeProps) => {
-              return (
-                <EditProfileForm
-                  loggedInUser={this.state.loggedInUser}
-                  onEdit={this.handleEdit}
-                  {...routeProps}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/hero-home"
-            render={(routeProps) => {
-              return (
-                <HeroHome
-                  loggedInUser={this.state.loggedInUser}
-                  {...routeProps}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/goals-success"
-            render={(routeProps) => {
-              return (
-                <GoalsAndSuccess
-                  loggedInUser={this.state.loggedInUser}
-                  {...routeProps}
-                />
-              );
-            }}
-          />
-          <Route
-            exact
-            path="/challenges"
-            render={(routeProps) => {
-              return (
-                <ChallengesList
-                  loggedInUser={this.state.loggedInUser}
-                  {...routeProps}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/challenges/create"
-            render={(routeProps) => {
-              return (
-                <CreateChallForm
-                  loggedInUser={this.state.loggedInUser}
-                  onSubmit={this.handleCreateChall}
-                  {...routeProps}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/achievement/:achievementID"
-            render={(routeProps) => {
-              return (
-                <AchievementDetails
-                  loggedInUser={this.state.loggedInUser}
-                  {...routeProps}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/challenge/:challengeID"
-            render={(routeProps) => {
-              return (
-                <ChallengeDetails
-                  loggedInUser={this.state.loggedInUser}
-                  {...routeProps}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/user/:userID"
-            render={(routeProps) => {
+          <Route exact path="/profile" render={(routeProps) => {
+              return <MyProfile loggedInUser={this.state.loggedInUser} {...routeProps}/>
+            }}/>
+          <Route path="/profile/edit" render={(routeProps) => {
+              return <EditProfileForm loggedInUser={this.state.loggedInUser} onEdit={this.handleEdit} {...routeProps} />
+            }}/>
+          <Route path="/hero-home" render={(routeProps) => {
+              return <HeroHome loggedInUser={this.state.loggedInUser} {...routeProps}/>
+            }} />
+          <Route path="/goals-success" render={(routeProps) => {
+              return <GoalsAndSuccess loggedInUser={this.state.loggedInUser} {...routeProps}/>
+            }}/>
+          <Route exact path="/challenges" render={(routeProps) => {
+              return <ChallengesList loggedInUser={this.state.loggedInUser} {...routeProps} />
+            }}/>
+          <Route path="/challenges/create" render={(routeProps) => {
+              return <CreateChallForm loggedInUser={this.state.loggedInUser} onSubmit={this.handleCreateChall} {...routeProps}/>
+            }}/>
+          <Route path="/achievement/:achievementID" render={(routeProps) => {
+              return <AchievementDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
+            }}/>
+          <Route path="/challenge/:challengeID" render={(routeProps) => {
+              return <ChallengeDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
+            }}/>
+          <Route path="/user/:userID" render={(routeProps) => {
               return <OtherProfile {...routeProps} />;
-            }}
-          />
-          <Route
-            path="/goals-edit/:achievementID"
-            render={(routeProps) => {
-              return (
-                <GoalsEdit onUpdate={this.handleUpdateGoal} {...routeProps} />
-              );
-            }}
-          />
+            }}/>
+          <Route path="/goals-edit/:achievementID" render={(routeProps) => {
+              return <GoalsEdit onUpdate={this.handleUpdateGoal} {...routeProps} />
+            }}/>
         </Switch>
       </div>
     );
