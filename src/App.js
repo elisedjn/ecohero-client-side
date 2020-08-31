@@ -34,12 +34,13 @@ class App extends React.Component {
       axios
         .get(`${API_URL}/auth/user`, { withCredentials: true })
         .then((res) => {
-          axios.get(`${API_URL}/users/${res.data._id}`, { withCredentials: true })
+          axios
+            .get(`${API_URL}/users/${res.data._id}`, { withCredentials: true })
             .then((user) => {
               this.setState({
                 loggedInUser: user.data,
               });
-            })
+            });
         });
     }
   }
@@ -166,7 +167,8 @@ class App extends React.Component {
       image: image,
       finishing_date: finishing_date,
     };
-    axios.patch(`${API_URL}/achievements/${_id}`, updatedSuccess, {
+    axios
+      .patch(`${API_URL}/achievements/${_id}`, updatedSuccess, {
         withCredentials: true,
       })
       .then((res) => {
@@ -174,17 +176,24 @@ class App extends React.Component {
         let clonedUser = JSON.parse(JSON.stringify(this.state.loggedInUser));
         clonedUser.points += pointsToAdd;
         let newRank = this.handleRank(clonedUser.points);
-        if(clonedUser.rank !== newRank) {
-          clonedUser.rank = newRank
+        if (clonedUser.rank !== newRank) {
+          clonedUser.rank = newRank;
         }
-        console.log(clonedUser)
-        axios.patch(`${API_URL}/users/${this.state.loggedInUser._id}/edit`, clonedUser, { withCredentials: true })
+        console.log(clonedUser);
+        axios
+          .patch(
+            `${API_URL}/users/${this.state.loggedInUser._id}/edit`,
+            clonedUser,
+            { withCredentials: true }
+          )
           .then((response) => {
-            this.setState({
-              loggedInUser: clonedUser
-            }, this.props.history.push('/hero-home'))
-          })
-
+            this.setState(
+              {
+                loggedInUser: clonedUser,
+              },
+              this.props.history.push("/hero-home")
+            );
+          });
       });
   };
 
@@ -299,13 +308,23 @@ class App extends React.Component {
           <Route
             path="/achievement/:achievementID"
             render={(routeProps) => {
-              return <AchievementDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
+              return (
+                <AchievementDetails
+                  loggedInUser={this.state.loggedInUser}
+                  {...routeProps}
+                />
+              );
             }}
           />
           <Route
             path="/challenge/:challengeID"
             render={(routeProps) => {
-              return <ChallengeDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
+              return (
+                <ChallengeDetails
+                  loggedInUser={this.state.loggedInUser}
+                  {...routeProps}
+                />
+              );
             }}
           />
           <Route
