@@ -27,6 +27,8 @@
 
 
 #challenges .one-success-container {
+    display: flex;
+    align-content: center;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
@@ -36,9 +38,10 @@
 #challenges .one-success{
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 2px 10px rgba(75, 87, 84, 0.5);
-    padding: 10px;
     border-bottom: 6px solid rgb(118, 169, 49);
-    height: 70px;
+    padding-left: 5px;
+    padding-right: 5px; 
+    
 }
 
 
@@ -52,14 +55,15 @@
     color: black;
     box-shadow: 0px 5px 15px rgb(44, 92, 83);
     border: none;
-    padding: 10px 20px;
-    font-size:1.3rem;
-    margin: 10px 0;
+    padding: 10px 10px;
+    font-size:1rem;
+    margin-bottom: 20px
+    
 }
 
 
 #challenges .bouncy img {
-    width: 30px;
+    width: 25px;
 }
 
 

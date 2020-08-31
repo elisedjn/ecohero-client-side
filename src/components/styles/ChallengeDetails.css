@@ -1,0 +1,48 @@
+#challengeDetails {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.4)
+      ),
+      url(/images/bg01.jpg);
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 70px 10px 80px 10px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#challengeDetails .white-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 90%;
+    margin: auto;
+    border-radius: 3px;
+    box-shadow: 0px 5px 15px rgb(44, 92, 83);
+    padding: 20px;
+    padding-bottom: 10px;
+  }
+
+#challengeDetails .header{
+    text-align: center;
+}
+
+#challengeDetails .header h4{
+    font-weight: bolder;
+    margin-bottom: px;
+}
+
+#challengeDetails .subtitle {
+    font-family: "Neucha", cursive;
+    font-size: 1.4rem;
+}
+
+#challengeDetails .subtitle img{
+    height: 25px;
+    padding-right: 5px;
+}
+
+.addGoalBtn {
+    display: flex;
+    justify-content: center;
+}
+

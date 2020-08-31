@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import AddToMyGoals from "./AddToMyGoals";
+import "./styles/ChallengeDetails.css";
 
 class ChallengeDetails extends Component {
   state = {
@@ -23,17 +24,24 @@ class ChallengeDetails extends Component {
       return <p>Loading...</p>;
     }
     return (
-      <div>
-        <h4>{this.state.challenge.title}</h4>
-        <p>{this.state.challenge.points} points</p>
-        <h5>Description</h5>
-        <p>{this.state.challenge.description}</p>
-        <h5>Fact</h5>
-        <p>{this.state.challenge.fact}</p>
-
-        <div>
-          <AddToMyGoals challenge={this.state.challenge._id} />
-        </div>
+      <div id="challengeDetails">
+        <div className="white-card">
+          <div className="header">
+            <h4 className="challengeDetailTitle">{this.state.challenge.title}</h4>
+            <p>{this.state.challenge.points} points</p>
+          </div>
+          <h5 className="subtitle">
+          <img src="/images/plant02.png" />How to complete this goal?
+          </h5>
+          <p>{this.state.challenge.description}</p>
+          <h5 className="subtitle">
+          <img src="/images/plant02.png" />Why is it helpful?
+          </h5>
+          <p>{this.state.challenge.fact}</p>
+          <div className="addGoalBtn">
+            <AddToMyGoals challenge={this.state.challenge._id} />
+          </div>
+        </div>       
       </div>
     );
   }

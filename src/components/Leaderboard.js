@@ -23,7 +23,7 @@ class Leaderboard extends Component {
     }
 
     return (
-      <div className="leaderboard">
+      <div id="leaderboard">
         <h3 className="HallTitle">Hall of Heroes</h3>
         <ol className="list">
           {this.state.users.map((user) => {
