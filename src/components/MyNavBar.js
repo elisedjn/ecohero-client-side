@@ -13,16 +13,16 @@ export default function MyNavBar(props) {
         <Navbar.Brand href="/"><img src="/images/ecohero_logo.png" alt="EH" /> EcoHero</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Link to="/challenges">Challenges</Link>
-            <Link to="/ranks">Ranks</Link>
-            <Link to="/leaderboard">Leaderboard</Link>
+          <Nav className="mr-auto" data-toggle="collapse">
+            <Link to="/challenges" data-toggle="collapse" >Challenges</Link>
+            <Link to="/ranks" data-toggle="collapse">Ranks</Link>
+            <Link to="/leaderboard" data-toggle="collapse">Hall of Heroes</Link>
             {props.loggedInUser ? (
-              <button className="auth-link" onClick={props.onLogOut}>Logout</button>
+              <button className="auth-link" onClick={props.onLogOut} data-toggle="collapse">Logout</button>
             ) : (
               <>
-              <Link className="auth-link" to="/signup">Sing Up</Link>
-              <Link className="auth-link" to="/login">Login</Link>
+              <Link className="auth-link" to="/signup" data-toggle="collapse">Sing Up</Link>
+              <Link className="auth-link" to="/login" data-toggle="collapse">Login</Link>
               </>
             )
             }
