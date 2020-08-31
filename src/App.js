@@ -299,7 +299,7 @@ class App extends React.Component {
           <Route
             path="/achievement/:achievementID"
             render={(routeProps) => {
-              return <AchievementDetails {...routeProps} />;
+              return <AchievementDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
             }}
           />
           <Route

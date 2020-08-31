@@ -70,7 +70,9 @@ class AddToMyGoals extends Component {
       <>
         <Button className="addThisGoalBtn" onClick={this.handleClick}>
           <img src="/images/valid.png" alt="Valid" />
-          Add this Goal!
+          {
+            this.props.fromOther ? <>I want to do it too!</> : <>Add this Goal!</>
+          }
         </Button>
         <Modal show={this.state.showPopUp} onHide={this.handleClose}>
           <Modal.Header closeButton>

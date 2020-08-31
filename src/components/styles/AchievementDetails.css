@@ -22,6 +22,12 @@
   padding-bottom: 10px;
 }
 
+#achievDetails .back-btn{
+  width: 20px;
+  margin-left: -15px;
+  margin-top: -15px;
+}
+
 #achievDetails .header{
   text-align: center;
 }
@@ -73,7 +79,7 @@
   margin-top: 10px;
 }
 
-#achievDetails .edit-btn a{
+#achievDetails .edit-btn a, #achievDetails .edit-btn button{
   background: linear-gradient(320deg, rgb(153, 26, 26) 0%, rgba(237,46,46,1) 100%);
   color:white;
   font-weight: bold;
@@ -84,6 +90,8 @@
   margin: 0px 5px 20px 5px;
   padding: 5px 8px;
   border-radius: 10px;
+  border: none;
+  outline: none;
   box-shadow: 1px 1px 10px rgb(52, 54, 54);
 }
 

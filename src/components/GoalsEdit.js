@@ -9,8 +9,7 @@ import "./styles/GoalsEdit.css";
 class GoalsEdit extends Component {
   state = {
     achievement: null,
-    showPopUp: false
-
+    showPopUp: false,
   };
 
   componentDidMount() {

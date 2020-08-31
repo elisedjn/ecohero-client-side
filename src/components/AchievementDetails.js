@@ -2,80 +2,132 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { Link } from "react-router-dom";
+import AddToMyGoals from "./AddToMyGoals";
+import Button from "react-bootstrap/Button";
+import Modal from 'react-bootstrap/Modal';
 import "./styles/AchievementDetails.css";
 
 class AchievementDetails extends Component {
   state = {
     achievement: null,
+    showDeletePopup: false,
   };
 
   componentDidMount() {
     let id = this.props.match.params.achievementID;
-    axios.get(`${API_URL}/achievements/${id}`).then((res) => {
+    axios.get(`${API_URL}/achievements/${id}`, {withCredentials: true}).then((res) => {
       this.setState({
         achievement: res.data,
       });
     });
   }
 
+  handleClick = () => {
+    this.setState({
+      showDeletePopup: true
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      showDeletePopup:false
+    })
+  }
+
+  handleDelete = () => {
+    axios.delete(`${API_URL}/achievements/${this.state.achievement._id}`, {withCredentials: true})
+      .then((res) => {
+        this.props.history.push('/goals-success')
+      })
+  };
+
   render() {
     if (!this.state.achievement) {
       return <p>Loading...</p>;
     }
-    let startDate = new Date(this.state.achievement.starting_date);
+    const {challenge, completed, user, image, finishing_date, starting_date, _id} = this.state.achievement
+    let startDate = new Date(starting_date);
     let start = startDate.toLocaleDateString();
-    let finishDate = new Date(this.state.achievement.finishing_date);
+    let finishDate = new Date(finishing_date);
     let finish = finishDate.toLocaleDateString();
     return (
       <div id="achievDetails">
         <div className="white-card">
+            {
+              !this.props.loggedInUser || this.props.loggedInUser._id !== user._id ? <Link to={`/user/${user._id}`}><img src="/images/back.png" alt="Back" className="back-btn"/></Link> : ""
+            }
           <div className="header">
-            <h4>{this.state.achievement.challenge.title}</h4>
-            <p>{this.state.achievement.challenge.points} points</p>
+            <h4>{challenge.title}</h4>
+            <p>{challenge.points} points</p>
           </div>
 
-          {this.state.achievement.completed ? (
-            <div className="sharing-logos">Sharing Logos</div>
-          ) : (
-            ""
-          )}
+          {!this.props.loggedInUser ? "" : (completed && this.props.loggedInUser._id === user._id) ? <div className="sharing-logos">Sharing Logos</div> : completed ? <div className="sharing-logos"><AddToMyGoals challenge={challenge._id} fromOther /></div> : ""}
 
-          {this.state.achievement.completed ? (
-            <h5 className="subtitle">
-              <img src="/images/plant02.png" alt="o"  /> The task you fulfilled :{" "}
-            </h5>
-          ) : (
+          {!completed ? (
             <h5 className="subtitle">
               {" "}
-              <img src="/images/plant02.png" alt="o"  /> How to complete this goal?
+              <img src="/images/plant02.png" alt="o" /> How to complete this
+              goal?
             </h5>
-          )}
-          <p>{this.state.achievement.challenge.description}</p>
+          ) : this.props.loggedInUser && this.props.loggedInUser._id === user._id ? (
+            <h5 className="subtitle">
+              <img src="/images/plant02.png" alt="o" /> The task you fulfilled :{" "}
+            </h5>
+          ) : (
+            <h5 className="subtitle">
+              <img src="/images/plant02.png" alt="o" /> The task {user.username} fulfilled :{" "}
+            </h5>
+          ) }
+
+          <p>{challenge.description}</p>
           <h5 className="subtitle">
-            <img src="/images/plant02.png" alt="o"  /> Why is it helpful?
+            <img src="/images/plant02.png" alt="o" /> Why is it helpful?
           </h5>
-          <p>{this.state.achievement.challenge.fact}</p>
-          <p className="date"><strong>Started :</strong> {start}</p>
-          {this.state.achievement.completed ? (
+          <p>{challenge.fact}</p>
+          <p className="date">
+            <strong>Started :</strong> {start}
+          </p>
+          {completed ? (
             <>
-              <p className="date"><strong>Finished :</strong> {finish}</p>
+              <p className="date">
+                <strong>Finished :</strong> {finish}
+              </p>
               <img
                 className="d-block achiev-image"
-                src={this.state.achievement.image}
+                src={image}
                 alt="Uplaoded"
               />
             </>
           ) : (
             <div className="edit-btn">
-              <Link to={`/goals-edit/${this.state.achievement._id}`}>
+              <Link to={`/goals-edit/${_id}`}>
                 <img src="/images/valid.png" alt="Valid" /> Complete it
               </Link>
-              <a href="/">
-                <img src="/images/delete.png" alt="Delete" /> Delete it
-              </a>
+              <button onClick={this.handleClick}>
+                <img src="/images/delete.png" alt="Delete" /> Delete it !
+              </button>
             </div>
           )}
         </div>
+        <Modal show={this.state.showDeletePopup} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Are you sure?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Are you sure you want to delete this goal from your list ?
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={this.handleClose}>
+              No, not yet.
+            </Button>
+            <Button
+              variant="success"
+              onClick={this.handleDelete}
+            >
+              Yes, I'm sure!
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
