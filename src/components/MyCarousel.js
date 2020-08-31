@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import Carousel from "react-bootstrap/Carousel";
+import {Link} from 'react-router-dom';
 import "./styles/MyCarousel.css";
 
 export default class MyCarousel extends Component {
@@ -30,6 +31,7 @@ export default class MyCarousel extends Component {
           {this.state.achievements.map((achievement, i) => {
             return (
               <Carousel.Item key={"publicSuccess" + i}>
+              <Link to={`/achievement/${achievement._id}`}>
                 <img
                   className="d-block w-100"
                   src="/images/carouselbg.png"
@@ -66,6 +68,7 @@ export default class MyCarousel extends Component {
                     </div>
                   </div>
                 </Carousel.Caption>
+                </Link>
               </Carousel.Item>
             );
           })}

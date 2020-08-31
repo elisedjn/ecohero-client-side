@@ -21,11 +21,14 @@
   padding: 20px;
   padding-bottom: 10px;
 }
-
-#achievDetails .back-btn{
-  width: 20px;
+#achievDetails .back-link{
+  display: flex;
+  align-items: flex-end;
   margin-left: -15px;
   margin-top: -15px;
+  margin-bottom: 10px;
+  color: rgb(116, 114, 114);
+  text-decoration: underline;
 }
 
 #achievDetails .header{

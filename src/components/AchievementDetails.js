@@ -54,7 +54,7 @@ class AchievementDetails extends Component {
       <div id="achievDetails">
         <div className="white-card">
             {
-              !this.props.loggedInUser || this.props.loggedInUser._id !== user._id ? <Link to={`/user/${user._id}`}><img src="/images/back.png" alt="Back" className="back-btn"/></Link> : ""
+              !this.props.loggedInUser || this.props.loggedInUser._id !== user._id ? <Link to={`/user/${user._id}`} className="back-link">{user.username}'s profile</Link> : ""
             }
           <div className="header">
             <h4>{challenge.title}</h4>

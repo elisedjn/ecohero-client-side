@@ -7,8 +7,8 @@ import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
-import {FacebookShareButton, TwitterShareButton, WhatsappShareButton} from "react-share";
-import {FacebookIcon, TwitterIcon, WhatsappIcon} from "react-share";
+// import {FacebookShareButton, TwitterShareButton, WhatsappShareButton} from "react-share";
+// import {FacebookIcon, TwitterIcon, WhatsappIcon} from "react-share";
 import "./styles/GoalsAndSucces.css";
 
 class GoalsAndSuccess extends Component {
@@ -176,9 +176,9 @@ class GoalsAndSuccess extends Component {
                       <h6>{achievement.challenge.title}</h6>
                     </Link>
                     <div className="sharing-logos-container">
-                      <FacebookShareButton url={"http://www.google.com"}><FacebookIcon size={32} /></FacebookShareButton>
+                      {/* <FacebookShareButton url={"http://www.google.com"}><FacebookIcon size={32} /></FacebookShareButton>
                       <TwitterShareButton url={"http://www.google.com"}><TwitterIcon size={32} /></TwitterShareButton>
-                      <WhatsappShareButton url={"http://www.google.com"}><WhatsappIcon size={32} /></WhatsappShareButton>
+                      <WhatsappShareButton url={"http://www.google.com"}><WhatsappIcon size={32} /></WhatsappShareButton> */}
                     </div>
                   </div>
                 );
