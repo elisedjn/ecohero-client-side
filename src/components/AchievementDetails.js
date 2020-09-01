@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import AddToMyGoals from "./AddToMyGoals";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
+import SocialMedia from "./SocialMedia"
 import "./styles/AchievementDetails.css";
 
 class AchievementDetails extends Component {
@@ -61,7 +62,7 @@ class AchievementDetails extends Component {
             <p>{challenge.points} points</p>
           </div>
 
-          {!this.props.loggedInUser ? "" : (completed && this.props.loggedInUser._id === user._id) ? <div className="sharing-logos">Sharing Logos</div> : completed ? <div className="sharing-logos"><AddToMyGoals challenge={challenge._id} fromOther /></div> : ""}
+          {!this.props.loggedInUser ? "" : (completed && this.props.loggedInUser._id === user._id) ? <div className="sharing-logos"><SocialMedia achievementID={_id}  /></div> : completed ? <div className="sharing-logos"><AddToMyGoals challenge={challenge._id} fromOther /></div> : ""}
 
           {!completed ? (
             <h5 className="subtitle">
