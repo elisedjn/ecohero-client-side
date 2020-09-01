@@ -13,7 +13,10 @@ class HeroHome extends Component {
     userAchievements: [],
     showDeletePopup: false,
     targetedAchievID: null
+
   };
+
+  
 
   getUserAchievements = () => {
     axios
@@ -21,8 +24,9 @@ class HeroHome extends Component {
           withCredentials: true,
         })
         .then((res) => {
+          let filterArr = res.data.filter(elem => elem.completed === false)
           this.setState({
-            userAchievements: res.data,
+            userAchievements: filterArr,
           });
         });
   }
@@ -84,7 +88,7 @@ class HeroHome extends Component {
             <img src={this.props.loggedInUser.image} alt="Avatar" />
             <div>
               <div className="users-info">
-                <h5>{this.props.loggedInUser.username}</h5>
+                <h5 className="userName">{this.props.loggedInUser.username}</h5>
               </div>
               <div className="points-info">
                 <p className="total-rank">{this.props.loggedInUser.rank}</p>
@@ -105,9 +109,8 @@ class HeroHome extends Component {
                 this.state.userAchievements.length === 0 ? <div>You don't have any goal set yet... </div> : ""
               }
               {
-                this.state.userAchievements.slice(0, 3).map((achievement, i) => {
-                if (!achievement.completed) {
-                  console.log(achievement)
+                this.state.userAchievements.slice(0, 2).map((achievement, i) => {
+               
                   let startDate = new Date(achievement.starting_date);
                   let date = startDate.getDate();
                   let month = startDate.getMonth() + 1;
@@ -132,7 +135,7 @@ class HeroHome extends Component {
                       </div>
                     </div>
                   );
-                }
+                
               })}
               <div className="btn-container">
               {
