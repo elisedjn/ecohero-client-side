@@ -9,6 +9,8 @@ import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import "./styles/ChallengesList.css";
 
+
+
 class ChallengesList extends Component {
   state = {
     challenges: [],

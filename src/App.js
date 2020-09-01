@@ -23,6 +23,10 @@ import AchievementDetails from "./components/AchievementDetails";
 import ChallengeDetails from "./components/ChallengeDetails";
 import OtherProfile from "./components/OtherProfile";
 import GoalsEdit from "./components/GoalsEdit";
+import Groups from "./components/Groups"
+import GroupDetails from "./components/GroupDetails"
+import GroupCreate from "./components/GroupCreate"
+
 
 class App extends React.Component {
   state = {
@@ -257,6 +261,15 @@ class App extends React.Component {
           <Route path="/goals-edit/:achievementID" render={(routeProps) => {
               return <GoalsEdit onUpdate={this.handleUpdateGoal} {...routeProps} />
             }}/>
+          <Route path="/groups" render={(routeProps) => {
+              return <Groups loggedInUser={this.state.loggedInUser} {...routeProps} />
+            }}/>  
+           <Route path="/groups/create" render={(routeProps) => {
+              return <GroupCreate loggedInUser={this.state.loggedInUser} {...routeProps} />
+            }}/>    
+          <Route path="/groups/details" render={(routeProps) => {
+              return <GroupDetails loggedInUser={this.state.loggedInUser} {...routeProps} />
+            }}/>      
         </Switch>
       </div>
     );
