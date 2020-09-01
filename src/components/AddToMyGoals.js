@@ -5,8 +5,6 @@ import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal'
 import { withRouter } from "react-router-dom";
 import "./styles/AddToMyGoals.css";
-import MyToast from './MyToast';
-import { useToasts } from 'react-toast-notifications';
 
 
 class AddToMyGoals extends Component {
@@ -77,7 +75,6 @@ class AddToMyGoals extends Component {
             this.props.fromOther ? <>I want to do it too!</> : <>Add this Goal!</>
           }
         </Button>
-          <MyToast />
         <Modal show={this.state.showPopUp} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Not yet!</Modal.Title>
