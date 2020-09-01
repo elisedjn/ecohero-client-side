@@ -32,18 +32,22 @@
 #otherProfile .header{
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 10px;
 }
 #otherProfile .header h5{
   font-family: "Cinzel Decorative", cursive;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding-top: 10px;
   margin-right: 20px;
+  word-wrap: break-word;
+  max-width: 150px;
 }
 #otherProfile .header img{
   display: block;
+  max-width:150px;
+  max-height:95px;
   width: auto;
-  height: 100px;
-  margin-right: 20px;
+  height: auto;
 }
 
 #otherProfile .header .users-info{
