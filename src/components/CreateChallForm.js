@@ -24,6 +24,11 @@ function CreateChallForm(props) {
           </Form.Group>
 
           <Form.Group className="input-container">
+            <Form.Label className="titles">Why is it useful?</Form.Label>
+            <Form.Control className="inputs" name="fact" placeholder="Why is your challenge important for the planet?" as="textarea" rows="3" />
+          </Form.Group>
+
+          <Form.Group className="input-container">
             <Form.Label className="titles">Points</Form.Label>
             <Form.Control className="inputs" name="points" type="number" max="10000" placeholder="Number of points. Max 10 000" /> 
           </Form.Group>

@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { API_URL } from "./config";
 import axios from "axios";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 //Components
 import MyNavBar from "./components/MyNavBar";
@@ -27,6 +29,10 @@ import GoalsEdit from "./components/GoalsEdit";
 class App extends React.Component {
   state = {
     loggedInUser: null,
+    showGeneralModal: false,
+    modalMessage : "",
+    modalHeader: "",
+    modalButtonType: "info"
   };
 
   componentDidMount() {
@@ -68,7 +74,16 @@ class App extends React.Component {
             this.props.history.push("/hero-home");
           }
         );
-      });
+      })
+      .catch((err) => {
+        const {errorMessage} = err.response.data
+        this.setState({
+          showGeneralModal: true,
+          modalMessage : errorMessage,
+          modalHeader: "Oops!",
+          modalButtonType: "info"
+        })
+      })
   };
 
   handleLogIn = (e) => {
@@ -92,7 +107,16 @@ class App extends React.Component {
             this.props.history.push("/hero-home");
           }
         );
-      });
+      })
+      .catch((err) => {
+        const {errorMessage} = err.response.data
+        this.setState({
+          showGeneralModal: true,
+          modalMessage : errorMessage,
+          modalHeader: "Oops!",
+          modalButtonType: "info"
+        })
+      })
   };
 
   handleLogOut = () => {
@@ -138,13 +162,33 @@ class App extends React.Component {
             this.props.history.push("/profile");
           }
         );
-      });
+      })
+      .catch((err) => {
+        console.log(err.response)
+        const {errorMessage} = err.response.data
+        let message
+        if(errorMessage.codeName === "DuplicateKey"){
+          if(Object.keys(errorMessage.keyPattern).includes("username")){
+            message = "This username already exists. Please select a new one."
+          } else if(Object.keys(errorMessage.keyPattern).includes("email")){
+            message = "This email is already in use. Please select a new one."
+          }
+        } else {
+          message = errorMessage
+        }
+        this.setState({
+          showGeneralModal: true,
+          modalMessage : message,
+          modalHeader: "Oops!",
+          modalButtonType: "info"
+        })
+      })
   };
 
   handleCreateChall = (e) => {
     console.log("in the handle fonction");
     e.preventDefault();
-    const { title, description, points } = e.currentTarget;
+    const { title, description, points, fact } = e.currentTarget;
     axios
       .post(
         `${API_URL}/challenges/create`,
@@ -152,6 +196,7 @@ class App extends React.Component {
           title: title.value,
           description: description.value,
           points: points.value,
+          fact: fact.value
         },
         { withCredentials: true }
       )
@@ -211,6 +256,12 @@ class App extends React.Component {
     }
   };
 
+  handleModalClose = () => {
+    this.setState({
+      showGeneralModal: false
+    })
+  }
+
   render() {
     return (
       <div id="app">
@@ -258,6 +309,19 @@ class App extends React.Component {
               return <GoalsEdit onUpdate={this.handleUpdateGoal} {...routeProps} />
             }}/>
         </Switch>
+        <Modal show={this.state.showGeneralModal} onHide={this.handleModalClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>{this.state.modalHeader}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {this.state.modalMessage}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant={this.modalButtonType} onClick={this.handleModalClose}>
+              Ok, got it
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

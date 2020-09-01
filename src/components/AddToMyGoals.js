@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import Button from "react-bootstrap/Button";
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
+import Toast from 'react-bootstrap/Toast';
 import { withRouter } from "react-router-dom";
 import "./styles/AddToMyGoals.css";
 
@@ -11,7 +12,8 @@ class AddToMyGoals extends Component {
   state = {
     loggedInUser: null,
     userGoalsIds: [],
-    showPopUp: false
+    showPopUp: false,
+    showToast: false
   };
 
   componentDidMount() {
@@ -55,15 +57,25 @@ class AddToMyGoals extends Component {
           { withCredentials: true }
         )
         .then((res) => {
-          this.props.history.push("/goals-success");
+          this.setState({
+            showToast:true,
+          }, () => this.props.history.push("/goals-success"))
+          ;
         });
     }
   };
 
-  handleClose = () => {
-    this.setState({
-      showPopUp:false
-    })
+  handleClose = (component) => {
+    if(component === 'popUp'){
+      this.setState({
+        showPopUp:false
+      })
+    } else {
+      this.setState({
+        showToast:false
+      })
+    }
+    
   }
 
   render() {
@@ -75,7 +87,7 @@ class AddToMyGoals extends Component {
             this.props.fromOther ? <>I want to do it too!</> : <>Add this Goal!</>
           }
         </Button>
-        <Modal show={this.state.showPopUp} onHide={this.handleClose}>
+        <Modal show={this.state.showPopUp} onHide={() => this.handleClose('modal')}>
           <Modal.Header closeButton>
             <Modal.Title>Not yet!</Modal.Title>
           </Modal.Header>
@@ -83,11 +95,24 @@ class AddToMyGoals extends Component {
             You already have this challenge in your on going Goals. Finish it before to do it again. &#x1F609;{" "}
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="success" onClick={this.handleClose}>
+            <Button variant="success" onClick={() => this.handleClose('modal')}>
               Ok, got it
             </Button>
           </Modal.Footer>
         </Modal>
+
+        <Toast onClose={() => this.handleClose('toast')} show={this.state.showToast} delay={2000} autohide>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded mr-2"
+              alt=""
+            />
+            <strong className="mr-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+          </Toast.Header>
+          <Toast.Body>Challenge added to your Goals!</Toast.Body>
+        </Toast>
       </>
     );
   }

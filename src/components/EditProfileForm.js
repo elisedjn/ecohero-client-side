@@ -64,7 +64,7 @@ class EditProfileForm extends Component {
         this.setState({
           user: updatedUser,
         });
-      });
+      })
   };
 
   render() {
@@ -80,7 +80,7 @@ class EditProfileForm extends Component {
     return (
       <div id="editProfile">
         <h3 className="title">Edit your profile</h3>
-        <div class="white-card">
+        <div className="white-card">
             <div className="image-edit">
             <img src={image} alt="Avatar" />
             <div className="input-container">
