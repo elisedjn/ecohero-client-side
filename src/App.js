@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { API_URL } from "./config";
 import axios from "axios";
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 //Components
 import MyNavBar from "./components/MyNavBar";
@@ -215,6 +216,7 @@ class App extends React.Component {
     return (
       <div id="app">
         <MyNavBar onLogOut={this.handleLogOut} loggedInUser={this.state.loggedInUser} />
+        <ToastProvider >
         {this.state.loggedInUser ? <Dashboard /> : ""}
 
         <Switch>
@@ -228,7 +230,7 @@ class App extends React.Component {
           <Route path="/ranks" component={Ranks} />
           <Route path="/leaderboard" component={Leaderboard} />
           <Route exact path="/profile" render={(routeProps) => {
-              return <MyProfile loggedInUser={this.state.loggedInUser} {...routeProps}/>
+              return <MyProfile loggedInUser={this.state.loggedInUser} onDelete={this.handleLogOut} {...routeProps}/>
             }}/>
           <Route path="/profile/edit" render={(routeProps) => {
               return <EditProfileForm loggedInUser={this.state.loggedInUser} onEdit={this.handleEdit} {...routeProps} />
@@ -258,6 +260,7 @@ class App extends React.Component {
               return <GoalsEdit onUpdate={this.handleUpdateGoal} {...routeProps} />
             }}/>
         </Switch>
+        </ToastProvider>
       </div>
     );
   }

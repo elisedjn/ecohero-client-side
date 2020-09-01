@@ -42,7 +42,7 @@ class MyProfile extends Component {
   handleDeleteUser = () => {
     axios.delete(`${API_URL}/users/${this.props.loggedInUser._id}`, {withCredentials: true})
       .then((res) => {
-        this.props.history.push('/')
+        this.props.onDelete()
       })
   };
 
