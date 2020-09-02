@@ -1,0 +1,79 @@
+#createGroup {
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url(/images/bg01.jpg);
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 70px 10px;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+#createGroup .createTitle {
+    font-family: "Cinzel Decorative", cursive;
+    color: black;
+    text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
+    1px 1px 10px white;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+#createGroup .white-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 90%;
+    margin: auto;
+    border-radius: 3px;
+    box-shadow: 0px 5px 15px rgb(44, 92, 83);
+    text-align: center;
+}
+
+
+#createGroup .titles {
+    font-weight: bold;
+    font-family: "Neucha", cursive;
+    font-size: 1.3rem;
+}
+
+
+#createGroup .createBtn {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    box-shadow: 0px 5px 15px rgb(44, 92, 83);
+    border: none;
+    padding: 10px 20px 10px 20px;
+    font-size:1rem;
+    margin: 10px 0;
+}
+
+
+#createGroup .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+    
+}
+
+
+#createGroup .imageBtn1 {
+    width: 25px;
+    padding-right: 5px;
+}
+
+
+#createGroup .imageBtn2 {
+    width: 25px;
+    padding-left: 5px;
+}
+
+
+#createGroup .inputs {
+    border: 1px solid grey;
+}
+
+
