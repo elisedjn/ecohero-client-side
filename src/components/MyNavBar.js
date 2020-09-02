@@ -14,15 +14,15 @@ export default function MyNavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Navbar.Toggle><Link to="/challenges" data-toggle="collapse" >Challenges</Link></Navbar.Toggle>
-            <Navbar.Toggle><Link to="/ranks" data-toggle="collapse">Ranks</Link></Navbar.Toggle>
-            <Navbar.Toggle><Link to="/leaderboard" data-toggle="collapse">Hall of Heroes</Link></Navbar.Toggle>
+            <Navbar.Toggle className="dont-hide"><Link to="/challenges" data-toggle="collapse" >Challenges</Link></Navbar.Toggle>
+            <Navbar.Toggle className="dont-hide"><Link to="/ranks" data-toggle="collapse">Ranks</Link></Navbar.Toggle>
+            <Navbar.Toggle className="dont-hide"><Link to="/leaderboard" data-toggle="collapse">Hall of Heroes</Link></Navbar.Toggle>
             {props.loggedInUser ? (
-              <Navbar.Toggle className="auth-link"><button onClick={props.onLogOut} data-toggle="collapse">Logout</button></Navbar.Toggle>
+              <Navbar.Toggle className="auth-link dont-hide"><button onClick={props.onLogOut} data-toggle="collapse">Logout</button></Navbar.Toggle>
             ) : (
               <>
-              <Navbar.Toggle className="auth-link"><Link to="/signup" data-toggle="collapse">Sing Up</Link></Navbar.Toggle>
-              <Navbar.Toggle className="auth-link"><Link to="/login" data-toggle="collapse">Login</Link></Navbar.Toggle>
+              <Navbar.Toggle className="auth-link dont-hide"><Link to="/signup" data-toggle="collapse">Sing Up</Link></Navbar.Toggle>
+              <Navbar.Toggle className="auth-link dont-hide"><Link to="/login" data-toggle="collapse">Login</Link></Navbar.Toggle>
               </>
             )
             }

@@ -56,7 +56,7 @@ class AddToMyGoals extends Component {
           { withCredentials: true }
         )
         .then((res) => {
-          this.props.onSuccess()
+          this.props.onSuccess("Challenge added to your Goals!")
         });
     }
   };

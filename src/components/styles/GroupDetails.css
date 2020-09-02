@@ -3,13 +3,22 @@
           rgba(255, 255, 255, 0.4),
           rgba(255, 255, 255, 0.4)
         ),
-        url(/images/bg06.jpg);
+        url(/images/bg07.jpg);
       background-size: cover;
       background-position: top;
       background-attachment: fixed;
       min-height: 100vh;
       padding: 70px 10px 80px 10px;
       font-family: 'Raleway', sans-serif;
+  }
+
+  #groupDetails .title {
+    font-family: "Cinzel Decorative", cursive;
+    color: black;
+    text-shadow: -1px -1px 10px white, 1px -1px 10px white, -1px 1px 10px white,
+      1px 1px 10px white;
+    text-align: center;
+    padding-bottom: 10px;
   }
   
   #groupDetails .white-card {
@@ -31,20 +40,7 @@
     text-decoration: underline;
   }
   
-  #groupDetails .header{
-    text-align: center;
-  }
-  
-  #groupDetails .header h4{
-    font-weight: bolder;
-    margin-bottom: 5px;
-  }
-  
-  #groupDetails .sharing-logos{
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
+
   
   #groupDetails .subtitle {
     font-family: "Neucha", cursive;
@@ -65,10 +61,6 @@
     font-size: 1.1rem;
   }
   
-  #groupDetails .achiev-image{
-    max-width: 200px;
-    margin: auto;
-  }
   
   #groupDetails .edit-btn img{
     width: 25px;
@@ -82,8 +74,8 @@
     margin-top: 10px;
   }
   
-  #groupDetails .edit-btn a, #groupDetails .edit-btn button{
-    background: linear-gradient(320deg, rgb(153, 26, 26) 0%, rgba(237,46,46,1) 100%);
+#groupDetails .edit-btn a{
+    background: linear-gradient(320deg, #71a034 0%, #a4d166 100%);
     color:white;
     font-weight: bold;
     font-size: 0.9rem;
@@ -96,9 +88,5 @@
     border: none;
     outline: none;
     box-shadow: 1px 1px 10px rgb(52, 54, 54);
-  }
-  
-  #groupDetails .edit-btn a:first-child{
-    background: linear-gradient(320deg, #71a034 0%, #a4d166 100%);
   }
   

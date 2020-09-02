@@ -6,6 +6,17 @@
   height: 40px;
   width: 40px;
 }
+
+@media (min-width: 992px){
+#myNavBar .dont-hide{
+  display: block;
+  margin-right: 10px;
+}
+#myNavBar .auth-link{
+  padding: 0 10px;
+}
+}
+
 .navbar {
   justify-content: space-between;
   align-items: center;

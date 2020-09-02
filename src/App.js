@@ -36,7 +36,8 @@ class App extends React.Component {
     showGeneralModal: false,
     modalMessage : "",
     modalHeader: "",
-    modalButtonType: "info"
+    modalButtonType: "",
+    modalButtonStyle: {}
   };
 
   componentDidMount() {
@@ -209,21 +210,6 @@ class App extends React.Component {
       });
   };
 
-  handleCreateGroup = (e) => {
-    e.preventDefault();
-    const {name, description, location, date} = e.currentTarget;
-    axios.post(`${API_URL}/groups/create`, {
-      name: name.value,
-      description: description.value,
-      location: location.value,
-      date: date.value,
-      user: this.state.loggedInUser
-    }, { withCredentials: true })
-    .then((res) => {
-      this.props.history.push("/groups")
-    })
-  }
-
   handleUpdateGoal = (updatedAchievement) => {
     const { image, _id, finishing_date } = updatedAchievement;
     let updatedSuccess = {
@@ -281,8 +267,14 @@ class App extends React.Component {
     })
   }
 
-  hanldeNotification = () => {
-    //Code
+  hanldeNotification = (aMessage) => {
+    setTimeout(this.handleModalClose, 1500)
+    this.setState({
+      showGeneralModal: true,
+      modalMessage : aMessage,
+      modalHeader: "Youpi!",
+      modalButtonStyle: {display: "none"}
+    }, this.props.history.push("/goals-success"))
   }
 
   render() {
@@ -341,15 +333,15 @@ class App extends React.Component {
               return <GroupDetails loggedInUser={this.state.loggedInUser} {...routeProps} />
             }}/>      
         </Switch>
-        <Modal show={this.state.showGeneralModal} onHide={this.handleModalClose}>
-          <Modal.Header closeButton>
+        <Modal show={this.state.showGeneralModal} onHide={this.handleModalClose} >
+          <Modal.Header closeButton style={this.state.modalButtonStyle}>
             <Modal.Title>{this.state.modalHeader}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {this.state.modalMessage}
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant={this.modalButtonType} onClick={this.handleModalClose}>
+          <Modal.Footer style={this.state.modalButtonStyle}>
+            <Button variant={this.state.modalButtonType} onClick={this.handleModalClose}>
               Ok, got it
             </Button>
           </Modal.Footer>

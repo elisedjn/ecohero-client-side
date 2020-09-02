@@ -29,13 +29,23 @@ class GroupDetails extends Component {
             return <p>Loading...</p>;
         }
 
-        const {description, location, date, members} = this.state.groupData
+        const {name, description, location, date, members, challenge} = this.state.groupData
 
         return (
             <div id="groupDetails">
+              <h3 className="title">{name}</h3>
               <div className="white-card">
                 <h5 className="subtitle">Description</h5>
                 <p>{description}</p>
+
+                <h5 className="subtitle">What is it about?</h5>
+                <p>{challenge.description}</p>
+
+                <h5 className="subtitle">Why is it useful?</h5>
+                <p>{challenge.fact}</p>
+
+                <h5 className="subtitle">How many points will I get?</h5>
+                <p>Every participant earns {challenge.points} points</p>
 
                 <h5 className="subtitle">Location</h5>
                 <p>{location}</p>
@@ -43,7 +53,7 @@ class GroupDetails extends Component {
                 <h5 className="subtitle">Date</h5>
                 <p>{date}</p>
 
-                <h5 className="subtitle">Members</h5>
+                <h5 className="subtitle">Participants</h5>
                 {
                   members.map((member, i) => {
                     return (
@@ -51,12 +61,12 @@ class GroupDetails extends Component {
                     )
                   })
                 }
-
-                <div className="edit-btn">
-                    <Link to={`/groups`}>
-                        <img src="/images/valid.png" alt="Valid" /> Join the group
-                    </Link>
-                </div>
+                
+                {
+                  members.includes(this.props.loggedInUser._id) ? "" : <div className="edit-btn"><Link to={`/groups`}>
+                        <img src="/images/valid.png" alt="Valid" /> Join the event
+                    </Link></div>
+                } 
               </div>
             </div>
         )

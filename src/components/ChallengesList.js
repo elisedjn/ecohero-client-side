@@ -19,10 +19,12 @@ class ChallengesList extends Component {
   };
 
   componentDidMount() {
-    axios.get(`${API_URL}/challenges`).then((response) => {
+    axios.get(`${API_URL}/challenges`)
+    .then((response) => {
+      let individualChallenges = response.data.filter(e => e.status === "individual")
       this.setState({
-        challenges: response.data,
-        filteredChallenges: response.data,
+        challenges: individualChallenges,
+        filteredChallenges: individualChallenges,
       });
     });
   }
