@@ -9,18 +9,30 @@ import "./styles/GroupDetails.css";
 
 class GroupDetails extends Component {
     state = {
-      groupData: null
+      groupData: null,
+      membersID: []
     }
 
     componentDidMount() {
         let id = this.props.match.params.groupID;
         axios.get(`${API_URL}/groups/${id}`, {withCredentials: true})
         .then((res) => {
+          let members = [] 
+          res.data.members.map(e => members.push(e._id))
           this.setState({
             groupData: res.data,
+            membersID: members
           });
         });
       }
+
+
+    handleJoin = (member) => {
+      console.log(member)
+      this.setState({
+        membersID: member
+      })
+    }
 
 
     render() {
@@ -45,7 +57,7 @@ class GroupDetails extends Component {
                 <p>{challenge.fact}</p>
 
                 <h5 className="subtitle">How many points will I get?</h5>
-                <p>Every participant earns {challenge.points} points</p>
+                <p>Each participant will earn {challenge.points} points</p>
 
                 <h5 className="subtitle">Location</h5>
                 <p>{location}</p>
@@ -63,9 +75,8 @@ class GroupDetails extends Component {
                 }
                 
                 {
-                  members.includes(this.props.loggedInUser._id) ? "" : <div className="edit-btn"><Link to={`/groups`}>
-                        <img src="/images/valid.png" alt="Valid" /> Join the event
-                    </Link></div>
+                  this.state.membersID.includes(this.props.loggedInUser._id) ? "" : <div className="edit-btn">
+                  <button onClick={this.handleJoin}><img src="/images/valid.png" alt="Valid" /> Join the event</button></div>
                 } 
               </div>
             </div>

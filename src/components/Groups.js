@@ -72,7 +72,7 @@ class Groups extends Component {
 
         return (
             <div id="groups">
-                <h3 className="groupsTitle">EcoHero Groups</h3>
+                <h3 className="groupsTitle">EcoHero Events</h3>
 
                 <div className="search-part">
                 <InputGroup className="mb-3">
@@ -95,13 +95,13 @@ class Groups extends Component {
                 {this.props.loggedInUser ? (
                 <Button className="bouncy" onClick={this.handleCreateClick}>
                     <img className="plantL" src="/images/plant02.png" alt="o" />
-                    Create a Group
+                    Create an event
                 </Button>
                 ) : (
                 ""
                 )}
                 </div>
-                <p>List of groups</p>
+                <h4 className="listOfEvents">List of events</h4>
                 {this.state.filteredGroups.map((group, i) => {
                 return (
                     <div className="one-success-container" key={"group" + i}>

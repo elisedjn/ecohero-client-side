@@ -89,9 +89,9 @@ class GroupCreate extends Component {
               <Accordion>
               {this.state.groupChallenges.map((challenge, i) => {
                 return (
-                  <Card>
+                  <Card className="challengeContainer">
                     <Card.Header>
-                      <Accordion.Toggle as={Card.Header} variant="link" eventKey={i+1}>
+                      <Accordion.Toggle  as={Card.Header} variant="link" eventKey={i+1}>
                       <Form.Check onClick={() => this.handleChallengeSelect(challenge._id)} key={"challenge" + i} 
                         type="radio"
                         aria-label={challenge._id}
@@ -102,9 +102,13 @@ class GroupCreate extends Component {
                       </Accordion.Toggle>
                     </Card.Header>
                     <Accordion.Collapse eventKey={i+1}>
-                      <Card.Body><div>Description : {challenge.description} </div>
-                      <div>Why is it useful? {challenge.fact}</div>
-                      <div>{challenge.points} points</div>
+                      <Card.Body  >
+                      <div className="titles">Description:</div>
+                      <p>{challenge.description}</p>
+                      <div className="titles">Why is it useful?</div>
+                      <p>{challenge.fact}</p>
+                      <div className="titles">How many points will I get?</div>
+                      <p>{challenge.points} points</p>
                       </Card.Body>
                     </Accordion.Collapse>
                   </Card>

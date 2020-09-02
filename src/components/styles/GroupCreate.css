@@ -3,7 +3,7 @@
       rgba(255, 255, 255, 0.4),
       rgba(255, 255, 255, 0.4)
     ),
-    url(/images/bg06.jpg);
+    url(/images/bg07.jpg);
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
@@ -75,5 +75,9 @@
 #createGroup .inputs {
     border: 1px solid grey;
 }
+
+
+
+
 
 
