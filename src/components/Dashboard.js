@@ -14,7 +14,7 @@ function Dashboard() {
           <Link to="/goals-success"> <img src="/images/goal.png" alt='goals & success'/>  Goals & Success </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/groups"> <img src="/images/group.png" alt='group'/> Groups </Link>
+          <Link to="/groups"> <img src="/images/collaboration.png" alt='group'/> Groups </Link>
         </Nav.Item>
         <Nav.Item>
           <Link to="/profile"> <img src="/images/user.png" alt='profile'/> Profile </Link>

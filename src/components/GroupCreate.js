@@ -9,13 +9,13 @@ function GroupCreate(props) {
     return <Redirect to='/groups'/>
   }
   return (
-    <div id="createChallenge">
+    <div id="createGroup">
       <h1 className="createTitle">Create a Group</h1>
       <div className="white-card">
         <Form onSubmit={props.onSubmit}>
           <Form.Group className="input-container">
             <Form.Label className="titles">Name of the group</Form.Label>
-            <Form.Control className="inputs" name="title" type="text" placeholder="Name of the group" />
+            <Form.Control className="inputs" name="name" type="text" placeholder="Name of the group" />
           </Form.Group>
 
           <Form.Group className="input-container">
@@ -25,7 +25,7 @@ function GroupCreate(props) {
 
           <Form.Group className="input-container">
             <Form.Label className="titles">Location</Form.Label>
-            <Form.Control className="inputs" name="title" type="text" placeholder="Location of the challenge" />
+            <Form.Control className="inputs" name="location" type="text" placeholder="Location of the challenge" />
           </Form.Group>
 
           <Form.Group className="input-container">

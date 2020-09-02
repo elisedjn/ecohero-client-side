@@ -43,7 +43,7 @@ class ChallengeDetails extends Component {
           {
             this.props.loggedInUser ? (
               <div className="addGoalBtn">
-                <AddToMyGoals challenge={this.state.challenge._id} />
+                <AddToMyGoals challenge={this.state.challenge._id} onSuccess={this.props.onSuccess}/>
               </div>
             ) : ""
           }

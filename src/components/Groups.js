@@ -106,7 +106,7 @@ class Groups extends Component {
                 return (
                     <div className="one-success-container" key={"group" + i}>
                     <div className="one-success">
-                        <Link className="link" to={`/challenge/${group._id}`}>
+                        <Link className="link" to={`/groups/${group._id}`}>
                         <p>
                             {group.name} - {group.location}
                         </p>

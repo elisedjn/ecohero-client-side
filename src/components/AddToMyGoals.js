@@ -13,7 +13,6 @@ class AddToMyGoals extends Component {
     loggedInUser: null,
     userGoalsIds: [],
     showPopUp: false,
-    showToast: false
   };
 
   componentDidMount() {
@@ -57,25 +56,15 @@ class AddToMyGoals extends Component {
           { withCredentials: true }
         )
         .then((res) => {
-          this.setState({
-            showToast:true,
-          }, () => this.props.history.push("/goals-success"))
-          ;
+          this.props.onSuccess()
         });
     }
   };
 
   handleClose = (component) => {
-    if(component === 'popUp'){
       this.setState({
         showPopUp:false
       })
-    } else {
-      this.setState({
-        showToast:false
-      })
-    }
-    
   }
 
   render() {
@@ -100,19 +89,6 @@ class AddToMyGoals extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-
-        <Toast onClose={() => this.handleClose('toast')} show={this.state.showToast} delay={2000} autohide>
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded mr-2"
-              alt=""
-            />
-            <strong className="mr-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-          </Toast.Header>
-          <Toast.Body>Challenge added to your Goals!</Toast.Body>
-        </Toast>
       </>
     );
   }

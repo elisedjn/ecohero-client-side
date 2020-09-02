@@ -209,6 +209,21 @@ class App extends React.Component {
       });
   };
 
+  handleCreateGroup = (e) => {
+    e.preventDefault();
+    const {name, description, location, date} = e.currentTarget;
+    axios.post(`${API_URL}/groups/create`, {
+      name: name.value,
+      description: description.value,
+      location: location.value,
+      date: date.value,
+      user: this.state.loggedInUser
+    }, { withCredentials: true })
+    .then((res) => {
+      this.props.history.push("/groups")
+    })
+  }
+
   handleUpdateGoal = (updatedAchievement) => {
     const { image, _id, finishing_date } = updatedAchievement;
     let updatedSuccess = {
@@ -266,6 +281,10 @@ class App extends React.Component {
     })
   }
 
+  hanldeNotification = () => {
+    //Code
+  }
+
   render() {
     return (
       <div id="app">
@@ -304,7 +323,7 @@ class App extends React.Component {
               return <AchievementDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
             }}/>
           <Route path="/challenge/:challengeID" render={(routeProps) => {
-              return <ChallengeDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
+              return <ChallengeDetails loggedInUser={this.state.loggedInUser} {...routeProps} onSuccess={this.hanldeNotification} />;
             }}/>
           <Route path="/user/:userID" render={(routeProps) => {
               return <OtherProfile {...routeProps} />;
@@ -312,13 +331,13 @@ class App extends React.Component {
           <Route path="/goals-edit/:achievementID" render={(routeProps) => {
               return <GoalsEdit onUpdate={this.handleUpdateGoal} {...routeProps} />
             }}/>
-          <Route path="/groups" render={(routeProps) => {
+          <Route exact path="/groups" render={(routeProps) => {
               return <Groups loggedInUser={this.state.loggedInUser} {...routeProps} />
             }}/>  
            <Route path="/groups/create" render={(routeProps) => {
-              return <GroupCreate loggedInUser={this.state.loggedInUser} {...routeProps} />
+              return <GroupCreate onSubmit={this.handleCreateGroup} loggedInUser={this.state.loggedInUser} {...routeProps} />
             }}/>    
-          <Route path="/groups/details" render={(routeProps) => {
+          <Route path="/groups/:groupID" render={(routeProps) => {
               return <GroupDetails loggedInUser={this.state.loggedInUser} {...routeProps} />
             }}/>      
         </Switch>

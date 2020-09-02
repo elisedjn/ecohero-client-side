@@ -8,13 +8,16 @@ import "./styles/GroupDetails.css";
 
 
 class GroupDetails extends Component {
-
+    state = {
+      groupData: null
+    }
 
     componentDidMount() {
         let id = this.props.match.params.groupID;
-        axios.get(`${API_URL}/groups/${id}`, {withCredentials: true}).then((res) => {
+        axios.get(`${API_URL}/groups/${id}`, {withCredentials: true})
+        .then((res) => {
           this.setState({
-            achievement: res.data,
+            groupData: res.data,
           });
         });
       }
@@ -22,26 +25,32 @@ class GroupDetails extends Component {
 
     render() {
 
-        if (!this.state.group) {
+        if (!this.state.groupData) {
             return <p>Loading...</p>;
         }
 
-        const {description, location, date, members} = this.state.group
+        const {description, location, date, members} = this.state.groupData
 
         return (
             <div id="groupDetails">
               <div className="white-card">
                 <h5 className="subtitle">Description</h5>
-                {/* <p>{group.description}</p> */}
+                <p>{description}</p>
 
                 <h5 className="subtitle">Location</h5>
-                {/* <p>{group.location}</p> */}
+                <p>{location}</p>
 
                 <h5 className="subtitle">Date</h5>
-                {/* <p>{group.date}</p> */}
+                <p>{date}</p>
 
                 <h5 className="subtitle">Members</h5>
-                {/* <p>{group.members}</p> */}
+                {
+                  members.map((member, i) => {
+                    return (
+                      <div key={"member" + i}> {member.username} </div>
+                    )
+                  })
+                }
 
                 <div className="edit-btn">
                     <Link to={`/groups`}>
