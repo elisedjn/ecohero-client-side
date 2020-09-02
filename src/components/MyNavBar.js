@@ -21,7 +21,7 @@ export default function MyNavBar(props) {
               <Navbar.Toggle className="auth-link dont-hide"><button onClick={props.onLogOut} data-toggle="collapse">Logout</button></Navbar.Toggle>
             ) : (
               <>
-              <Navbar.Toggle className="auth-link dont-hide"><Link to="/signup" data-toggle="collapse">Sing Up</Link></Navbar.Toggle>
+              <Navbar.Toggle className="auth-link dont-hide"><Link to="/signup" data-toggle="collapse">Sign Up</Link></Navbar.Toggle>
               <Navbar.Toggle className="auth-link dont-hide"><Link to="/login" data-toggle="collapse">Login</Link></Navbar.Toggle>
               </>
             )

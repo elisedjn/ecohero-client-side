@@ -72,6 +72,8 @@
 
 #home .carousel-title{
   padding-top: 10px;
+  max-width: 700px;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: baseline;

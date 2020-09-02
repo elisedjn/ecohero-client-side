@@ -15,7 +15,7 @@ function CreateChallForm(props) {
         <Form onSubmit={props.onSubmit}>
           <Form.Group className="input-container">
             <Form.Label className="titles">Title</Form.Label>
-            <Form.Control className="inputs" name="title" type="text" placeholder="Title of the challenge" />
+            <Form.Control className="inputs" name="title" type="text" placeholder="Title of the challenge" required={true} />
           </Form.Group>
 
           <Form.Group className="input-container">
@@ -30,7 +30,7 @@ function CreateChallForm(props) {
 
           <Form.Group className="input-container">
             <Form.Label className="titles">Points</Form.Label>
-            <Form.Control className="inputs" name="points" type="number" max="10000" placeholder="Number of points. Max 10 000" /> 
+            <Form.Control className="inputs" name="points" type="number" max="10000" min="50" placeholder="Number of points. Max 10 000" /> 
           </Form.Group>
 
           <Form.Text >

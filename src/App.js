@@ -140,6 +140,28 @@ class App extends React.Component {
   };
 
   handleEdit = (updatedUser) => {
+    if (updatedUser.username === ""){
+      this.setState({
+        showGeneralModal: true,
+        modalMessage : "Username can't be blank",
+        modalHeader: "Oops!",
+        modalButtonType: "info"
+      })
+    } else if (updatedUser.email === ""){
+      this.setState({
+        showGeneralModal: true,
+        modalMessage : "Email can't be blank",
+        modalHeader: "Oops!",
+        modalButtonType: "info"
+      })
+    } else if (updatedUser.password === ""){
+      this.setState({
+        showGeneralModal: true,
+        modalMessage : "Password can't be blank",
+        modalHeader: "Oops!",
+        modalButtonType: "info"
+      })
+    } else {
     let cloneUser = {
       username: updatedUser.username,
       email: updatedUser.email,
@@ -188,12 +210,29 @@ class App extends React.Component {
           modalButtonType: "info"
         })
       })
+    }
   };
 
   handleCreateChall = (e) => {
-    console.log("in the handle fonction");
     e.preventDefault();
     const { title, description, points, fact } = e.currentTarget;
+    console.log(points)
+    if(title.value === ""){
+      this.setState({
+        showGeneralModal: true,
+        modalMessage : "Please enter a title for your challenge",
+        modalHeader: "Oops!",
+        modalButtonType: "info"
+      })
+    } else if (points.value === "" || points.value < 100 || points.value > 10000){
+      console.log("in the points if")
+      this.setState({
+        showGeneralModal: true,
+        modalMessage : "The points should be between 100 and 10.000",
+        modalHeader: "Oops!",
+        modalButtonType: "info"
+      })
+    } else {
     axios
       .post(
         `${API_URL}/challenges/create`,
@@ -207,11 +246,31 @@ class App extends React.Component {
       )
       .then((res) => {
         this.props.history.push("/challenges");
-      });
+      })
+      .catch((err) => {
+        const {errors} = err.response.data.errorMessage
+        const problem = Object.keys(errors)[0]
+        this.setState({
+          showGeneralModal: true,
+          modalMessage : `Please add some ${problem} to your challenge`,
+          modalHeader: "Oops!",
+          modalButtonType: "info"
+        })
+      })
+    }
   };
 
   handleUpdateGoal = (updatedAchievement) => {
     const { image, _id, finishing_date } = updatedAchievement;
+    if (new Date(finishing_date) > new Date(Date.now()))
+    {
+      this.setState({
+        showGeneralModal: true,
+        modalMessage : 'The achievement date should not be in the future',
+        modalHeader: "Oops!",
+        modalButtonType: "success"
+      })
+    } else {
     let updatedSuccess = {
       completed: true,
       image: image,
@@ -226,6 +285,7 @@ class App extends React.Component {
         let clonedUser = JSON.parse(JSON.stringify(this.state.loggedInUser));
         clonedUser.points += pointsToAdd;
         let newRank = this.handleRank(clonedUser.points);
+        if (newRank === "Big Hero") clonedUser.points += 10000;
         if (clonedUser.rank !== newRank) {
           clonedUser.rank = newRank;
         }
@@ -245,6 +305,7 @@ class App extends React.Component {
             );
           });
       });
+    }
   };
 
   handleRank = (nbOfPoints) => {

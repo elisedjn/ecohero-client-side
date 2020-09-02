@@ -11,7 +11,7 @@
     background-position: top;
     background-attachment: fixed;
     min-height: 100vh;
-    padding: 70px 10px;
+    padding: 70px 30px;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -26,19 +26,12 @@
 }
 
 
-#groups .one-success-container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    
-}
-
-
 #groups .one-success{
+    margin: auto;
+    margin-bottom: 20px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     background-color: rgba(255, 255, 255, 0.8);
@@ -47,7 +40,14 @@
     padding-left: 5px;
     padding-right: 5px; 
     width: 100%;
-    
+    max-width: 500px;
+    min-height: 100px; 
+}
+
+@media (min-width: 960px){
+    #groups .one-success {
+        border-bottom: 12px solid rgb(118, 169, 49);
+    }
 }
 
 #groups .one-success p{
@@ -60,7 +60,8 @@
 }
 
 #groups .search-part{
-    padding: 0 20px;
+    max-width: 500px;
+    margin: auto;
 }
 
 

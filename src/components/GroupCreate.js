@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../config";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Modal from 'react-bootstrap/Modal';
 import { Redirect } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import Card from 'react-bootstrap/Card';
@@ -12,7 +13,12 @@ import "./styles/GroupCreate.css";
 class GroupCreate extends Component {
   state = {
     groupChallenges: [],
-    isSelected: null
+    isSelected: null,
+    showModal: false,
+    modalMessage : "",
+    modalHeader: "",
+    modalButtonType: "",
+    modalButtonStyle: {}
   };
 
   componentDidMount() {
@@ -33,6 +39,42 @@ class GroupCreate extends Component {
   handleCreateGroup = (e) => {
     e.preventDefault();
     const {name, description, location, date} = e.currentTarget;
+    if(name.value === ""){
+      this.setState({
+        showModal: true,
+        modalMessage : "Please enter a name for your event",
+        modalHeader: "Oops",
+        modalButtonType: "success",
+      })
+    } else if (this.state.isSelected === null) {
+      this.setState({
+        showModal: true,
+        modalMessage : "Please choose a challenge for your event",
+        modalHeader: "Oops",
+        modalButtonType: "success",
+      })
+    }  else if (location.value === ""){
+      this.setState({
+        showModal: true,
+        modalMessage : "Please choose a location for your event",
+        modalHeader: "Oops",
+        modalButtonType: "success",
+      })
+    } else if (date.value === ""){
+      this.setState({
+        showModal: true,
+        modalMessage : "Please choose a date for your event",
+        modalHeader: "Oops",
+        modalButtonType: "success",
+      })
+      } else if (new Date(date.value) < new Date(Date.now())){
+        this.setState({
+          showModal: true,
+          modalMessage : "Your event can't be in the pass!",
+          modalHeader: "Oops",
+          modalButtonType: "success",
+        })
+        } else {
     axios.post(`${API_URL}/groups/create`, {
       name: name.value,
       description: description.value,
@@ -51,7 +93,24 @@ class GroupCreate extends Component {
         .then((res) => {
           this.props.history.push("/groups")
         });
+      })
+    }
+  }
+
+  handleModalClose = () => {
+    this.setState({
+      showModal: false
     })
+  }
+
+  fixTodayDate = () => {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1;
+    let yyyy = today.getFullYear();
+    if(dd<10)dd='0'+dd
+    if(mm<10)mm='0'+mm
+    return yyyy+'-'+mm+'-'+dd;
   }
 
   render() {
@@ -70,6 +129,7 @@ class GroupCreate extends Component {
                 name="name"
                 type="text"
                 placeholder="Name of the event"
+                required
               />
             </Form.Group>
 
@@ -120,12 +180,13 @@ class GroupCreate extends Component {
                 name="location"
                 type="text"
                 placeholder="Location of the event"
+                required
               />
             </Form.Group>
 
             <Form.Group className="input-container">
               <Form.Label className="titles">Date</Form.Label>
-              <Form.Control className="inputs" name="date" type="date" />
+              <Form.Control className="inputs" name="date" type="date" required min={this.fixTodayDate()}/> 
             </Form.Group>
 
             <Button className="createBtn" variant="primary" type="submit">
@@ -135,6 +196,20 @@ class GroupCreate extends Component {
             </Button>
           </Form>
         </div>
+
+        <Modal show={this.state.showModal} onHide={this.handleModalClose} >
+          <Modal.Header closeButton style={this.state.modalButtonStyle}>
+            <Modal.Title>{this.state.modalHeader}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {this.state.modalMessage}
+          </Modal.Body>
+          <Modal.Footer style={this.state.modalButtonStyle}>
+            <Button variant={this.state.modalButtonType} onClick={this.handleModalClose}>
+              Ok, got it
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

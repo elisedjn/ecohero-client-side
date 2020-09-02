@@ -59,10 +59,14 @@ class GoalsEdit extends Component {
     })
   }
 
-  handleClose = () => {
-    this.setState({
-      showPopUp:false
-    })
+  fixTodayDate = () => {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1;
+    let yyyy = today.getFullYear();
+    if(dd<10)dd='0'+dd
+    if(mm<10)mm='0'+mm
+    return yyyy+'-'+mm+'-'+dd;
   }
 
   render() {
@@ -105,8 +109,7 @@ class GoalsEdit extends Component {
             onChange={this.handleImageChange}
           ></input>
           <label htmlFor="finishing_date">2. When did you finish this task ?</label>
-          <input name="finishing_date" type="date" onChange={this.handleDateChange} />
-
+          <input name="finishing_date" type="date" onChange={this.handleDateChange}  defaultValue={this.fixTodayDate()} max={this.fixTodayDate()}/>
           <div className="edit-btn">
               <button onClick={this.handleClick}
             type="submit">
@@ -134,5 +137,7 @@ class GoalsEdit extends Component {
     );
   }
 }
+
+
 
 export default GoalsEdit;

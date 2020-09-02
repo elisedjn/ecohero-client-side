@@ -11,7 +11,7 @@
     background-position: top;
     background-attachment: fixed;
     min-height: 100vh;
-    padding: 70px 10px;
+    padding: 70px 30px;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -26,33 +26,33 @@
 }
 
 
-#challenges .one-success-container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    
-}
-
-
 #challenges .one-success{
+    margin: auto;
+    margin-bottom: 20px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 2px 10px rgba(75, 87, 84, 0.5);
     border-bottom: 6px solid rgb(118, 169, 49);
-    padding-left: 5px;
-    padding-right: 5px; 
+    padding: 0 5px;
     width: 100%;
-    
+    max-width: 500px;
+    min-height: 100px;  
+}
+
+@media (min-width: 960px){
+    #challenges .one-success {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-bottom: 12px solid rgb(118, 169, 49);
+    }
 }
 
 #challenges .one-success p{
     margin:0;
-    padding: 5px 0px;
+    padding: 5px 10px;
 }
 
 #challenges .link {
@@ -60,9 +60,9 @@
 }
 
 #challenges .search-part{
-    padding: 0 20px;
+    max-width: 540px;
+    margin: auto;
 }
-
 
 #challenges .bouncy {
     background-color: rgba(255, 255, 255, 0.8);

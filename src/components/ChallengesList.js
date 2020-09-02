@@ -101,20 +101,21 @@ class ChallengesList extends Component {
         )}
         </div>
         
+        <div className="one-success-container" >
         {this.state.filteredChallenges.map((challenge, i) => {
           return (
-            <div className="one-success-container" key={"challenge" + i}>
-              <div className="one-success">
+              <div className="one-success" key={"challenge" + i}>
                 <Link className="link" to={`/challenge/${challenge._id}`}>
                   <p>
-                    {challenge.title} -{" "}
-                    <strong>{challenge.points} points</strong>
+                    {challenge.title}
                   </p>
+                  <p><strong>{challenge.points} points</strong></p>
                 </Link>
               </div>
-            </div>
+            
           );
         })}
+        </div>
         <Modal show={this.state.showPopUp} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Not yet!</Modal.Title>

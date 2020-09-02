@@ -72,7 +72,7 @@ class Groups extends Component {
 
         return (
             <div id="groups">
-                <h3 className="groupsTitle">EcoHero Groups</h3>
+                <h3 className="groupsTitle">EcoHero Events</h3>
 
                 <div className="search-part">
                 <InputGroup className="mb-3">
@@ -81,8 +81,8 @@ class Groups extends Component {
                 </InputGroup.Prepend>
                 <FormControl
                     onChange={this.handleSearch}
-                    placeholder="Search for a group"
-                    aria-label="Search for a group"
+                    placeholder="Search for an event"
+                    aria-label="Search for an event"
                     aria-describedby="basic-addon1"
                 />
                 </InputGroup>
@@ -95,26 +95,26 @@ class Groups extends Component {
                 {this.props.loggedInUser ? (
                 <Button className="bouncy" onClick={this.handleCreateClick}>
                     <img className="plantL" src="/images/plant02.png" alt="o" />
-                    Create a Group
+                    Create an event
                 </Button>
                 ) : (
                 ""
                 )}
                 </div>
-                <p>List of groups</p>
+                <div className="one-success-container" >
                 {this.state.filteredGroups.map((group, i) => {
                 return (
-                    <div className="one-success-container" key={"group" + i}>
-                    <div className="one-success">
+                    <div className="one-success" key={"group" + i}>
                         <Link className="link" to={`/groups/${group._id}`}>
                         <p>
                             {group.name} - {group.location}
                         </p>
                         </Link>
                     </div>
-                    </div>
+                    
                 );
                 })}
+                </div>
                 <Modal show={this.state.showPopUp} onHide={this.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Not yet!</Modal.Title>
