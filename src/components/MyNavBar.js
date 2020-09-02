@@ -11,8 +11,8 @@ export default function MyNavBar(props) {
       <Navbar collapseOnSelect id="myNavBar" fixed="top" variant="light" expand="lg">
         <div id='fakeitem'></div>
         <Navbar.Brand href="/"><img src="/images/ecohero_logo.png" alt="EH" /> EcoHero</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Navbar.Toggle className="dont-hide"><Link to="/challenges" data-toggle="collapse" >Challenges</Link></Navbar.Toggle>
             <Navbar.Toggle className="dont-hide"><Link to="/ranks" data-toggle="collapse">Ranks</Link></Navbar.Toggle>
