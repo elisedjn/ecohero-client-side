@@ -101,6 +101,8 @@ class Groups extends Component {
                 ""
                 )}
                 </div>
+                
+                <h4 className="listOfEvents">List of events</h4>
                 <div className="one-success-container" >
                 {this.state.filteredGroups.map((group, i) => {
                 return (

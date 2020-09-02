@@ -28,6 +28,7 @@ import GoalsEdit from "./components/GoalsEdit";
 import Groups from "./components/Groups"
 import GroupDetails from "./components/GroupDetails"
 import GroupCreate from "./components/GroupCreate"
+import NotFoundPage from "./components/NotFoundPage"
 
 
 class App extends React.Component {
@@ -392,7 +393,8 @@ class App extends React.Component {
             }}/>    
           <Route path="/groups/:groupID" render={(routeProps) => {
               return <GroupDetails loggedInUser={this.state.loggedInUser} {...routeProps} />
-            }}/>      
+            }}/>  
+          <Route path="*" component={NotFoundPage} />    
         </Switch>
         <Modal show={this.state.showGeneralModal} onHide={this.handleModalClose} >
           <Modal.Header closeButton style={this.state.modalButtonStyle}>
