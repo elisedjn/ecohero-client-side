@@ -89,7 +89,8 @@ class App extends React.Component {
           showGeneralModal: true,
           modalMessage : errorMessage,
           modalHeader: "Oops!",
-          modalButtonType: "info"
+          modalButtonType: "info",
+          modalButtonStyle: {}
         })
       })
   };
@@ -122,7 +123,8 @@ class App extends React.Component {
           showGeneralModal: true,
           modalMessage : errorMessage,
           modalHeader: "Oops!",
-          modalButtonType: "info"
+          modalButtonType: "info",
+          modalButtonStyle: {}
         })
       })
   };
@@ -148,21 +150,24 @@ class App extends React.Component {
         showGeneralModal: true,
         modalMessage : "Username can't be blank",
         modalHeader: "Oops!",
-        modalButtonType: "info"
+        modalButtonType: "info",
+        modalButtonStyle: {}
       })
     } else if (updatedUser.email === ""){
       this.setState({
         showGeneralModal: true,
         modalMessage : "Email can't be blank",
         modalHeader: "Oops!",
-        modalButtonType: "info"
+        modalButtonType: "info",
+        modalButtonStyle: {}
       })
     } else if (updatedUser.password === ""){
       this.setState({
         showGeneralModal: true,
         modalMessage : "Password can't be blank",
         modalHeader: "Oops!",
-        modalButtonType: "info"
+        modalButtonType: "info",
+        modalButtonStyle: {}
       })
     } else {
     let cloneUser = {
@@ -210,7 +215,8 @@ class App extends React.Component {
           showGeneralModal: true,
           modalMessage : message,
           modalHeader: "Oops!",
-          modalButtonType: "info"
+          modalButtonType: "info",
+          modalButtonStyle: {}
         })
       })
     }
@@ -225,7 +231,8 @@ class App extends React.Component {
         showGeneralModal: true,
         modalMessage : "Please enter a title for your challenge",
         modalHeader: "Oops!",
-        modalButtonType: "info"
+        modalButtonType: "info",
+        modalButtonStyle: {}
       })
     } else if (points.value === "" || points.value < 100 || points.value > 10000){
       console.log("in the points if")
@@ -233,7 +240,8 @@ class App extends React.Component {
         showGeneralModal: true,
         modalMessage : "The points should be between 100 and 10.000",
         modalHeader: "Oops!",
-        modalButtonType: "info"
+        modalButtonType: "info",
+        modalButtonStyle: {}
       })
     } else {
     axios
@@ -257,7 +265,8 @@ class App extends React.Component {
           showGeneralModal: true,
           modalMessage : `Please add some ${problem} to your challenge`,
           modalHeader: "Oops!",
-          modalButtonType: "info"
+          modalButtonType: "info",
+          modalButtonStyle: {}
         })
       })
     }
@@ -271,7 +280,8 @@ class App extends React.Component {
         showGeneralModal: true,
         modalMessage : 'The achievement date should not be in the future',
         modalHeader: "Oops!",
-        modalButtonType: "success"
+        modalButtonType: "success",
+        modalButtonStyle: {}
       })
     } else {
     let updatedSuccess = {
@@ -312,7 +322,8 @@ class App extends React.Component {
                 showGeneralModal: congratulations ? true : false,
                 modalMessage : message,
                 modalHeader: "Congratulations!",
-                modalButtonType: "success"
+                modalButtonType: "success",
+                modalButtonStyle: {}
               },
               this.props.history.push("/hero-home")
             );
@@ -396,7 +407,8 @@ class App extends React.Component {
             showGeneralModal: congratulations ? true : false,
             modalMessage : message,
             modalHeader: "Congratulations!",
-            modalButtonType: "success"
+            modalButtonType: "success",
+            modalButtonStyle: {}
           },
           this.props.history.push("/hero-home")
         );
