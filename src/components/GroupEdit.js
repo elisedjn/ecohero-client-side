@@ -68,6 +68,8 @@ class GroupEdit extends Component {
     }
 
     const { name, challenge, members, date, image } = this.state.event;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    let fullDate = new Date(date).toLocaleDateString(undefined, options)
 
     return (
       <div id="editEvent">
@@ -75,7 +77,7 @@ class GroupEdit extends Component {
         <div className="white-card">
           <div className="header">
             <h4>{name}</h4>
-            <p>{date}</p>
+            <p>{fullDate}</p>
           </div>
 
           <h5 className="subtitle">
@@ -96,9 +98,9 @@ class GroupEdit extends Component {
             accept="image/png, image/jpeg"
             onChange={this.handleImageChange}
           ></input>
-          <label htmlFor="finishing_date">2. Who participate to this event ?</label>
+          <label htmlFor="finishing_date">2. Who participates to this event ?</label>
           {
-            this.state.event.members.map((member, i) => {
+            members.map((member, i) => {
               return (
                 <div key={"member" + i} className="check-box">
                   <input onChange={this.handleMember} type="checkbox" id={member.username} name={member.username} value={member._id} />

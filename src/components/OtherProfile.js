@@ -10,6 +10,7 @@ export default class OtherProfile extends Component {
   state = {
     user: null,
     userAchievements: [],
+    userGroups: null,
   };
 
   componentDidMount() {
@@ -22,11 +23,18 @@ export default class OtherProfile extends Component {
           .get(`${API_URL}/achievements/user/${user.data._id}`, {
             withCredentials: true,
           })
-          .then((res) => {
-            this.setState({
-              user: user.data,
-              userAchievements: res.data,
-            });
+          .then((achiev) => {
+            axios
+          .get(`${API_URL}/groups/user/${user.data._id}`, {
+            withCredentials: true,
+          })
+            .then((groups) => {
+              this.setState({
+                user: user.data,
+                userAchievements: achiev.data,
+                userGroups: groups.data
+              });
+            })
           });
       });
   }
@@ -67,14 +75,30 @@ export default class OtherProfile extends Component {
             {this.state.userAchievements.map((achievement, i) => {
               if (achievement.completed) {
                 let finishDate = new Date(achievement.finishing_date)
-                let date = finishDate.getDate()
-                let month = finishDate.getMonth() + 1
-                let finish = date + "/" + month
+                let date = "0" + finishDate.getDate()
+                let month = "0" + (finishDate.getMonth() + 1)
+                let finish = date.slice(-2) + "/" + month.slice(-2)
                 return (
                   <div className="one-success" key={"success" + i}>
                     <Link to={`/achievement/${achievement._id}`}>
                         <p>{finish}</p>
                         <h6>{achievement.challenge.title}</h6>
+                    </Link>
+                  </div>
+                );
+              }
+            })}
+            {this.state.userGroups.map((event, i) => {
+              if (event.finished) {
+                let eventDate = new Date(event.date)
+                let date = "0" + eventDate.getDate()
+                let month = "0" + (eventDate.getMonth() + 1)
+                eventDate = date.slice(-2) + "/" + month.slice(-2)
+                return (
+                  <div className="one-success event" key={"event" + i}>
+                    <Link to={`/groups/${event._id}`}>
+                        <p>{eventDate}</p>
+                        <h6>{event.name}</h6>
                     </Link>
                   </div>
                 );

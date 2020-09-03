@@ -18,6 +18,10 @@ class GoalsAndSuccess extends Component {
     targetedAchievID: null,
     filteredAchievements: [],
     userGroups: null,
+    targetedGroupID: null,
+    filteredGroups: null,
+    functionSetUp: null,
+    showTimeModal: false
   };
 
   getUsersInfos = () => {
@@ -31,11 +35,11 @@ class GoalsAndSuccess extends Component {
             withCredentials: true,
           })
           .then((groups) => {
-            console.log(groups);
             this.setState({
               userAchievements: res.data,
               filteredAchievements: res.data,
               userGroups: groups.data,
+              filteredGroups: groups.data,
             });
           });
       });
@@ -57,12 +61,34 @@ class GoalsAndSuccess extends Component {
     this.setState({
       showDeletePopup: true,
       targetedAchievID: achievID,
+      functionSetUp: "achievement"
     });
   };
+
+  handleEventClick = (eventID) => {
+    this.setState({
+      showDeletePopup: true,
+      targetedGroupID: eventID,
+      functionSetUp: "event"
+    })
+  }
+
+  handleCheckValidate = (event) => {
+    let todaysDate = new Date(Date.now())
+      todaysDate.setHours(0)
+      if(todaysDate < new Date(event.date)){
+        this.setState({
+          showTimeModal: true
+        })
+      } else {
+        this.props.history.push(`/event-edit/${event._id}`)
+      }
+  }
 
   handleClose = () => {
     this.setState({
       showDeletePopup: false,
+      showTimeModal: false
     });
   };
 
@@ -83,6 +109,20 @@ class GoalsAndSuccess extends Component {
       });
   };
 
+  handleEventDelete = (eventID) => {
+    axios.delete(`${API_URL}/groups/${eventID}`, { withCredentials: true })
+    .then((res) => {
+      let clonedEvents = JSON.parse(JSON.stringify(this.state.userGroups));
+      clonedEvents.forEach((e, i) => {
+        if(e._id === res.data._id) clonedEvents.splice(i, 1);
+      });
+      this.setState({
+          userGroups: clonedEvents,
+          showDeletePopup: false,
+      })
+    })
+  }
+
   handleSearchAch = (e) => {
     let searchAch = e.currentTarget.value.toLowerCase();
     let cloneUserAchievements = this.state.userAchievements.filter((item) => {
@@ -92,8 +132,16 @@ class GoalsAndSuccess extends Component {
           item.challenge.description.toLowerCase().includes(searchAch))
       );
     });
+    let clonedEvents = this.state.userGroups.filter((item) => {
+      return (
+        item.finished === true &&
+        (item.name.toLowerCase().includes(searchAch) ||
+        item.location.toLowerCase().includes(searchAch))
+      );
+    })
     this.setState({
       filteredAchievements: cloneUserAchievements,
+      filteredGroups: clonedEvents
     });
   };
 
@@ -162,6 +210,12 @@ class GoalsAndSuccess extends Component {
               <img src="/images/plant02.png" alt="o" />
               Your upcoming events
             </h4>
+            {this.state.userGroups.filter((e) => e.finished === false)
+              .length === 0 ? (
+              <div>You don't have any upcoming event... </div>
+            ) : (
+              ""
+            )}
             {this.state.userGroups.map((event, i) => {
               let eventDate = new Date(event.date);
               let date = "0" + eventDate.getDate();
@@ -169,18 +223,19 @@ class GoalsAndSuccess extends Component {
               eventDate = date.slice(-2) + "/" + month.slice(-2);
               if (event.finished === false) {
                 return (
-                  <div className="achiev-container" key={"event" + i}>
+                  <div className="achiev-container event" key={"event" + i}>
                     <Link className="event-info" to={`/groups/${event._id}`}>
-                      <p>{eventDate}</p>
-                      <h6>{event.name}</h6>
-                      <p>{event.location}</p>
+                      <p className="event-date">{eventDate}</p>
+                      {event.members[0]._id === this.props.loggedInUser._id ? <p className="event-details">{event.name} - {event.location}</p> : <><h6>{event.name}</h6>
+                      <p>{event.location}</p></>}
+                      
                     </Link>
                     {event.members[0]._id === this.props.loggedInUser._id ? (
                       <div className="edit-btn">
-                        <Link to={`/event-edit/${event._id}`}>
+                        <button  onClick={() => this.handleCheckValidate(event)}>
                           <img src="/images/valid.png" alt="Valid" />
-                        </Link>
-                        <button>
+                        </button>
+                        <button className="delete-event" onClick={() => this.handleEventClick(event._id)}>
                           <img src="/images/delete.png" alt="Delete" />
                         </button>
                       </div>
@@ -191,6 +246,11 @@ class GoalsAndSuccess extends Component {
                 );
               }
             })}
+            <div className="btn-container">
+              <Link className="btn-add" to="/groups">
+                Find events !
+              </Link>
+            </div>
           </div>
 
           <div>
@@ -240,14 +300,14 @@ class GoalsAndSuccess extends Component {
               }
             })}
 
-            {this.state.userGroups.map((event, i) => {
+            {this.state.filteredGroups.map((event, i) => {
               let successDate = new Date(event.date);
               let date = "0" + successDate.getDate();
               let month = "0" + (successDate.getMonth() + 1);
               successDate = date.slice(-2) + "/" + month.slice(-2);
               if (event.finished) {
                 return (
-                  <div className="achiev-container" key={"success" + i}>
+                  <div className="achiev-container event" key={"success" + i}>
                     <Link
                       className="date-title"
                       to={`/groups/${event._id}`}
@@ -277,9 +337,23 @@ class GoalsAndSuccess extends Component {
             </Button>
             <Button
               variant="success"
-              onClick={() => this.handleDelete(this.state.targetedAchievID)}
+              onClick={this.state.functionSetUp === "event" ? () => this.handleEventDelete(this.state.targetedGroupID) : ()=>this.handleDelete(this.state.targetedAchievID)}
             >
               Yes, I'm sure!
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <Modal show={this.state.showTimeModal} onHide={this.handleClose} >
+          <Modal.Header closeButton>
+            <Modal.Title>Not Yet!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            You can't validate an event before it happens!
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="success" onClick={this.handleClose}>
+              Ok, got it
             </Button>
           </Modal.Footer>
         </Modal>

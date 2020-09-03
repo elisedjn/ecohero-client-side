@@ -108,9 +108,9 @@ class HeroHome extends Component {
                 this.state.userAchievements.slice(0, 2).map((achievement, i) => {
                
                   let startDate = new Date(achievement.starting_date);
-                  let date = startDate.getDate();
-                  let month = startDate.getMonth() + 1;
-                  let start = date + "/" + month;
+                  let date = "0" + startDate.getDate();
+                  let month = "0" + (startDate.getMonth() + 1);
+                  let start = date.slice(-2) + "/" + month.slice(-2);
                   return (
                     <div className="one-task" key={"goals" + i}>
                     <div className="date-title">

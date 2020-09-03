@@ -61,6 +61,10 @@
   align-items: center;
 }
 
+#goalsSuccess .event{
+  border-bottom: 6px solid rgb(243, 240, 42) !important;
+}
+
 #goalsSuccess .achiev-container .date-title { 
   display: flex;
   width: 90%;
@@ -76,15 +80,23 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
+  padding: 10px;
   width: 100%;
+}
+#goalsSuccess .event-details{
+  margin-left: 10px;
 }
 #goalsSuccess .achiev-container .event-info p{
   margin-bottom: 0;
+}
+#goalsSuccess .achiev-container .event-info .event-date{
+  font-size: 0.8rem;
 }
 
 #goalsSuccess .events{
   padding-bottom: 30px;
 }
+
 
 #goalsSuccess .achiev-container .date-title p{
   width: 17%;
@@ -116,6 +128,10 @@
   padding:0;
   background-color: transparent;
   outline: none;
+}
+
+#goalsSuccess .edit-btn .delete-event{
+  margin-left: 10px;
 }
 
 #goalsSuccess .btn-add{

@@ -19,7 +19,7 @@ class Ranks extends Component {
                     <h5><strong>Chill Hero</strong></h5>
                     <p>10.000-24.999 points</p>   
                   </div>  
-                <p className="perks"><strong>Perks:</strong> Create groups</p>
+                <p className="perks"><strong>Perks:</strong> Create events</p>
                 </div>
 
                 <div className="rankContainer">

@@ -95,12 +95,8 @@ class GroupDetails extends Component {
         }
 
         const {name, description, location, date, members, challenge} = this.state.groupData
-
-        let fullDate = new Date(date);
-        let daydate = '0' + fullDate.getDate();
-        let month = '0' + (fullDate.getMonth() + 1);
-        let year = fullDate.getFullYear()
-        fullDate = daydate.slice(-2) + "/" + month.slice(-2) + "/" + year;
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+        let fullDate = new Date(date).toLocaleDateString(undefined, options)
 
         return (
             <div id="groupDetails">
@@ -137,8 +133,8 @@ class GroupDetails extends Component {
                   })
                 }
                 
-                { 
-                  this.state.membersID.includes(this.props.loggedInUser._id) ? 
+                { !this.props.loggedInUser ? "" :
+                  (this.state.membersID.includes(this.props.loggedInUser._id) ? 
                   (this.state.membersID[0] === this.props.loggedInUser._id ? 
                     <button onClick={this.handleValidate}>Valid the event</button> 
                     : <button onClick={this.handleLeave}>Leave the event</button> )
@@ -146,7 +142,7 @@ class GroupDetails extends Component {
                     <div className="edit-btn">
                     <button onClick={this.handleJoin}><img src="/images/valid.png" alt="Valid" /> Join the event</button>
                     </div>
-                  )
+                  ))
                 } 
               </div>
               <Modal show={this.state.showPopUp} onHide={this.handleClose} >
