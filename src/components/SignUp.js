@@ -11,6 +11,9 @@ function SignUp(props) {
         <Form.Group>
           <Form.Label>Username</Form.Label>
           <Form.Control type="text" placeholder="Enter username" name="username"/>
+          <Form.Text className="text-muted">
+            Make it as unique as you are.
+          </Form.Text>
         </Form.Group>
 
         <Form.Group>
@@ -24,6 +27,9 @@ function SignUp(props) {
         <Form.Group>
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" name="password" />
+          <Form.Text className="text-muted">
+            Password needs to have at least 8 characters, a number and an Uppercase alphabet.
+          </Form.Text>
         </Form.Group>
 
         <Form.Text className="small-text">

@@ -15,15 +15,15 @@ export default function SocialMedia(props) {
         
       <div id="socialMedia" >
       <div className="sharing-logo">
-        <FacebookShareButton className="sharing-logo" url={`https://eco-hero.herokuapp.com/`} quote={"Hey! I have achieved this challenge at Eco-Hero! Check it out!"}><FacebookIcon size={32} /></FacebookShareButton>
+        <FacebookShareButton className="sharing-logo" url={`https://eco-hero.herokuapp.com/`} quote={"Hey! I have achieved this challenge at Eco-Hero! Check it out!"}><FacebookIcon size={30} /></FacebookShareButton>
       </div>
 
       <div className="sharing-logo">
-        <TwitterShareButton className="sharing-logo" url={`https://eco-hero.herokuapp.com/`} quote={"Hey! I have achieved this challenge at Eco-Hero! Check it out!"}><TwitterIcon size={32} /></TwitterShareButton>
+        <TwitterShareButton className="sharing-logo" url={`https://eco-hero.herokuapp.com/`} quote={"Hey! I have achieved this challenge at Eco-Hero! Check it out!"}><TwitterIcon size={30} /></TwitterShareButton>
       </div>
 
       <div className="sharing-logo">
-        <WhatsappShareButton className="sharing-logo" url={`https://eco-hero.herokuapp.com/`} quote={"Hey! I have achieved this challenge at Eco-Hero! Check it out!"}><WhatsappIcon size={32} /></WhatsappShareButton> 
+        <WhatsappShareButton className="sharing-logo" url={`https://eco-hero.herokuapp.com/`} quote={"Hey! I have achieved this challenge at Eco-Hero! Check it out!"}><WhatsappIcon size={30} /></WhatsappShareButton> 
       </div>
     </div>
             

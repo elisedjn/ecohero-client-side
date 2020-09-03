@@ -29,6 +29,7 @@ import Groups from "./components/Groups"
 import GroupDetails from "./components/GroupDetails"
 import GroupCreate from "./components/GroupCreate"
 import NotFoundPage from "./components/NotFoundPage"
+import GroupEdit from "./components/GroupEdit";
 
 
 class App extends React.Component {
@@ -284,11 +285,17 @@ class App extends React.Component {
       .then((res) => {
         let pointsToAdd = res.data.challenge.points;
         let clonedUser = JSON.parse(JSON.stringify(this.state.loggedInUser));
+        let message = ""
+        let congratulations = false;
         clonedUser.points += pointsToAdd;
         let newRank = this.handleRank(clonedUser.points);
         if (newRank === "Big Hero") clonedUser.points += 10000;
         if (clonedUser.rank !== newRank) {
           clonedUser.rank = newRank;
+          congratulations = true
+          let bonus = this.handleBonus(newRank)
+          message = `You're now a ${newRank}! 
+          ${bonus}`
         }
         console.log(clonedUser);
         axios
@@ -301,6 +308,10 @@ class App extends React.Component {
             this.setState(
               {
                 loggedInUser: clonedUser,
+                showGeneralModal: congratulations ? true : false,
+                modalMessage : message,
+                modalHeader: "Congratulations!",
+                modalButtonType: "success"
               },
               this.props.history.push("/hero-home")
             );
@@ -322,6 +333,74 @@ class App extends React.Component {
       return "New Hero";
     }
   };
+
+  handleBonus = (rank) => {
+    switch (rank) {
+      case "Chill Hero":
+        return "You can now CREATE EVENTS!";
+      case "Smart Hero":
+        return "You can now CREATE CHALLENGES!";
+      case "Big Hero":
+        return "You win 10.000 points bonus!";
+      case "Super Hero":
+        return "You deserve nice surprises! Check your emails, we will contact you soon ;)"
+    }
+  };
+
+  handleUpdateEvent = (event) => {
+    const { image, _id, members } = event;
+    let updatedEvent = {
+      finished: true,
+      image: image,
+    };
+    axios.patch(`${API_URL}/groups/valid/${_id}`, updatedEvent, {
+        withCredentials: true,
+      })
+      .then((group) => {
+        let pointsToAdd = group.data.challenge.points;
+        console.log(group.data.challenge.points)
+        // Add points to every users
+        let message = ""
+        let congratulations = false;
+        let updatedActualUser;
+        members.forEach(user => {
+          console.log(user)
+          let clonedUser = JSON.parse(JSON.stringify(user));
+          clonedUser.points += pointsToAdd;
+          let newRank = this.handleRank(clonedUser.points);
+          if (clonedUser.rank !== newRank) {
+            clonedUser.rank = newRank;
+            if (newRank === "Big Hero") clonedUser.points += 10000;
+            if(clonedUser._id === this.state.loggedInUser._id){
+              congratulations = true
+              let bonus = this.handleBonus(newRank)
+              message = `You're now a ${newRank}! 
+              ${bonus}`
+            }
+          }
+          if(clonedUser._id === this.state.loggedInUser._id) updatedActualUser = clonedUser;
+          console.log(clonedUser);
+          axios.patch(
+              `${API_URL}/users/${clonedUser._id}/edit`,
+              clonedUser,
+              { withCredentials: true }
+            )
+            .then((response) => {
+              console.log("user updated", response)
+            });
+        })
+        this.setState(
+          {
+            loggedInUser: updatedActualUser,
+            showGeneralModal: congratulations ? true : false,
+            modalMessage : message,
+            modalHeader: "Congratulations!",
+            modalButtonType: "success"
+          },
+          this.props.history.push("/hero-home")
+        );
+      });
+    };
 
   handleModalClose = () => {
     this.setState({
@@ -393,6 +472,9 @@ class App extends React.Component {
             }}/>    
           <Route path="/groups/:groupID" render={(routeProps) => {
               return <GroupDetails loggedInUser={this.state.loggedInUser} {...routeProps} />
+            }}/>  
+          <Route path="/event-edit/:eventID" render={(routeProps) => {
+              return <GroupEdit loggedInUser={this.state.loggedInUser} onUpdate={this.handleUpdateEvent} {...routeProps} />
             }}/>  
           <Route path="*" component={NotFoundPage} />    
         </Switch>

@@ -61,9 +61,38 @@
   align-items: center;
 }
 
-#goalsSuccess .achiev-container a { 
+#goalsSuccess .achiev-container .date-title { 
+  display: flex;
+  width: 90%;
+}
+
+#goalsSuccess .achiev-container a{
   color: black;
   margin-right: 10px;
+}
+
+#goalsSuccess .achiev-container .event-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+}
+#goalsSuccess .achiev-container .event-info p{
+  margin-bottom: 0;
+}
+
+#goalsSuccess .events{
+  padding-bottom: 30px;
+}
+
+#goalsSuccess .achiev-container .date-title p{
+  width: 17%;
+  font-size: 0.8rem;
+  margin-right: 10px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
 }
 
 #goalsSuccess .achiev-container h6 {

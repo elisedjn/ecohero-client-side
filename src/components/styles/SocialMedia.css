@@ -1,8 +1,9 @@
 #socialMedia {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
   
 #socialMedia .sharing-logo {
-    padding: 1px;
+    padding: 2px;
 }

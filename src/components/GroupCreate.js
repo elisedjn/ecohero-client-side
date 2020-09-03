@@ -83,16 +83,8 @@ class GroupCreate extends Component {
       user: this.props.loggedInUser,
       challenge: this.state.isSelected
     }, { withCredentials: true })
-    .then((result) => {
-      axios
-        .post(
-          `${API_URL}/achievements/create/${this.state.isSelected}/${this.props.loggedInUser._id}`,
-          {},
-          { withCredentials: true }
-        )
-        .then((res) => {
+    .then((group) => {
           this.props.history.push("/groups")
-        });
       })
     }
   }
@@ -115,7 +107,7 @@ class GroupCreate extends Component {
 
   render() {
     if (!this.props.loggedInUser || this.props.loggedInUser.points < 10000) {
-      return <Redirect to="/groups" />;
+      return <Redirect to="/groups" />
     }
     return (
       <div id="createGroup">
@@ -151,14 +143,14 @@ class GroupCreate extends Component {
                 return (
                   <Card className="challengeContainer">
                     <Card.Header>
-                      <Accordion.Toggle  as={Card.Header} variant="link" eventKey={i+1}>
+                      <Accordion.Toggle className="accordion-header" as={Card.Header} variant="link" eventKey={i+1}>
                       <Form.Check onClick={() => this.handleChallengeSelect(challenge._id)} key={"challenge" + i} 
                         type="radio"
                         aria-label={challenge._id}
                         name="challengeSelector"
                         id={challenge._id}>
                       </Form.Check>
-                      {challenge.title}
+                      <div>{challenge.title}</div>
                       </Accordion.Toggle>
                     </Card.Header>
                     <Accordion.Collapse eventKey={i+1}>
@@ -168,7 +160,7 @@ class GroupCreate extends Component {
                       <div className="titles">Why is it useful?</div>
                       <p>{challenge.fact}</p>
                       <div className="titles">How many points will I get?</div>
-                      <p>{challenge.points} points</p>
+                      <p>Every participant will earn {challenge.points} points</p>
                       </Card.Body>
                     </Accordion.Collapse>
                   </Card>

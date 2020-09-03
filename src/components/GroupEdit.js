@@ -4,26 +4,22 @@ import { API_URL } from "../config";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
-import "./styles/GoalsEdit.css";
+import "./styles/GroupEdit.css";
 
-class GoalsEdit extends Component {
+class GroupEdit extends Component {
   state = {
-    achievement: null,
+    event: null,
     showPopUp: false,
   };
 
   componentDidMount() {
-    let id = this.props.match.params.achievementID;
+    let id = this.props.match.params.eventID;
     console.log(id);
-
-    axios
-      .get(`${API_URL}/achievements/${id}`, {
-        withCredentials: true,
-      })
+    axios.get(`${API_URL}/groups/${id}`, {withCredentials: true,})
       .then((res) => {
         console.log(res.data);
         this.setState({
-          achievement: res.data,
+          event: res.data,
         });
       });
   }
@@ -35,22 +31,18 @@ class GoalsEdit extends Component {
     axios
       .post(`${API_URL}/upload`, uploadData, { withCredentials: true })
       .then((response) => {
-        let updatedAchievement = JSON.parse(
-          JSON.stringify(this.state.achievement)
+        let updatedEvent = JSON.parse(
+          JSON.stringify(this.state.event)
         );
-        updatedAchievement.image = response.data.image;
+        updatedEvent.image = response.data.image;
         this.setState({
-          achievement: updatedAchievement,
+          event: updatedEvent,
         });
       });
   };
 
-  handleDateChange = (e) => {
-    let updatedAchievement = JSON.parse(JSON.stringify(this.state.achievement));
-    updatedAchievement.finishing_date = e.currentTarget.value;
-      this.setState({
-        achievement: updatedAchievement,
-      });
+  handleMember = (e) => {
+    console.log(e.currentTarget)
   }
 
   handleClick = () => {
@@ -65,18 +57,8 @@ class GoalsEdit extends Component {
     })
   }
 
-  fixTodayDate = () => {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth()+1;
-    let yyyy = today.getFullYear();
-    if(dd<10)dd='0'+dd
-    if(mm<10)mm='0'+mm
-    return yyyy+'-'+mm+'-'+dd;
-  }
-
   render() {
-    if (!this.state.achievement) {
+    if (!this.state.event) {
       return (
         <p>
           Loading... If you're not login yet, please{" "}
@@ -85,25 +67,25 @@ class GoalsEdit extends Component {
       );
     }
 
-    const { image, challenge } = this.state.achievement;
+    const { name, challenge, members, date, image } = this.state.event;
 
     return (
-      <div id="editGoal">
-        <h3 className="title">Complete this Goal</h3>
+      <div id="editEvent">
+        <h3 className="title">Validate this Event</h3>
         <div className="white-card">
           <div className="header">
-            <h4>{challenge.title}</h4>
-            <p>{challenge.points} points</p>
+            <h4>{name}</h4>
+            <p>{date}</p>
           </div>
 
           <h5 className="subtitle">
               {" "}
-              <img src="/images/plant02.png" alt="o"  /> How to complete this goal?
+              <img src="/images/plant02.png" alt="o"  /> How to validate this event?
             </h5>
           <p>{challenge.description}</p>
           <h5 className="subtitle">
               {" "}
-              <img src="/images/plant02.png" alt="o"  /> Before you valid this goal
+              <img src="/images/plant02.png" alt="o"  /> Before you valid this event
             </h5>
           <label htmlFor="image">1. Download a picture :</label>
           {image ? <img src={image} alt="Avatar" /> : ""}
@@ -114,12 +96,22 @@ class GoalsEdit extends Component {
             accept="image/png, image/jpeg"
             onChange={this.handleImageChange}
           ></input>
-          <label htmlFor="finishing_date">2. When did you finish this task ?</label>
-          <input name="finishing_date" type="date" onChange={this.handleDateChange}  defaultValue={this.fixTodayDate()} max={this.fixTodayDate()}/>
+          <label htmlFor="finishing_date">2. Who participate to this event ?</label>
+          {
+            this.state.event.members.map((member, i) => {
+              return (
+                <div key={"member" + i} className="check-box">
+                  <input onChange={this.handleMember} type="checkbox" id={member.username} name={member.username} value={member._id} />
+                  <label for={member.username}>{member.username}</label>
+                </div>
+              )
+            })
+          }
+          
           <div className="edit-btn">
               <button onClick={this.handleClick}
             type="submit">
-                <img src="/images/valid.png" alt="Valid" /> Completed !
+                <img src="/images/valid.png" alt="Valid" /> Validate !
               </button>
           </div>
         </div>
@@ -128,13 +120,13 @@ class GoalsEdit extends Component {
             <Modal.Title>Are you sure?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            If you complete this goal, it will directly go to your success and you won't be able to edit it again. Are you sure you are ready to complete this goal?
+            If you valid this event, it will directly go to every participants success and you won't be able to edit it again. Are you sure you are ready to complete this event?
           </Modal.Body>
           <Modal.Footer>
           <Button variant="danger" onClick={this.handleClose}>
               No, not yet.
             </Button>
-            <Button variant="success" onClick={() => this.props.onUpdate(this.state.achievement)}>
+            <Button variant="success" onClick={() => this.props.onUpdate(this.state.event)}>
               Yes, I'm sure!
             </Button>
           </Modal.Footer>
@@ -146,4 +138,4 @@ class GoalsEdit extends Component {
 
 
 
-export default GoalsEdit;
+export default GroupEdit;
