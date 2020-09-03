@@ -14,20 +14,35 @@ export default function MyNavBar(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Navbar.Toggle className="dont-hide"><Link to="/challenges" data-toggle="collapse" >Challenges</Link></Navbar.Toggle>
-            <Navbar.Toggle className="dont-hide"><Link to="/ranks" data-toggle="collapse">Ranks</Link></Navbar.Toggle>
-            <Navbar.Toggle className="dont-hide"><Link to="/leaderboard" data-toggle="collapse">Hall of Heroes</Link></Navbar.Toggle>
+            <Navbar.Toggle><Link to="/challenges" >Challenges</Link></Navbar.Toggle>
+            <Navbar.Toggle><Link to="/ranks" >Ranks</Link></Navbar.Toggle>
+            <Navbar.Toggle><Link to="/leaderboard" >Hall of Heroes</Link></Navbar.Toggle>
             {props.loggedInUser ? (
-              <Navbar.Toggle className="auth-link dont-hide"><button onClick={props.onLogOut} data-toggle="collapse">Logout</button></Navbar.Toggle>
+              <Navbar.Toggle className="auth-link"><button onClick={props.onLogOut}>Logout</button></Navbar.Toggle>
             ) : (
               <>
-              <Navbar.Toggle className="auth-link dont-hide"><Link to="/signup" data-toggle="collapse">Sign Up</Link></Navbar.Toggle>
-              <Navbar.Toggle className="auth-link dont-hide"><Link to="/login" data-toggle="collapse">Login</Link></Navbar.Toggle>
+              <Navbar.Toggle className="auth-link"><Link to="/signup">Sign Up</Link></Navbar.Toggle>
+              <Navbar.Toggle className="auth-link"><Link to="/login">Login</Link></Navbar.Toggle>
               </>
             )
             }
           </Nav>
         </Navbar.Collapse>
+          {/* Desktop version */}
+        <Nav className="mr-auto desktop-navbar">
+          <Link to="/challenges" data-toggle="collapse" >Challenges</Link>
+          <Link to="/ranks" data-toggle="collapse">Ranks</Link>
+          <Link to="/leaderboard" data-toggle="collapse">Hall of Heroes</Link>
+          {props.loggedInUser ? (
+            <div className="auth-link"><button onClick={props.onLogOut} data-toggle="collapse">Logout</button></div>
+          ) : (
+            <>
+            <div className="auth-link dont-hide"><Link to="/signup" data-toggle="collapse">Sign Up</Link></div>
+            <div className="auth-link dont-hide"><Link to="/login" data-toggle="collapse">Login</Link></div>
+            </>
+          )
+          }
+        </Nav>
       </Navbar>
     </div>
   );

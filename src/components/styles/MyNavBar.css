@@ -7,14 +7,21 @@
   width: 40px;
 }
 
-@media (min-width: 992px){
-#myNavBar .dont-hide{
-  display: block;
-  margin-right: 10px;
+@media (max-width: 991px){
+#myNavBar .desktop-navbar{
+  display: none
 }
-#myNavBar .auth-link{
-  padding: 0 10px;
 }
+
+#myNavBar .desktop-navbar {
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#myNavBar .desktop-navbar .auth-link {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .navbar {
