@@ -119,18 +119,18 @@ class GoalsEdit extends Component {
               </button>
           </div>
         </div>
-        <Modal show={this.state.showPopUp} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Are you sure?</Modal.Title>
+        <Modal className="modalContainer" show={this.state.showPopUp} onHide={this.handleClose}>
+          <Modal.Header className="modalTitleContainer">
+            <Modal.Title className="modalTitle">Are you sure?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modalText">
             If you complete this goal, it will directly go to your success and you won't be able to edit it again. Are you sure you are ready to complete this goal?
           </Modal.Body>
-          <Modal.Footer>
-          <Button variant="danger" onClick={this.handleClose}>
+          <Modal.Footer className="modalButtonsContainer">
+          <Button className="buttonNo" variant="danger" onClick={this.handleClose}>
               No, not yet.
             </Button>
-            <Button variant="success" onClick={() => this.props.onUpdate(this.state.achievement)}>
+            <Button className="buttonYes" variant="success" onClick={() => this.props.onUpdate(this.state.achievement)}>
               Yes, I'm sure!
             </Button>
           </Modal.Footer>

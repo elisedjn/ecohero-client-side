@@ -117,15 +117,15 @@ class ChallengesList extends Component {
           );
         })}
         </div>
-        <Modal show={this.state.showPopUp} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Not yet!</Modal.Title>
+        <Modal className="modalContainer" show={this.state.showPopUp} onHide={this.handleClose}>
+          <Modal.Header className="modalTitleContainer">
+            <Modal.Title className="modalTitle">Not yet!</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modalText">
             Achieve Smart Hero rank in order to do that &#x1F609;{" "}
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="success" onClick={this.handleClose}>
+          <Modal.Footer className="modalButtonsContainer">
+            <Button className="buttonYes" variant="success" onClick={this.handleClose}>
               Ok, got it
             </Button>
           </Modal.Footer>

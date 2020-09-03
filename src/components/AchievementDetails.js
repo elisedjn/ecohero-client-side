@@ -111,18 +111,18 @@ class AchievementDetails extends Component {
             </div>
           )}
         </div>
-        <Modal show={this.state.showDeletePopup} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Are you sure?</Modal.Title>
+        <Modal className="modalContainer" show={this.state.showDeletePopup} onHide={this.handleClose}>
+          <Modal.Header className="modalTitleContainer">
+            <Modal.Title className="modalTitle">Are you sure?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modalText">
             Are you sure you want to delete this goal from your list ?
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" onClick={this.handleClose}>
+          <Modal.Footer className="modalButtonsContainer">
+            <Button className="buttonNo" variant="danger" onClick={this.handleClose}>
               No, not yet.
             </Button>
-            <Button
+            <Button className="buttonYes"
               variant="success"
               onClick={this.handleDelete}
             >
