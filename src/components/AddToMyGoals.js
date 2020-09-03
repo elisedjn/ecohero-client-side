@@ -76,15 +76,15 @@ class AddToMyGoals extends Component {
             this.props.fromOther ? <>I want to do it too!</> : <>Add this Goal!</>
           }
         </Button>
-        <Modal show={this.state.showPopUp} onHide={() => this.handleClose('modal')}>
-          <Modal.Header closeButton>
-            <Modal.Title>Not yet!</Modal.Title>
+        <Modal className="modalContainer" show={this.state.showPopUp} onHide={() => this.handleClose('modal')}>
+          <Modal.Header className="modalTitleContainer">
+            <Modal.Title className="modalTitle">Not yet!</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modalText">
             You already have this challenge in your on going Goals. Finish it before to do it again. &#x1F609;{" "}
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="success" onClick={() => this.handleClose('modal')}>
+          <Modal.Footer className="modalButtonsContainer">
+            <Button className="buttonYes" variant="success" onClick={() => this.handleClose('modal')}>
               Ok, got it
             </Button>
           </Modal.Footer>

@@ -117,18 +117,18 @@ class GroupEdit extends Component {
               </button>
           </div>
         </div>
-        <Modal show={this.state.showPopUp} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Are you sure?</Modal.Title>
+        <Modal className="modalContainer" show={this.state.showPopUp} onHide={this.handleClose}>
+          <Modal.Header className="modalTitleContainer">
+            <Modal.Title className="modalTitle">Are you sure?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modalText">
             If you valid this event, it will directly go to every participants success and you won't be able to edit it again. Are you sure you are ready to complete this event?
           </Modal.Body>
-          <Modal.Footer>
-          <Button variant="danger" onClick={this.handleClose}>
+          <Modal.Footer className="modalButtonsContainer">
+          <Button className="buttonNo" variant="danger" onClick={this.handleClose}>
               No, not yet.
             </Button>
-            <Button variant="success" onClick={() => this.props.onUpdate(this.state.event)}>
+            <Button className="buttonYes" variant="success" onClick={() => this.props.onUpdate(this.state.event)}>
               Yes, I'm sure!
             </Button>
           </Modal.Footer>

@@ -479,15 +479,15 @@ class App extends React.Component {
             }}/>  
           <Route path="*" component={NotFoundPage} />    
         </Switch>
-        <Modal show={this.state.showGeneralModal} onHide={this.handleModalClose} >
-          <Modal.Header closeButton style={this.state.modalButtonStyle}>
-            <Modal.Title>{this.state.modalHeader}</Modal.Title>
+        <Modal className="modalContainer" show={this.state.showGeneralModal} onHide={this.handleModalClose} >
+          <Modal.Header className="modalTitleContainer" closeButton style={this.state.modalButtonStyle}>
+            <Modal.Title className="modalTitle">{this.state.modalHeader}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modalText">
             {this.state.modalMessage}
           </Modal.Body>
-          <Modal.Footer style={this.state.modalButtonStyle}>
-            <Button variant={this.state.modalButtonType} onClick={this.handleModalClose}>
+          <Modal.Footer className="modalButtonsContainer" style={this.state.modalButtonStyle}>
+            <Button className="buttonYes" variant={this.state.modalButtonType} onClick={this.handleModalClose}>
               Ok, got it
             </Button>
           </Modal.Footer>
