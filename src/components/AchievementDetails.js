@@ -6,6 +6,7 @@ import AddToMyGoals from "./AddToMyGoals";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import SocialMedia from "./SocialMedia"
+import Loading from "./Loading"
 import "./styles/AchievementDetails.css";
 
 class AchievementDetails extends Component {
@@ -44,7 +45,7 @@ class AchievementDetails extends Component {
 
   render() {
     if (!this.state.achievement) {
-      return <p>Loading...</p>;
+      return <Loading/>;
     }
     const {challenge, completed, user, image, finishing_date, starting_date, _id} = this.state.achievement
     let startDate = new Date(starting_date);

@@ -80,4 +80,13 @@
 #createChallenge .rules {
     padding-left: 20px;
     padding-right: 20px;
+    margin: 0;
+    padding-bottom: 3px;
+    text-align: left;
 }
+
+#createChallenge .rulesContainer {
+    display: flex;
+    justify-content: center;
+}
+

@@ -5,6 +5,17 @@
     margin: 0;
 }
 
+.superHero {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    font-family: "Cinzel Decorative", cursive;
+    font-weight: 600;
+}
+
+
+
 
 .ranksContainer {
     display: flex;

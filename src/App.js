@@ -29,6 +29,7 @@ import Groups from "./components/Groups"
 import GroupDetails from "./components/GroupDetails"
 import GroupCreate from "./components/GroupCreate"
 import NotFoundPage from "./components/NotFoundPage"
+import Loading from "./components/Loading"
 
 
 class App extends React.Component {

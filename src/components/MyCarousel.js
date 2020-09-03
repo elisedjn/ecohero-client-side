@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../config";
 import Carousel from "react-bootstrap/Carousel";
 import {Link} from 'react-router-dom';
+import Loading from "./Loading"
 import "./styles/MyCarousel.css";
 
 export default class MyCarousel extends Component {
@@ -22,7 +23,7 @@ export default class MyCarousel extends Component {
   }
   render() {
     if (!this.state.achievements) {
-      return <p>Loading...</p>;
+      return <Loading/>
     }
 
     return (

@@ -5,6 +5,7 @@ import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button";
 import { API_URL } from "../config";
+import Loading from "./Loading"
 import "./styles/MyProfile.css";
 
 class MyProfile extends Component {
@@ -49,12 +50,7 @@ class MyProfile extends Component {
 
   render() {
     if (!this.state.userAchievements || !this.props.loggedInUser) {
-      return (
-        <p>
-          Loading... If you're not login yet, please{" "}
-          <Link to="/login">click on this link</Link>
-        </p>
-      );
+      return <Loading/>
     }
 
     return (

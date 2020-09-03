@@ -38,6 +38,12 @@ class GroupCreate extends Component {
 
   handleCreateGroup = (e) => {
     e.preventDefault();
+
+    let todaysDate = new Date(Date.now())
+    todaysDate.setHours(0)
+    console.log("are we creating?")
+
+   
     const {name, description, location, date} = e.currentTarget;
     if(name.value === ""){
       this.setState({
@@ -67,10 +73,12 @@ class GroupCreate extends Component {
         modalHeader: "Oops",
         modalButtonType: "success",
       })
-      } else if (new Date(date.value) < new Date(Date.now())){
+      
+      } else if (new Date(date.value) < todaysDate) {
+        
         this.setState({
           showModal: true,
-          modalMessage : "Your event can't be in the pass!",
+          modalMessage : "Your event can't be in the past!",
           modalHeader: "Oops",
           modalButtonType: "success",
         })
@@ -92,10 +100,17 @@ class GroupCreate extends Component {
         )
         .then((res) => {
           this.props.history.push("/groups")
-        });
-      })
-    }
+        })
+        .catch((err) => {
+          console.log("this is for achievements", err)
+        })
+    })
+        .catch((err) => {
+          console.log("this is for groups", err)
+        })
   }
+}
+
 
   handleModalClose = () => {
     this.setState({
@@ -114,9 +129,9 @@ class GroupCreate extends Component {
   }
 
   render() {
-    if (!this.props.loggedInUser || this.props.loggedInUser.points < 10000) {
-      return <Redirect to="/groups" />;
-    }
+    // if (!this.props.loggedInUser || this.props.loggedInUser.points < 10000) {
+    //   return <Redirect to="/groups" />;
+    // }
     return (
       <div id="createGroup">
         <h1 className="createTitle">Create an Event</h1>

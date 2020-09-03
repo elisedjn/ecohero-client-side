@@ -30,11 +30,20 @@ function CreateChallForm(props) {
 
           <Form.Group className="input-container">
             <Form.Label className="titles">Points</Form.Label>
-            <Form.Control className="inputs" name="points" type="number" max="10000" min="50" placeholder="Number of points. Max 10 000" /> 
+            <Form.Control className="inputs" name="points" type="number" max="10000" min="50" placeholder="Max. 10 000" /> 
           </Form.Group>
 
           <Form.Text >
-            <p className="rules">* As we want to encourage users to achieve short to mid term goals, <strong>we are capping the points at 10 000</strong>.</p>
+          <div className="rulesContainer">
+            <p><strong>Guideline:</strong></p>
+          </div>
+          <div className="summary">
+            <p className="rules"><strong>1.</strong> <u>Short term goals</u>: between 100 and 1000 points</p>
+            <p className="rules"><strong>2.</strong> <u>Mid term goals</u>: between 1000 and 10000 points</p>
+            <p className="rules"><strong>3.</strong> <u>Long term goals</u>: 10000+ points</p>
+          </div>
+           
+            <p className="rules"><strong>*</strong> As we want to encourage users to achieve short to mid term goals, <strong>we are capping the points at 10 000</strong>.</p>
           </Form.Text>
 
           <Button className="createBtn" variant="primary" type="submit">

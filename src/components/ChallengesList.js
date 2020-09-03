@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
+import Loading from "./Loading"
 import "./styles/ChallengesList.css";
 
 
@@ -67,7 +68,7 @@ class ChallengesList extends Component {
 
   render() {
     if (!this.state.challenges) {
-      return <div>Loading...</div>;
+      return <Loading/>;
     }
     return (
       <div id="challenges">

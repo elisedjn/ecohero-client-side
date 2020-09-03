@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
+import Loading from "./Loading"
 import "./styles/Groups.css";
 
 
@@ -33,7 +34,8 @@ class Groups extends Component {
         let cloneGroups = this.state.groups.filter((item) => {
           return (
             item.name.toLowerCase().includes(search) ||
-            item.description.toLowerCase().includes(search)
+            item.description.toLowerCase().includes(search) ||
+            item.location.toLowerCase().includes(search)
           );
         });
         this.setState({
@@ -58,7 +60,27 @@ class Groups extends Component {
     handleSort = (e) => {
         e.preventDefault()
         let cloneGroups = JSON.parse(JSON.stringify(this.state.filteredGroups)) 
-        e.currentTarget.value ==="low" ? cloneGroups.sort((a, b) => a.points - b.points) : cloneGroups.sort((a, b) => b.points - a.points)
+        e.currentTarget.value ==="low" ? 
+        cloneGroups.sort((a, b) => {
+            if(b.date < a.date) {
+                return -1
+            } else if (b.date > a.date) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+         :
+        cloneGroups.sort((a, b) => {
+            if(a.date < b.date) {
+                return -1
+            } else if (a.date > b.date) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+
         this.setState({
             filteredGroups: cloneGroups,
         })
@@ -67,7 +89,7 @@ class Groups extends Component {
 
     render() {
         if (!this.state.groups) {
-            return <div>Loading...</div>;
+            return <Loading/>
         }
 
         return (
@@ -89,8 +111,8 @@ class Groups extends Component {
 
                 <Form.Control onChange={this.handleSort} as="select" defaultValue="Sort by...">
                     <option>Sort by...</option>
-                    <option value="high">Points - high to low </option>
-                    <option value="low">Points - low to high</option>
+                    <option value="high">Date - now to future </option>
+                    <option value="low">Date - future to now</option>
                 </Form.Control>
                 {this.props.loggedInUser ? (
                 <Button className="bouncy" onClick={this.handleCreateClick}>

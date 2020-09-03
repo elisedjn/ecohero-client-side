@@ -4,6 +4,7 @@ import { API_URL } from "../config";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
+import Loading from "./Loading"
 import "./styles/GoalsEdit.css";
 
 class GoalsEdit extends Component {
@@ -71,12 +72,7 @@ class GoalsEdit extends Component {
 
   render() {
     if (!this.state.achievement) {
-      return (
-        <p>
-          Loading... If you're not login yet, please{" "}
-          <Link to="/login">click on this link</Link>
-        </p>
-      );
+      return <Loading/>
     }
 
     const { image, challenge } = this.state.achievement;

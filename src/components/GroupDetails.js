@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { Link } from "react-router-dom";
+import Loading from "./Loading"
 import "./styles/GroupDetails.css";
 
 
@@ -38,7 +39,7 @@ class GroupDetails extends Component {
     render() {
 
         if (!this.state.groupData) {
-            return <p>Loading...</p>;
+            return <Loading/>
         }
 
         const {name, description, location, date, members, challenge} = this.state.groupData
