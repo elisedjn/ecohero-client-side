@@ -4,10 +4,11 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
-import SocialMedia from "./SocialMedia";
+import Modal from 'react-bootstrap/Modal';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import SocialMedia from "./SocialMedia"
+import Loading from "./Loading"
 import "./styles/GoalsAndSucces.css";
 
 class GoalsAndSuccess extends Component {
@@ -97,17 +98,8 @@ class GoalsAndSuccess extends Component {
   };
 
   render() {
-    if (
-      !this.state.userAchievements ||
-      !this.state.userGroups ||
-      !this.props.loggedInUser
-    ) {
-      return (
-        <p>
-          Loading... If you're not login yet, please{" "}
-          <Link to="/login">click on this link</Link>
-        </p>
-      );
+    if (!this.state.userAchievements || !this.state.userGroups || !this.props.loggedInUser) {
+      return <Loading/>
     }
 
     return (

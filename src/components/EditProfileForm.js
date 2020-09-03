@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { Link } from "react-router-dom";
+import Loading from "./Loading"
 import "./styles/EditProfileForm.css";
 
 class EditProfileForm extends Component {
@@ -69,12 +70,7 @@ class EditProfileForm extends Component {
 
   render() {
     if (!this.state.user) {
-      return (
-        <p>
-          Loading... If you're not login yet, please{" "}
-          <Link to="/login">click on this link</Link>
-        </p>
-      );
+      return <Loading/>
     }
     const { username, image, password, email } = this.state.user;
     return (

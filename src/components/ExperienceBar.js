@@ -74,7 +74,7 @@ function ExperienceBar(props) {
     } else if (props.loggedInUser.points >= 100000) {
         return (
             <div>
-              <p className="ranks">{superHero.title}</p>
+              <p className="superHero" >{superHero.title}</p>
               <p className="points">{props.loggedInUser.points} points</p>    
             </div>
         ) 

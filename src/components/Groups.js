@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
+import Loading from "./Loading"
 import "./styles/Groups.css";
 
 class Groups extends Component {
@@ -57,6 +58,7 @@ class Groups extends Component {
     });
   };
 
+<<<<<<< HEAD
   handleSort = (e) => {
     e.preventDefault();
     let cloneGroups = JSON.parse(JSON.stringify(this.state.filteredGroups));
@@ -76,11 +78,75 @@ class Groups extends Component {
           <Link to="/login">click on this link</Link>
         </p>
       );
+=======
+    handleSearch = (e) => {
+        let search = e.currentTarget.value.toLowerCase();
+        let cloneGroups = this.state.groups.filter((item) => {
+          return (
+            item.name.toLowerCase().includes(search) ||
+            item.description.toLowerCase().includes(search) ||
+            item.location.toLowerCase().includes(search)
+          );
+        });
+        this.setState({
+            filteredGroups: cloneGroups,
+        });
+    };
+    
+    handleCreateClick = () => {
+        if (!this.props.loggedInUser || this.props.loggedInUser.points < 10000) {
+          this.setState({
+            showPopUp: true,
+          });
+        } else this.props.history.push("/groups/create");
+    };
+    
+    handleClose = () => {
+        this.setState({
+          showPopUp: false,
+        });
+    };
+    
+    handleSort = (e) => {
+        e.preventDefault()
+        let cloneGroups = JSON.parse(JSON.stringify(this.state.filteredGroups)) 
+        e.currentTarget.value ==="low" ? 
+        cloneGroups.sort((a, b) => {
+            if(b.date < a.date) {
+                return -1
+            } else if (b.date > a.date) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+         :
+        cloneGroups.sort((a, b) => {
+            if(a.date < b.date) {
+                return -1
+            } else if (a.date > b.date) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+
+        this.setState({
+            filteredGroups: cloneGroups,
+        })
+>>>>>>> origin/Joel-branch
     }
 
+<<<<<<< HEAD
     return (
       <div id="groups">
         <h3 className="groupsTitle">EcoHero Events</h3>
+=======
+    render() {
+        if (!this.state.groups) {
+            return <Loading/>
+        }
+>>>>>>> origin/Joel-branch
 
         <div className="search-part">
           <InputGroup className="mb-3">
@@ -114,6 +180,7 @@ class Groups extends Component {
           )}
         </div>
 
+<<<<<<< HEAD
         <h4 className="listOfEvents">List of events</h4>
         <div className="one-success-container">
           {this.state.filteredGroups.map((group, i) => {
@@ -127,6 +194,37 @@ class Groups extends Component {
                   <div className="event-date">{fullDate}</div>
                   <div className="event-name">{group.name}</div>
                   <div className="event-location">{group.location}</div>
+=======
+                <Form.Control onChange={this.handleSort} as="select" defaultValue="Sort by...">
+                    <option>Sort by...</option>
+                    <option value="high">Date - now to future </option>
+                    <option value="low">Date - future to now</option>
+                </Form.Control>
+                {this.props.loggedInUser ? (
+                <Button className="bouncy" onClick={this.handleCreateClick}>
+                    <img className="plantL" src="/images/plant02.png" alt="o" />
+                    Create an event
+                </Button>
+                ) : (
+                ""
+                )}
+                </div>
+                
+                <h4 className="listOfEvents">List of events</h4>
+                <div className="one-success-container" >
+                {this.state.filteredGroups.map((group, i) => {
+                return (
+                    <div className="one-success" key={"group" + i}>
+                        <Link className="link" to={`/groups/${group._id}`}>
+                        <p>
+                            {group.name} - {group.location}
+                        </p>
+                        </Link>
+                    </div>
+                    
+                );
+                })}
+>>>>>>> origin/Joel-branch
                 </div>
               </Link>
             );

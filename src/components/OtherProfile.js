@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ExperienceBar from "./ExperienceBar";
 import axios from "axios";
 import { API_URL } from "../config";
+import Loading from "./Loading"
 import "./styles/OtherProfile.css";
 
 export default class OtherProfile extends Component {
@@ -32,7 +33,7 @@ export default class OtherProfile extends Component {
 
   render() {
     if (!this.state.userAchievements || !this.state.user) {
-      return <p>Loading...</p>;
+      return <Loading/>
     }
 
     return (

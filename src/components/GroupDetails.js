@@ -4,6 +4,7 @@ import { API_URL } from "../config";
 import { Link } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Loading from "./Loading"
 import "./styles/GroupDetails.css";
 
 
@@ -89,14 +90,8 @@ class GroupDetails extends Component {
 
 
     render() {
-
-        if (!this.state.groupData || !this.props.loggedInUser) {
-          return (
-            <p>
-              Loading... If you're not login yet, please{" "}
-              <Link to="/login">click on this link</Link>
-            </p>
-          );
+        if (!this.state.groupData) {
+            return <Loading/>
         }
 
         const {name, description, location, date, members, challenge} = this.state.groupData

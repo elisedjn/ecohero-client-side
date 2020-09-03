@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
+import Loading from "./Loading"
 import "./styles/Leaderboard.css";
 
 class Leaderboard extends Component {
@@ -19,7 +20,7 @@ class Leaderboard extends Component {
 
   render() {
     if (!this.state.users) {
-      return <p>Loading...</p>;
+      return <Loading/>
     }
 
     return (

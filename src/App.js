@@ -29,7 +29,11 @@ import Groups from "./components/Groups"
 import GroupDetails from "./components/GroupDetails"
 import GroupCreate from "./components/GroupCreate"
 import NotFoundPage from "./components/NotFoundPage"
+<<<<<<< HEAD
 import GroupEdit from "./components/GroupEdit";
+=======
+import Loading from "./components/Loading"
+>>>>>>> origin/Joel-branch
 
 
 class App extends React.Component {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import AddToMyGoals from "./AddToMyGoals";
+import Loading from "./Loading"
 import "./styles/ChallengeDetails.css";
 
 class ChallengeDetails extends Component {
@@ -21,7 +22,7 @@ class ChallengeDetails extends Component {
 
   render() {
     if (!this.state.challenge) {
-      return <p>Loading...</p>;
+      return <Loading/>;
     }
     return (
       <div id="challengeDetails">
