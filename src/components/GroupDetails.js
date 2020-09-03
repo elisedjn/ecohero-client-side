@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { Link } from "react-router-dom";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import "./styles/GroupDetails.css";
 
 
@@ -11,6 +13,7 @@ class GroupDetails extends Component {
     state = {
       groupData: null,
       membersID: [],
+      showPopUp: false
     }
 
     componentDidMount() {
@@ -49,10 +52,18 @@ class GroupDetails extends Component {
       let todaysDate = new Date(Date.now())
       todaysDate.setHours(0)
       if(todaysDate < new Date(this.state.groupData.date)){
-        console.log("Too early to validate")
+        this.setState({
+          showPopUp: true
+        })
       } else {
         this.props.history.push(`/event-edit/${this.state.groupData._id}`)
       }
+    }
+
+    handleClose = () => {
+      this.setState({
+        showPopUp: false
+      })
     }
 
     handleLeave = () => {
@@ -131,7 +142,7 @@ class GroupDetails extends Component {
                   })
                 }
                 
-                {
+                { 
                   this.state.membersID.includes(this.props.loggedInUser._id) ? 
                   (this.state.membersID[0] === this.props.loggedInUser._id ? 
                     <button onClick={this.handleValidate}>Valid the event</button> 
@@ -143,7 +154,21 @@ class GroupDetails extends Component {
                   )
                 } 
               </div>
+              <Modal show={this.state.showPopUp} onHide={this.handleClose} >
+                <Modal.Header closeButton>
+                  <Modal.Title>Not Yet!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  You can't validate an event before it happens!
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="success" onClick={this.handleClose}>
+                    Ok, got it
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </div>
+            
         )
     }
 }

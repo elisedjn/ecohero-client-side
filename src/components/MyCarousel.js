@@ -8,15 +8,21 @@ import "./styles/MyCarousel.css";
 export default class MyCarousel extends Component {
   state = {
     achievements: [],
+    events: []
   };
 
   componentDidMount() {
     axios
       .get(`${API_URL}/achievements/allcompleted`)
-      .then((res) => {
-        this.setState({
-          achievements: res.data,
-        });
+      .then((achievements) => {
+        axios.get(`${API_URL}/groups`)
+        .then((events) => {
+          let finishedEvents = events.data.filter(e => e.finished)
+          this.setState({
+            achievements: achievements.data,
+            events: finishedEvents
+          });
+        })
       })
       .catch((err) => console.log(err));
   }
@@ -41,15 +47,11 @@ export default class MyCarousel extends Component {
                   <div className="carousel-image">
                     <table className="img-container">
                     <tr>
-                    {achievement.image ? (
                       <td><img
                         className="d-block"
                         src={achievement.image}
                         alt={achievement.challenge.title}
                       /></td>
-                    ) : (
-                      ""
-                    )}
                     </tr>
                     </table>
                   </div>
@@ -64,6 +66,42 @@ export default class MyCarousel extends Component {
                       <p className="username">{achievement.user.username}</p>
                       <p className="points-info">{achievement.user.rank} - {achievement.user.points} pts</p>
                       
+                      </div>
+                    </div>
+                  </div>
+                </Carousel.Caption>
+                </Link>
+              </Carousel.Item>
+            );
+          })}
+          {this.state.events.map((event, i) => {
+            return (
+              <Carousel.Item key={"publicEvent" + i}>
+              <Link to={`/groups/${event._id}`}>
+                <img
+                  className="d-block w-100"
+                  src="/images/carouselbg.png"
+                  alt="background"
+                />
+                <Carousel.Caption >
+                  <div className="carousel-image">
+                    <table className="img-container">
+                    <tr>
+                      <td><img
+                        className="d-block"
+                        src={event.image}
+                        alt={event.challenge.title}
+                      /></td>
+                    </tr>
+                    </table>
+                  </div>
+                  <div className="carousel-text">
+                    <h5>Group Action</h5>
+                    <h5>{event.name}</h5>
+                    <div className="user-infos">
+                      <div>
+                      <p className="username">{event.location}</p>
+                      <p className="points-info">{event.date}</p>
                       </div>
                     </div>
                   </div>

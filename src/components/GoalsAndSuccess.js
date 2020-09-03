@@ -247,6 +247,29 @@ class GoalsAndSuccess extends Component {
                 );
               }
             })}
+
+            {this.state.userGroups.map((event, i) => {
+              let successDate = new Date(event.date);
+              let date = "0" + successDate.getDate();
+              let month = "0" + (successDate.getMonth() + 1);
+              successDate = date.slice(-2) + "/" + month.slice(-2);
+              if (event.finished) {
+                return (
+                  <div className="achiev-container" key={"success" + i}>
+                    <Link
+                      className="date-title"
+                      to={`/groups/${event._id}`}
+                    >
+                      <p>{successDate}</p>
+                      <h6>{event.name}</h6>
+                    </Link>
+
+                    <SocialMedia achievementID={event._id} />
+                  </div>
+                );
+              }
+            })}
+
           </div>
         </div>
         <Modal show={this.state.showDeletePopup} onHide={this.handleClose}>
