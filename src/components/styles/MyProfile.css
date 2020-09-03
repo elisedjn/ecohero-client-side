@@ -120,3 +120,61 @@
 
 
 
+
+.modalTitleContainer:first-child {
+  color: #71a034;
+  border: none;
+  margin:auto
+}
+
+.modalTitle {
+  font-family: "Cinzel Decorative", cursive;
+  font-weight: 600;
+}
+
+.modalText {
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+ .modalButtonsContainer {
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+
+.buttonYes {
+  background: linear-gradient(320deg, #71a034 0%, #a4d166 100%);
+  color:white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 10px rgb(52, 54, 54);
+}
+
+.buttonNo {
+  background: linear-gradient(320deg, rgb(153, 26, 26) 0%, rgba(237,46,46,1) 100%);
+  color:white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 10px rgb(52, 54, 54);
+}
+
+
+
+
+
+

@@ -136,8 +136,12 @@ class GroupDetails extends Component {
                 { !this.props.loggedInUser ? "" :
                   (this.state.membersID.includes(this.props.loggedInUser._id) ? 
                   (this.state.membersID[0] === this.props.loggedInUser._id ? 
-                    <button onClick={this.handleValidate}>Valid the event</button> 
-                    : <button onClick={this.handleLeave}>Leave the event</button> )
+                  <div className="edit-btn">
+                  <button onClick={this.handleValidate}><img src="/images/valid.png" alt="Valid" />Validate the event</button> 
+                  </div>
+                    : <div className="edit-btn">
+                    <button className="leaveEvent" onClick={this.handleLeave}><img src="/images/delete.png" alt="Delete" />Leave the event</button>
+                    </div> )
                   : (
                     <div className="edit-btn">
                     <button onClick={this.handleJoin}><img src="/images/valid.png" alt="Valid" /> Join the event</button>
