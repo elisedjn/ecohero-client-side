@@ -64,7 +64,6 @@ class HeroHome extends Component {
         clonedUserAchiev.forEach((e, i) => {
           if(e._id === res.data._id)  clonedUserAchiev.splice(i, 1)
         })
-        console.log(clonedUserAchiev)
         this.setState({
           userAchievements: clonedUserAchiev,
           showDeletePopup:false

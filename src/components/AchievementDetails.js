@@ -63,7 +63,7 @@ class AchievementDetails extends Component {
             <p>{challenge.points} points</p>
           </div>
 
-          {!this.props.loggedInUser ? "" : (completed && this.props.loggedInUser._id === user._id) ? <div className="sharing-logos"><SocialMedia achievementID={_id}  /></div> : completed ? <div className="sharing-logos"><AddToMyGoals challenge={challenge._id} fromOther /></div> : ""}
+          {!this.props.loggedInUser ? "" : (completed && this.props.loggedInUser._id === user._id) ? <div className="sharing-logos"><SocialMedia achievementID={_id}  /></div> : completed ? <div className="sharing-logos"><AddToMyGoals challenge={challenge._id} onSuccess={this.props.onSuccess} fromOther /></div> : ""}
 
           {!completed ? (
             <h5 className="subtitle">

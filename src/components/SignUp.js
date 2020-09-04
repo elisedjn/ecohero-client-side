@@ -28,13 +28,9 @@ function SignUp(props) {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" name="password" />
           <Form.Text className="text-muted">
-            Password needs to have at least 8 characters, a number and an Uppercase alphabet.
+            At least 8 characters, a number and an Uppercase letter.
           </Form.Text>
         </Form.Group>
-
-        <Form.Text className="small-text">
-          Already a member? <Link to="/login">Login</Link>
-        </Form.Text>
 
         <div className="signUpBtn">
           <Button className="signUpBtnClick" variant="primary" type="submit">
@@ -43,6 +39,10 @@ function SignUp(props) {
           <img className="leaf2" src="/images/plant.png" alt="o" />
           </Button>
         </div>
+
+        <Form.Text className="small-text">
+          Already a member? <Link to="/login">Login</Link>
+        </Form.Text>
       </Form>
     </div>
     

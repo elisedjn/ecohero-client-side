@@ -18,7 +18,6 @@ export default class OtherProfile extends Component {
     axios
       .get(`${API_URL}/users/${id}`, { withCredentials: true })
       .then((user) => {
-        console.log(user.data);
         axios
           .get(`${API_URL}/achievements/user/${user.data._id}`, {
             withCredentials: true,

@@ -11,18 +11,20 @@ class GoalsEdit extends Component {
   state = {
     achievement: null,
     showPopUp: false,
+    popUpMessage: "If you complete this goal, it will directly go to your success and you won't be able to edit it again. Are you sure you are ready to complete this goal?",
+    popUpHeader: "Are you sure?",
+    buttonStyle: {},
+    buttonText: "No, not yet."
   };
 
   componentDidMount() {
     let id = this.props.match.params.achievementID;
-    console.log(id);
 
     axios
       .get(`${API_URL}/achievements/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
         this.setState({
           achievement: res.data,
         });
@@ -55,9 +57,23 @@ class GoalsEdit extends Component {
   }
 
   handleClick = () => {
-    this.setState({
-      showPopUp: true
-    })
+    if(!this.state.achievement.finishing_date){
+      this.setState({
+        showPopUp: true,
+        popUpMessage: "Please enter a finishing date for this goal",
+        popUpHeader: "Oops!",
+        buttonStyle: {display:"none"},
+        buttonText: "Ok, got it!"
+      })
+    } else {
+      this.setState({
+        showPopUp: true,
+        popUpMessage: "If you complete this goal, it will directly go to your success and you won't be able to edit it again. Are you sure you are ready to complete this goal?",
+        popUpHeader: "Are you sure?",
+        buttonStyle: {},
+        buttonText: "No, not yet."
+      })
+    }
   }
 
   handleClose = () => {
@@ -111,7 +127,7 @@ class GoalsEdit extends Component {
             onChange={this.handleImageChange}
           ></input>
           <label htmlFor="finishing_date">2. When did you finish this task ?</label>
-          <input name="finishing_date" type="date" onChange={this.handleDateChange}  defaultValue={this.fixTodayDate()} max={this.fixTodayDate()}/>
+          <input name="finishing_date" type="date" onChange={this.handleDateChange} max={this.fixTodayDate()} required/>
           <div className="edit-btn">
               <button onClick={this.handleClick}
             type="submit">
@@ -121,17 +137,17 @@ class GoalsEdit extends Component {
         </div>
         <Modal className="modalContainer" show={this.state.showPopUp} onHide={this.handleClose}>
           <Modal.Header className="modalTitleContainer">
-            <Modal.Title className="modalTitle">Are you sure?</Modal.Title>
+            <Modal.Title className="modalTitle">{this.state.popUpHeader}</Modal.Title>
           </Modal.Header>
           <Modal.Body className="modalText">
-            If you complete this goal, it will directly go to your success and you won't be able to edit it again. Are you sure you are ready to complete this goal?
+            {this.state.popUpMessage}
           </Modal.Body>
           <Modal.Footer className="modalButtonsContainer">
-          <Button className="buttonNo" variant="danger" onClick={this.handleClose}>
-              No, not yet.
+          <Button className="buttonNo" variant="danger" onClick={this.handleClose} >
+          {this.state.buttonText}
             </Button>
-            <Button className="buttonYes" variant="success" onClick={() => this.props.onUpdate(this.state.achievement)}>
-              Yes, I'm sure!
+            <Button className="buttonYes" variant="success" onClick={() => this.props.onUpdate(this.state.achievement)} style={this.state.buttonStyle}>
+              Yes I'm sure!
             </Button>
           </Modal.Footer>
         </Modal>

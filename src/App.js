@@ -73,7 +73,6 @@ class App extends React.Component {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.data);
         this.setState(
           {
             loggedInUser: res.data,
@@ -183,7 +182,6 @@ class App extends React.Component {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(updatedUser);
         delete cloneUser.password;
         cloneUser._id = res.data._id;
         cloneUser.points = res.data.points;
@@ -199,7 +197,6 @@ class App extends React.Component {
         );
       })
       .catch((err) => {
-        console.log(err.response)
         const {errorMessage} = err.response.data
         let message
         if(errorMessage.codeName === "DuplicateKey"){
@@ -225,7 +222,6 @@ class App extends React.Component {
   handleCreateChall = (e) => {
     e.preventDefault();
     const { title, description, points, fact } = e.currentTarget;
-    console.log(points)
     if(title.value === ""){
       this.setState({
         showGeneralModal: true,
@@ -235,7 +231,6 @@ class App extends React.Component {
         modalButtonStyle: {}
       })
     } else if (points.value === "" || points.value < 100 || points.value > 10000){
-      console.log("in the points if")
       this.setState({
         showGeneralModal: true,
         modalMessage : "The points should be between 100 and 10.000",
@@ -308,7 +303,6 @@ class App extends React.Component {
           message = `You're now a ${newRank}! 
           ${bonus}`
         }
-        console.log(clonedUser);
         axios
           .patch(
             `${API_URL}/users/${this.state.loggedInUser._id}/edit`,
@@ -370,13 +364,11 @@ class App extends React.Component {
       })
       .then((group) => {
         let pointsToAdd = group.data.challenge.points;
-        console.log(group.data.challenge.points)
         // Add points to every users
         let message = ""
         let congratulations = false;
         let updatedActualUser;
         members.forEach(user => {
-          console.log(user)
           let clonedUser = JSON.parse(JSON.stringify(user));
           clonedUser.points += pointsToAdd;
           let newRank = this.handleRank(clonedUser.points);
@@ -391,14 +383,13 @@ class App extends React.Component {
             }
           }
           if(clonedUser._id === this.state.loggedInUser._id) updatedActualUser = clonedUser;
-          console.log(clonedUser);
           axios.patch(
               `${API_URL}/users/${clonedUser._id}/edit`,
               clonedUser,
               { withCredentials: true }
             )
             .then((response) => {
-              console.log("user updated", response)
+              console.log("user updated")
             });
         })
         this.setState(
@@ -466,7 +457,7 @@ class App extends React.Component {
               return <CreateChallForm loggedInUser={this.state.loggedInUser} onSubmit={this.handleCreateChall} {...routeProps}/>
             }}/>
           <Route path="/achievement/:achievementID" render={(routeProps) => {
-              return <AchievementDetails loggedInUser={this.state.loggedInUser} {...routeProps} />;
+              return <AchievementDetails loggedInUser={this.state.loggedInUser} {...routeProps} onSuccess={this.hanldeNotification} />;
             }}/>
           <Route path="/challenge/:challengeID" render={(routeProps) => {
               return <ChallengeDetails loggedInUser={this.state.loggedInUser} {...routeProps} onSuccess={this.hanldeNotification} />;

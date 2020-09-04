@@ -14,10 +14,8 @@ class GroupEdit extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.eventID;
-    console.log(id);
     axios.get(`${API_URL}/groups/${id}`, {withCredentials: true,})
       .then((res) => {
-        console.log(res.data);
         this.setState({
           event: res.data,
         });
@@ -40,10 +38,6 @@ class GroupEdit extends Component {
         });
       });
   };
-
-  handleMember = (e) => {
-    console.log(e.currentTarget)
-  }
 
   handleClick = () => {
     this.setState({
@@ -103,8 +97,7 @@ class GroupEdit extends Component {
             members.map((member, i) => {
               return (
                 <div key={"member" + i} className="check-box">
-                  <input onChange={this.handleMember} type="checkbox" id={member.username} name={member.username} value={member._id} />
-                  <label for={member.username}>{member.username}</label>
+                  <div> - {member.username}</div>
                 </div>
               )
             })

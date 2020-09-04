@@ -41,7 +41,6 @@ class GroupCreate extends Component {
 
     let todaysDate = new Date(Date.now())
     todaysDate.setHours(0)
-    console.log("are we creating?")
 
    
     const {name, description, location, date} = e.currentTarget;

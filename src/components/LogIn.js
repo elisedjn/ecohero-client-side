@@ -19,10 +19,6 @@ function LogIn(props) {
           <Form.Control type="password" placeholder="Enter Password" name="password" />
         </Form.Group>
 
-        <Form.Text className="small-text">
-          Not a member yet? <Link to="/signup">Sign Up</Link>
-        </Form.Text>
-
         <div className="loginBtn">
           <Button className="loginBtnClick" variant="primary" type="submit">
           <img className="leaf1" src="/images/plant02.png" alt="o" />
@@ -30,6 +26,11 @@ function LogIn(props) {
           <img className="leaf2" src="/images/plant.png" alt="o" />
           </Button>
         </div>
+
+        <Form.Text className="small-text">
+          Not a member yet? <Link to="/signup">Sign Up</Link>
+        </Form.Text>
+        
       </Form>
     </div>
     
