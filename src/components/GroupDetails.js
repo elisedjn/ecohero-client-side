@@ -94,7 +94,7 @@ class GroupDetails extends Component {
             return <Loading/>
         }
 
-        const {name, description, location, date, members, challenge} = this.state.groupData
+        const {name, description, location, date, members, challenge, finished} = this.state.groupData
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
         let fullDate = new Date(date).toLocaleDateString(undefined, options)
 
@@ -133,7 +133,7 @@ class GroupDetails extends Component {
                   })
                 }
                 
-                { !this.props.loggedInUser ? "" :
+                { finished ? "" : (!this.props.loggedInUser ? "" :
                   (this.state.membersID.includes(this.props.loggedInUser._id) ? 
                   (this.state.membersID[0] === this.props.loggedInUser._id ? 
                   <div className="edit-btn">
@@ -146,7 +146,7 @@ class GroupDetails extends Component {
                     <div className="edit-btn">
                     <button onClick={this.handleJoin}><img src="/images/valid.png" alt="Valid" /> Join the event</button>
                     </div>
-                  ))
+                  )))
                 } 
               </div>
               <Modal className="modalContainer" show={this.state.showPopUp} onHide={this.handleClose} >
